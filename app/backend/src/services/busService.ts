@@ -94,7 +94,7 @@ export async function getLinePrediction(id: string, predictionData?: PredictionD
     try {
         // Add the route ID to the prediction data
         const inputData = {
-            ROUTE: Number.parseInt(id),
+            ROUTE: parseInt(id),
             ...predictionData
         };
 

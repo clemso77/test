@@ -66,6 +66,13 @@ def predict_delay():
     try:
         data = request.json
         
+        # Check if JSON data is present
+        if not data:
+            return jsonify({
+                "success": False,
+                "error": "No JSON data provided in request body"
+            }), 400
+        
         # Validate required fields
         missing_fields = [field for field in REQUIRED_FIELDS if field not in data]
         if missing_fields:
