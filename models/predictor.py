@@ -1,12 +1,9 @@
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import MultiLabelBinarizer, OrdinalEncoder, StandardScaler, OneHotEncoder, PowerTransformer
+from sklearn.preprocessing import MultiLabelBinarizer
 import joblib
-from sklearn.metrics import r2_score
-from sklearn.metrics import mean_absolute_error #  MAE
-from sklearn.metrics import mean_squared_error  # RMSE
+import os
 
 def cyclical_encoding(df, column, max_value):
     """Apply cyclical encoding to a single value."""
@@ -29,31 +26,28 @@ class MultiLabelBinarizerWrapper(BaseEstimator, TransformerMixin):
     def get_feature_names_out(self, input_features=None):
         return np.array([str(cls) for cls in self.mlb.classes_])
 
-import os
-
 # Get the directory of the current file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 preprocessor = None
 model = None
 
 def get_preprocessor():
+    """Load preprocessor lazily"""
     global preprocessor
     if preprocessor is None:
         preprocessor = joblib.load(os.path.join(current_dir, 'preprocessor.pkl'))
     return preprocessor
 
 def get_model():
+    """Load model lazily"""
     global model
     if model is None:
         model = joblib.load(os.path.join(current_dir, 'xgb_model.pkl'))
     return model
 
 def preprocessing(data_row):
+    """Preprocess input data for prediction"""
     df = pd.DataFrame([data_row])
-
-    """
-    TEMPORAL VARIABLES
-    """
 
     # LOCAL_TIME decomposing and cyclical encoding
     df['LOCAL_TIME'] = pd.to_datetime(df['LOCAL_TIME'], format='%H:%M:%S').dt.time
@@ -77,16 +71,12 @@ def preprocessing(data_row):
     df['WEEK_DAY_COS'], df['WEEK_DAY_SIN'] = cyclical_encoding(df, 'WEEK_DAY', 7)
     df = df.drop(columns=['WEEK_DAY'])
 
-    # LOCAL_MONTH cyclical encoding, we drop thus variable later on because we still need it
+    # LOCAL_MONTH cyclical encoding
     df['LOCAL_MONTH_COS'], df['LOCAL_MONTH_SIN'] = cyclical_encoding(df, 'LOCAL_MONTH', 12)
 
     # LOCAL_DAY cyclical encoding
     df['LOCAL_DAY_COS'], df['LOCAL_DAY_SIN'] = cyclical_encoding(df, 'LOCAL_DAY', 31)
     df = df.drop(columns=['LOCAL_DAY'])
-
-    """
-    NOMINAL CATEGORICAL VARIABLES
-    """
 
     # Transform WEATHER_ENG_DESC to a list of conditions
     df['WEATHER_ENG_DESC_LIST'] = df['WEATHER_ENG_DESC'].str.split(',')
@@ -114,9 +104,6 @@ def preprocessing(data_row):
     df['SEASON'] = df['LOCAL_MONTH'].apply(month_to_season)
     df = df.drop(columns=['LOCAL_MONTH'])
 
-    """
-    NUMERICAL VARIABLES
-    """
     # Transformation of the PRECIP_AMOUNT variable to binary presence/absence
     df['PRECIP_AMOUNT_BINARY'] = df['PRECIP_AMOUNT'].apply(lambda x: 1 if x > 0 else 0)
     df = df.drop(columns=['PRECIP_AMOUNT'])
@@ -144,21 +131,8 @@ def preprocessing(data_row):
 
 
 def predict(data_row):
+    """Make prediction for a single data row"""
     processed_row = preprocessing(data_row)
     pred = get_model().predict(processed_row)
     return np.expm1(pred[0])
-
-# Testing the predict function
-if __name__ == "__main__":
-    # Load CSV file
-    csv_file = os.path.join(os.path.dirname(current_dir), 'data', '3_eda_dataset.csv')
-    df = pd.read_csv(csv_file).dropna()
-    
-    # Extract a random row
-    random_row = df.sample(n=1).iloc[0].to_dict()
-    
-    # Test the predict function
-    result = predict(random_row)
-    print(f"Prediction: {result}, real : {random_row['DELAY_LOG1P']}")
-    print(f"LOG1P prediction: {np.log1p(result)}, real : {np.log1p(random_row['DELAY_LOG1P'])}")
 

@@ -1,5 +1,6 @@
 import React from "react";
 import type { Ligne, Arret } from "../../../backend/src/Model/Model.ts";
+import { PredictionService } from "../services/PredictionService.tsx";
 import styles from "./StatsPanel.module.css";
 
 type Props = {
@@ -21,6 +22,8 @@ interface LinePrediction {
     riskScore: number;
     topIncident: IncidentType;
     topIncidentProbability: number;
+    predictedDelay?: number;
+    isLoading?: boolean;
 }
 
 // Mock data generator for incident predictions
@@ -53,6 +56,8 @@ const generateLinePrediction = (lineId: number): LinePrediction => {
 
 export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsById: _ }: Props) {
     const [isMobile, setIsMobile] = React.useState(false);
+    const [realPredictions, setRealPredictions] = React.useState<Record<number, number>>({});
+    const [loadingPredictions, setLoadingPredictions] = React.useState(false);
 
     React.useEffect(() => {
         const checkMobile = () => {
@@ -62,6 +67,32 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
         window.addEventListener("resize", checkMobile);
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
+
+    // Load predictions for selected lines
+    React.useEffect(() => {
+        const loadPredictions = async () => {
+            if (selectedLineIds.size === 0) {
+                setRealPredictions({});
+                return;
+            }
+
+            setLoadingPredictions(true);
+            const newPredictions: Record<number, number> = {};
+            const predictionData = PredictionService.generateSampleData("Clear");
+
+            for (const lineId of Array.from(selectedLineIds)) {
+                const result = await PredictionService.getLinePrediction(lineId.toString(), predictionData);
+                if (result.success && result.predictedDelay !== undefined) {
+                    newPredictions[lineId] = result.predictedDelay;
+                }
+            }
+
+            setRealPredictions(newPredictions);
+            setLoadingPredictions(false);
+        };
+
+        loadPredictions();
+    }, [selectedLineIds]);
 
     // Calculate stats
     const selectedLinesCount = selectedLineIds.size;
@@ -83,9 +114,16 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
     
     const linePredictions = React.useMemo(() => {
         return Array.from(selectedLineIds)
-            .map((lineId) => generateLinePrediction(lineId))
+            .map((lineId) => {
+                const mockPrediction = generateLinePrediction(lineId);
+                return {
+                    ...mockPrediction,
+                    predictedDelay: realPredictions[lineId],
+                    isLoading: loadingPredictions && !realPredictions[lineId],
+                };
+            })
             .sort((a, b) => b.riskScore - a.riskScore);
-    }, [selectedLineIds]);
+    }, [selectedLineIds, realPredictions, loadingPredictions]);
 
     // Simple bar chart data for top 5 lines
     const chartData = React.useMemo(() => {
@@ -258,7 +296,7 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                                 
                                 const colorClass = getRiskColorClass(pred.riskScore);
                                 
-                                return (
+                                 return (
                                     <div
                                         key={pred.lineId}
                                         className={styles.linePredictionCard}
@@ -272,6 +310,15 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                                         <div className={styles.topIncident}>
                                             Top incident: {pred.topIncident} ({incidentPercentage}%)
                                         </div>
+                                        {pred.isLoading ? (
+                                            <div className={styles.predictionDelay}>
+                                                Chargement de la prédiction...
+                                            </div>
+                                        ) : pred.predictedDelay !== undefined ? (
+                                            <div className={styles.predictionDelay}>
+                                                Retard prédit: {Math.round(pred.predictedDelay)} min
+                                            </div>
+                                        ) : null}
                                         <div
                                             className={styles.riskProgressBar}
                                             role="progressbar"
