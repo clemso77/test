@@ -1,0 +1,291 @@
+/* StatsPanel Component Styles */
+
+/* Container styles for desktop and mobile */
+.container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 10;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+}
+
+.container.desktop {
+    top: 16px;
+    left: 16px;
+    width: 380px;
+    max-height: calc(100vh - 32px);
+}
+
+.container.mobile {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 60vh;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+.header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 12px;
+}
+
+.headerTitle {
+    font-size: 16px;
+    font-weight: 650;
+    margin: 0;
+    letter-spacing: 0.2px;
+}
+
+/* Scrollable content */
+.scrollableContent {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Section title */
+.sectionTitle {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    opacity: 0.8;
+}
+
+/* KPI Cards Grid */
+.kpiGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.kpiCard {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.kpiCard.blue {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.kpiCard.green {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.kpiCard.orange {
+    background: rgba(251, 146, 60, 0.1);
+    border: 1px solid rgba(251, 146, 60, 0.2);
+}
+
+.kpiCard.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.kpiLabel {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-bottom: 4px;
+}
+
+.kpiValue {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.kpiValue.blue {
+    color: rgb(59, 130, 246);
+}
+
+.kpiValue.green {
+    color: rgb(16, 185, 129);
+}
+
+.kpiValue.orange {
+    color: rgb(251, 146, 60);
+}
+
+/* Chart container */
+.chartContainer {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.chartTitle {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    opacity: 0.7;
+}
+
+/* Incident predictions */
+.incidentList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.incidentHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+.incidentType {
+    font-weight: 600;
+}
+
+.incidentPercentage {
+    font-weight: 700;
+}
+
+.incidentPercentage.safety {
+    color: rgb(239, 68, 68);
+}
+
+.incidentPercentage.operational {
+    color: rgb(251, 146, 60);
+}
+
+.incidentPercentage.technical {
+    color: rgb(59, 130, 246);
+}
+
+.incidentPercentage.external {
+    color: rgb(168, 85, 247);
+}
+
+.incidentPercentage.other {
+    color: rgb(107, 114, 128);
+}
+
+.progressBar {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progressBarFill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.progressBarFill.safety {
+    background: rgb(239, 68, 68);
+}
+
+.progressBarFill.operational {
+    background: rgb(251, 146, 60);
+}
+
+.progressBarFill.technical {
+    background: rgb(59, 130, 246);
+}
+
+.progressBarFill.external {
+    background: rgb(168, 85, 247);
+}
+
+.progressBarFill.other {
+    background: rgb(107, 114, 128);
+}
+
+/* Line predictions */
+.linePredictionList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.emptyState {
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.linePredictionCard {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.linePredictionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.lineName {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.riskScore {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.riskScore.high {
+    color: rgb(239, 68, 68);
+}
+
+.riskScore.medium {
+    color: rgb(251, 146, 60);
+}
+
+.riskScore.low {
+    color: rgb(16, 185, 129);
+}
+
+.topIncident {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-bottom: 4px;
+}
+
+.riskProgressBar {
+    height: 6px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.riskProgressBarFill {
+    height: 100%;
+}
+
+.riskProgressBarFill.high {
+    background: rgb(239, 68, 68);
+}
+
+.riskProgressBarFill.medium {
+    background: rgb(251, 146, 60);
+}
+
+.riskProgressBarFill.low {
+    background: rgb(16, 185, 129);
+}

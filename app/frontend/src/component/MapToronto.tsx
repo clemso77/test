@@ -6,6 +6,7 @@ import StatsPanel from "./StatsPanel.tsx";
 import { useBusDataNormalized } from "../hooks/useBusDataNormalized.ts";
 import { useBusMapLayers } from "../hooks/useBusMapLayers.ts";
 import { buildGeoJSONNormalized } from "../map/buildGeoJSONNormalized.ts";
+import styles from "./MapToronto.module.css";
 
 export default function MapToronto() {
     const mapContainerRef = React.useRef<HTMLDivElement>(null);
@@ -74,7 +75,7 @@ export default function MapToronto() {
 
     return (
         <>
-            <div ref={mapContainerRef} style={{ width: "100vw", height: "100vh" }} />
+            <div ref={mapContainerRef} className={styles.mapContainer} />
 
             {isMapReady && (
                 <>

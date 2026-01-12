@@ -1,5 +1,6 @@
 import React from "react";
 import type { Ligne, Arret } from "../../../backend/src/Model/Model.ts";
+import styles from "./StatsPanel.module.css";
 
 type Props = {
     selectedLineIds: Set<number>;
@@ -50,7 +51,7 @@ const generateLinePrediction = (lineId: number): LinePrediction => {
     };
 };
 
-export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsById }: Props) {
+export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsById: _ }: Props) {
     const [isMobile, setIsMobile] = React.useState(false);
 
     React.useEffect(() => {
@@ -95,124 +96,56 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
         }));
     }, [lineIds]);
 
-    const containerStyle: React.CSSProperties = isMobile
-        ? {
-              position: "fixed",
-              bottom: 0,
-              left: 0,
-              right: 0,
-              width: "100%",
-              maxHeight: "60vh",
-              background: "rgba(255,255,255,0.95)",
-              border: "1px solid rgba(0,0,0,0.08)",
-              borderRadius: "16px 16px 0 0",
-              boxShadow: "0 -4px 20px rgba(0,0,0,0.15)",
-              backdropFilter: "blur(10px)",
-              padding: 16,
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-              zIndex: 10,
-              fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
-              overflow: "hidden",
-          }
-        : {
-              position: "fixed",
-              top: 16,
-              left: 16,
-              width: 380,
-              maxHeight: "calc(100vh - 32px)",
-              background: "rgba(255,255,255,0.92)",
-              border: "1px solid rgba(0,0,0,0.08)",
-              borderRadius: 16,
-              boxShadow: "0 10px 30px rgba(0,0,0,0.12)",
-              backdropFilter: "blur(10px)",
-              padding: 16,
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-              zIndex: 10,
-              fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
-              overflow: "hidden",
-          };
+    const containerClass = isMobile ? `${styles.container} ${styles.mobile}` : `${styles.container} ${styles.desktop}`;
 
     return (
-        <aside style={containerStyle} aria-label="Panneau de statistiques">
+        <aside className={containerClass} aria-label="Panneau de statistiques">
             {/* Header */}
-            <div style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", paddingBottom: 12 }}>
-                <h2 style={{ fontSize: 16, fontWeight: 650, margin: 0, letterSpacing: 0.2 }}>
+            <div className={styles.header}>
+                <h2 className={styles.headerTitle}>
                     📊 Statistiques
                 </h2>
             </div>
 
             {/* Scrollable content */}
-            <div style={{ overflow: "auto", display: "flex", flexDirection: "column", gap: 16 }}>
+            <div className={styles.scrollableContent}>
                 {/* Global Visualization Section */}
                 <section aria-labelledby="global-viz-title">
                     <h3
                         id="global-viz-title"
-                        style={{ fontSize: 14, fontWeight: 600, margin: "0 0 10px 0", opacity: 0.8 }}
+                        className={styles.sectionTitle}
                     >
                         Visualisation globale
                     </h3>
                     
                     {/* KPI Cards */}
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 12 }}>
-                        <div
-                            style={{
-                                background: "rgba(59, 130, 246, 0.1)",
-                                border: "1px solid rgba(59, 130, 246, 0.2)",
-                                borderRadius: 10,
-                                padding: 10,
-                            }}
-                        >
-                            <div style={{ fontSize: 11, opacity: 0.7, marginBottom: 4 }}>Bus visibles</div>
-                            <div style={{ fontSize: 20, fontWeight: 700, color: "rgb(59, 130, 246)" }}>
+                    <div className={styles.kpiGrid}>
+                        <div className={`${styles.kpiCard} ${styles.blue}`}>
+                            <div className={styles.kpiLabel}>Bus visibles</div>
+                            <div className={`${styles.kpiValue} ${styles.blue}`}>
                                 {/* Placeholder - could be calculated from real-time data */}
                                 -
                             </div>
                         </div>
                         
-                        <div
-                            style={{
-                                background: "rgba(16, 185, 129, 0.1)",
-                                border: "1px solid rgba(16, 185, 129, 0.2)",
-                                borderRadius: 10,
-                                padding: 10,
-                            }}
-                        >
-                            <div style={{ fontSize: 11, opacity: 0.7, marginBottom: 4 }}>Lignes sélectionnées</div>
-                            <div style={{ fontSize: 20, fontWeight: 700, color: "rgb(16, 185, 129)" }}>
+                        <div className={`${styles.kpiCard} ${styles.green}`}>
+                            <div className={styles.kpiLabel}>Lignes sélectionnées</div>
+                            <div className={`${styles.kpiValue} ${styles.green}`}>
                                 {selectedLinesCount}
                             </div>
                         </div>
                         
-                        <div
-                            style={{
-                                background: "rgba(251, 146, 60, 0.1)",
-                                border: "1px solid rgba(251, 146, 60, 0.2)",
-                                borderRadius: 10,
-                                padding: 10,
-                                gridColumn: "1 / -1",
-                            }}
-                        >
-                            <div style={{ fontSize: 11, opacity: 0.7, marginBottom: 4 }}>Arrêts affichés</div>
-                            <div style={{ fontSize: 20, fontWeight: 700, color: "rgb(251, 146, 60)" }}>
+                        <div className={`${styles.kpiCard} ${styles.orange} ${styles.fullWidth}`}>
+                            <div className={styles.kpiLabel}>Arrêts affichés</div>
+                            <div className={`${styles.kpiValue} ${styles.orange}`}>
                                 {displayedStopsCount}
                             </div>
                         </div>
                     </div>
 
                     {/* Simple Bar Chart */}
-                    <div
-                        style={{
-                            background: "rgba(0,0,0,0.02)",
-                            border: "1px solid rgba(0,0,0,0.06)",
-                            borderRadius: 10,
-                            padding: 12,
-                        }}
-                    >
-                        <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8, opacity: 0.7 }}>
+                    <div className={styles.chartContainer}>
+                        <div className={styles.chartTitle}>
                             Activité par ligne (Top 5)
                         </div>
                         <svg width="100%" height="120" viewBox="0 0 320 120" aria-label="Bar chart of line activity">
@@ -256,43 +189,31 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                 <section aria-labelledby="incident-pred-title">
                     <h3
                         id="incident-pred-title"
-                        style={{ fontSize: 14, fontWeight: 600, margin: "0 0 10px 0", opacity: 0.8 }}
+                        className={styles.sectionTitle}
                     >
                         Prédiction par type d'incidents
                     </h3>
                     
-                    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    <div className={styles.incidentList}>
                         {incidentPredictions.map((pred) => {
                             const percentage = Math.round(pred.probability * 100);
                             const colorMap: Record<IncidentType, string> = {
-                                Safety: "rgb(239, 68, 68)",
-                                Operational: "rgb(251, 146, 60)",
-                                Technical: "rgb(59, 130, 246)",
-                                External: "rgb(168, 85, 247)",
-                                Other: "rgb(107, 114, 128)",
+                                Safety: "safety",
+                                Operational: "operational",
+                                Technical: "technical",
+                                External: "external",
+                                Other: "other",
                             };
-                            const color = colorMap[pred.type];
+                            const colorClass = colorMap[pred.type];
                             
                             return (
                                 <div key={pred.type}>
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            justifyContent: "space-between",
-                                            marginBottom: 4,
-                                            fontSize: 12,
-                                        }}
-                                    >
-                                        <span style={{ fontWeight: 600 }}>{pred.type}</span>
-                                        <span style={{ fontWeight: 700, color }}>{percentage}%</span>
+                                    <div className={styles.incidentHeader}>
+                                        <span className={styles.incidentType}>{pred.type}</span>
+                                        <span className={`${styles.incidentPercentage} ${styles[colorClass]}`}>{percentage}%</span>
                                     </div>
                                     <div
-                                        style={{
-                                            height: 8,
-                                            background: "rgba(0,0,0,0.08)",
-                                            borderRadius: 4,
-                                            overflow: "hidden",
-                                        }}
+                                        className={styles.progressBar}
                                         role="progressbar"
                                         aria-valuenow={percentage}
                                         aria-valuemin={0}
@@ -300,12 +221,8 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                                         aria-label={`${pred.type} incident probability: ${percentage}%`}
                                     >
                                         <div
-                                            style={{
-                                                height: "100%",
-                                                width: `${percentage}%`,
-                                                background: color,
-                                                transition: "width 0.3s ease",
-                                            }}
+                                            className={`${styles.progressBarFill} ${styles[colorClass]}`}
+                                            style={{ width: `${percentage}%` }}
                                         />
                                     </div>
                                 </div>
@@ -318,82 +235,45 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                 <section aria-labelledby="line-pred-title">
                     <h3
                         id="line-pred-title"
-                        style={{ fontSize: 14, fontWeight: 600, margin: "0 0 10px 0", opacity: 0.8 }}
+                        className={styles.sectionTitle}
                     >
                         Prédictions par ligne
                     </h3>
                     
                     {selectedLineIds.size === 0 ? (
-                        <div
-                            style={{
-                                padding: 16,
-                                background: "rgba(0,0,0,0.02)",
-                                border: "1px solid rgba(0,0,0,0.06)",
-                                borderRadius: 10,
-                                fontSize: 13,
-                                color: "rgba(0,0,0,0.6)",
-                                textAlign: "center",
-                            }}
-                        >
+                        <div className={styles.emptyState}>
                             Sélectionnez une ligne pour voir les prédictions
                         </div>
                     ) : (
-                        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                        <div className={styles.linePredictionList}>
                             {linePredictions.map((pred) => {
                                 const riskPercentage = Math.round(pred.riskScore * 100);
                                 const incidentPercentage = Math.round(pred.topIncidentProbability * 100);
                                 
-                                const getRiskColor = (score: number) => {
-                                    if (score >= 0.6) return "rgb(239, 68, 68)";
-                                    if (score >= 0.4) return "rgb(251, 146, 60)";
-                                    return "rgb(16, 185, 129)";
+                                const getRiskColorClass = (score: number) => {
+                                    if (score >= 0.6) return "high";
+                                    if (score >= 0.4) return "medium";
+                                    return "low";
                                 };
+                                
+                                const colorClass = getRiskColorClass(pred.riskScore);
                                 
                                 return (
                                     <div
                                         key={pred.lineId}
-                                        style={{
-                                            background: "rgba(255,255,255,0.6)",
-                                            border: "1px solid rgba(0,0,0,0.08)",
-                                            borderRadius: 10,
-                                            padding: 10,
-                                        }}
+                                        className={styles.linePredictionCard}
                                     >
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                justifyContent: "space-between",
-                                                alignItems: "center",
-                                                marginBottom: 6,
-                                            }}
-                                        >
-                                            <span style={{ fontSize: 13, fontWeight: 700 }}>Ligne {pred.lineId}</span>
-                                            <span
-                                                style={{
-                                                    fontSize: 14,
-                                                    fontWeight: 700,
-                                                    color: getRiskColor(pred.riskScore),
-                                                }}
-                                            >
+                                        <div className={styles.linePredictionHeader}>
+                                            <span className={styles.lineName}>Ligne {pred.lineId}</span>
+                                            <span className={`${styles.riskScore} ${styles[colorClass]}`}>
                                                 {riskPercentage}%
                                             </span>
                                         </div>
-                                        <div
-                                            style={{
-                                                fontSize: 11,
-                                                opacity: 0.7,
-                                                marginBottom: 4,
-                                            }}
-                                        >
+                                        <div className={styles.topIncident}>
                                             Top incident: {pred.topIncident} ({incidentPercentage}%)
                                         </div>
                                         <div
-                                            style={{
-                                                height: 6,
-                                                background: "rgba(0,0,0,0.08)",
-                                                borderRadius: 3,
-                                                overflow: "hidden",
-                                            }}
+                                            className={styles.riskProgressBar}
                                             role="progressbar"
                                             aria-valuenow={riskPercentage}
                                             aria-valuemin={0}
@@ -401,11 +281,8 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                                             aria-label={`Risk score for line ${pred.lineId}: ${riskPercentage}%`}
                                         >
                                             <div
-                                                style={{
-                                                    height: "100%",
-                                                    width: `${riskPercentage}%`,
-                                                    background: getRiskColor(pred.riskScore),
-                                                }}
+                                                className={`${styles.riskProgressBarFill} ${styles[colorClass]}`}
+                                                style={{ width: `${riskPercentage}%` }}
                                             />
                                         </div>
                                     </div>
