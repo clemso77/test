@@ -2,6 +2,7 @@ import React from "react";
 import mapboxgl from "mapbox-gl";
 import { Weather } from "./Weather.tsx";
 import BusLinesPanel from "./BusLinesPanel.tsx";
+import StatsPanel from "./StatsPanel.tsx";
 import { useBusDataNormalized } from "../hooks/useBusDataNormalized.ts";
 import { useBusMapLayers } from "../hooks/useBusMapLayers.ts";
 import { buildGeoJSONNormalized } from "../map/buildGeoJSONNormalized.ts";
@@ -77,6 +78,13 @@ export default function MapToronto() {
 
             {isMapReady && (
                 <>
+                    <StatsPanel
+                        selectedLineIds={selectedLineIds}
+                        lineIds={lineIds}
+                        linesById={linesById}
+                        stopsById={stopsById}
+                    />
+
                     <BusLinesPanel
                         lineIds={lineIds.map(String)}
                         selected={new Set(Array.from(selectedLineIds).map(String))}
