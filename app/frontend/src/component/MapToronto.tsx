@@ -78,13 +78,6 @@ export default function MapToronto() {
 
             {isMapReady && (
                 <>
-                    <StatsPanel
-                        selectedLineIds={selectedLineIds}
-                        lineIds={lineIds}
-                        linesById={linesById}
-                        stopsById={stopsById}
-                    />
-
                     <BusLinesPanel
                         lineIds={lineIds.map(String)}
                         selected={new Set(Array.from(selectedLineIds).map(String))}
