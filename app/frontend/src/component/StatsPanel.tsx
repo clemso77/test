@@ -1,6 +1,8 @@
 import React from "react";
 import type { Ligne, Arret } from "../../../backend/src/Model/Model.ts";
 import { PredictionService } from "../services/PredictionService.tsx";
+import { StatsService } from "../services/StatsService.tsx";
+import { WeatherService } from "../services/WeatherService.tsx";
 import styles from "./StatsPanel.module.css";
 
 type Props = {
@@ -26,25 +28,14 @@ interface LinePrediction {
     isLoading?: boolean;
 }
 
-// Mock data generator for incident predictions
-const generateIncidentPredictions = (): IncidentPrediction[] => {
-    return [
-        { type: "Safety", probability: 0.15 },
-        { type: "Operational", probability: 0.35 },
-        { type: "Technical", probability: 0.25 },
-        { type: "External", probability: 0.18 },
-        { type: "Other", probability: 0.07 },
-    ];
-};
-
-// Mock data generator for line predictions
+// Fallback data generator for line predictions when no data is available
 const generateLinePrediction = (lineId: number): LinePrediction => {
-    const seed = lineId * 137; // Simple seed for stable random values
-    const riskScore = ((seed % 70) + 10) / 100; // 10-80%
+    const seed = lineId * 137;
+    const riskScore = ((seed % 70) + 10) / 100;
     
     const incidents: IncidentType[] = ["Safety", "Operational", "Technical", "External", "Other"];
     const topIncident = incidents[seed % incidents.length];
-    const topIncidentProbability = ((seed % 50) + 30) / 100; // 30-80%
+    const topIncidentProbability = ((seed % 50) + 30) / 100;
     
     return {
         lineId,
@@ -58,6 +49,11 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
     const [isMobile, setIsMobile] = React.useState(false);
     const [realPredictions, setRealPredictions] = React.useState<Record<number, number>>({});
     const [loadingPredictions, setLoadingPredictions] = React.useState(false);
+    
+    // State for real data from services
+    const [incidentPredictions, setIncidentPredictions] = React.useState<IncidentPrediction[]>([]);
+    const [topLinesData, setTopLinesData] = React.useState<Array<{ lineId: number; activityScore: number }>>([]);
+    const [loadingStats, setLoadingStats] = React.useState(true);
 
     React.useEffect(() => {
         const checkMobile = () => {
@@ -66,6 +62,36 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
         checkMobile();
         window.addEventListener("resize", checkMobile);
         return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    // Load global stats (incident predictions and top lines)
+    React.useEffect(() => {
+        const loadGlobalStats = async () => {
+            setLoadingStats(true);
+            try {
+                const stats = await StatsService.getGlobalStats();
+                
+                if (stats) {
+                    // Update incident predictions
+                    setIncidentPredictions(stats.incidentPredictions.map(p => ({
+                        type: p.type as IncidentType,
+                        probability: p.probability,
+                    })));
+                    
+                    // Update top lines data
+                    setTopLinesData(stats.topLines.map(line => ({
+                        lineId: line.lineId,
+                        activityScore: line.activityScore,
+                    })));
+                }
+            } catch (error) {
+                console.error("Error loading global stats:", error);
+            } finally {
+                setLoadingStats(false);
+            }
+        };
+
+        loadGlobalStats();
     }, []);
 
     // Load predictions for selected lines
@@ -78,7 +104,34 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
 
             setLoadingPredictions(true);
             const newPredictions: Record<number, number> = {};
-            const predictionData = PredictionService.generateSampleData("Clear");
+            
+            // Get weather data for predictions
+            const weatherData = await WeatherService.getWeatherForPrediction();
+            
+            if (!weatherData) {
+                console.error("Failed to get weather data for predictions");
+                setLoadingPredictions(false);
+                return;
+            }
+
+            // Convert weather data to prediction format
+            const predictionData = {
+                LOCAL_TIME: weatherData.LOCAL_TIME,
+                WEEK_DAY: new Date().toLocaleDateString('en-US', { weekday: 'long' }),
+                INCIDENT: "External",
+                LOCAL_MONTH: weatherData.LOCAL_MONTH,
+                LOCAL_DAY: weatherData.LOCAL_DAY,
+                TEMP: weatherData.TEMP,
+                DEW_POINT_TEMP: weatherData.DEW_POINT_TEMP,
+                HUMIDEX: weatherData.HUMIDEX,
+                PRECIP_AMOUNT: weatherData.PRECIP_AMOUNT,
+                RELATIVE_HUMIDITY: weatherData.RELATIVE_HUMIDITY,
+                STATION_PRESSURE: weatherData.STATION_PRESSURE,
+                VISIBILITY: weatherData.VISIBILITY,
+                WEATHER_ENG_DESC: weatherData.WEATHER_ENG_DESC,
+                WIND_DIRECTION: weatherData.WIND_DIRECTION,
+                WIND_SPEED: weatherData.WIND_SPEED,
+            };
 
             for (const lineId of Array.from(selectedLineIds)) {
                 const result = await PredictionService.getLinePrediction(lineId.toString(), predictionData);
@@ -108,9 +161,6 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
         });
         return stopIds.size;
     }, [selectedLineIds, linesById]);
-
-    // Mock data for incidents and line predictions
-    const incidentPredictions = React.useMemo(() => generateIncidentPredictions(), []);
     
     const linePredictions = React.useMemo(() => {
         return Array.from(selectedLineIds)
@@ -125,14 +175,24 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
             .sort((a, b) => b.riskScore - a.riskScore);
     }, [selectedLineIds, realPredictions, loadingPredictions]);
 
-    // Simple bar chart data for top 5 lines
+    // Chart data for top 5 lines - use real data from stats service
     const chartData = React.useMemo(() => {
-        const topLines = lineIds.slice(0, 5);
-        return topLines.map((id) => ({
-            id,
-            value: ((id * 17) % 50) + 20, // Mock value 20-70
-        }));
-    }, [lineIds]);
+        if (topLinesData.length > 0) {
+            // Use real data from the stats service
+            const maxScore = Math.max(...topLinesData.map(line => line.activityScore), 1);
+            return topLinesData.slice(0, 5).map(line => ({
+                id: line.lineId,
+                value: (line.activityScore / maxScore) * 70, // Normalize to 0-70 range for display
+            }));
+        } else {
+            // Fallback to using first 5 line IDs from the dataset
+            const topLines = lineIds.slice(0, 5);
+            return topLines.map((id) => ({
+                id,
+                value: ((id * 17) % 50) + 20,
+            }));
+        }
+    }, [topLinesData, lineIds]);
 
     const containerClass = isMobile ? `${styles.container} ${styles.mobile}` : `${styles.container} ${styles.desktop}`;
 
