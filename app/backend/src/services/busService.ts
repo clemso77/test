@@ -2,6 +2,7 @@
 import {parse} from "csv-parse/sync";
 import {readFile} from "node:fs/promises";
 import {Arret, Ligne,} from "../Model/Model";
+import {getPrediction} from "./predictionService";
 
 
 export async function getAllLines() {
@@ -63,6 +64,41 @@ export async function getLineIncidents(id: string) {
     return {}
 }
 
-export async function getLinePrediction(id: string) {
-    return {}
+export async function getLinePrediction(id: string, predictionData?: any) {
+    if (!predictionData) {
+        return {
+            success: false,
+            error: "No prediction data provided. Please provide weather and temporal data."
+        };
+    }
+
+    try {
+        // Add the route ID to the prediction data
+        const inputData = {
+            ROUTE: Number.parseInt(id),
+            ...predictionData
+        };
+
+        const prediction = await getPrediction(inputData);
+
+        if (prediction !== null) {
+            return {
+                success: true,
+                lineId: id,
+                predictedDelay: prediction,
+                unit: "minutes"
+            };
+        } else {
+            return {
+                success: false,
+                error: "Prediction API returned null"
+            };
+        }
+    } catch (error) {
+        console.error("Error in getLinePrediction:", error);
+        return {
+            success: false,
+            error: error instanceof Error ? error.message : "Unknown error"
+        };
+    }
 }

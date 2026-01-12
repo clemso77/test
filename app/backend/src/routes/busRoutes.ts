@@ -28,9 +28,9 @@ router.get("/:id/incidents", async (req, res) => {
   console.log(`GET /lines/${req.params.id}/incidents`);
   res.json(await getLineIncidents(req.params.id));
 });
-router.get("/:id/prediction", async (req, res) => {
-  console.log(`GET /lines/${req.params.id}/prediction`);
-  res.json(await getLinePrediction(req.params.id));
+router.post("/:id/prediction", async (req, res) => {
+  console.log(`POST /lines/${req.params.id}/prediction`);
+  res.json(await getLinePrediction(req.params.id, req.body));
 });
 router.post("/bulk", async (req, res) => {
     console.log("POST /lines/bulk");
