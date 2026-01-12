@@ -7,11 +7,13 @@ import { useBusDataNormalized } from "../hooks/useBusDataNormalized.ts";
 import { useBusMapLayers } from "../hooks/useBusMapLayers.ts";
 import { buildGeoJSONNormalized } from "../map/buildGeoJSONNormalized.ts";
 import styles from "./MapToronto.module.css";
+import {type CurrentWeather, WeatherService} from "../services/WeatherService.tsx";
 
 export default function MapToronto() {
     const mapContainerRef = React.useRef<HTMLDivElement>(null);
     const mapRef = React.useRef<mapboxgl.Map | null>(null);
     const [isMapReady, setIsMapReady] = React.useState(false);
+    const [weather, setWeather] = React.useState<CurrentWeather | null>(null);
 
     const { lineIds, selectedLineIds, linesById, stopsById, toggleLine } = useBusDataNormalized(3);
     const { setGeoData } = useBusMapLayers(mapRef, isMapReady);
@@ -58,6 +60,10 @@ export default function MapToronto() {
             });
         });
 
+        WeatherService.getCurrentWeather().then(weather => {
+            console.log("Weather:", weather);
+            setWeather(weather);
+        })
         return () => {
             map.remove();
             mapRef.current = null;
@@ -91,8 +97,11 @@ export default function MapToronto() {
                         selected={new Set(Array.from(selectedLineIds).map(String))}
                         onToggle={(idStr: string) => toggleLine(Number(idStr))}
                     />
-
-                    <Weather map={mapRef.current!} temperature={22} condition="" />
+                    {weather && (
+                        <>
+                            <Weather map={mapRef.current!} temperature={weather.temperature} condition={weather.description.toLowerCase()} />
+                        </>
+                    )}
                 </>
             )}
         </>

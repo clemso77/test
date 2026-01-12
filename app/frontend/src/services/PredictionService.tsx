@@ -56,31 +56,4 @@ export class PredictionService {
             };
         }
     }
-
-    /**
-     * Generate sample prediction data based on current conditions
-     * This is a helper to create test data
-     */
-    static generateSampleData(weatherCondition: string = "Clear"): PredictionData {
-        const now = new Date();
-        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        
-        return {
-            LOCAL_TIME: now.toTimeString().split(' ')[0],
-            WEEK_DAY: days[now.getDay()],
-            INCIDENT: "External",
-            LOCAL_MONTH: now.getMonth() + 1,
-            LOCAL_DAY: now.getDate(),
-            TEMP: 5.0,
-            DEW_POINT_TEMP: 2.0,
-            HUMIDEX: 3.5,
-            PRECIP_AMOUNT: 0.0,
-            RELATIVE_HUMIDITY: 75.0,
-            STATION_PRESSURE: 101.3,
-            VISIBILITY: 15.0,
-            WEATHER_ENG_DESC: weatherCondition,
-            WIND_DIRECTION: 180.0,
-            WIND_SPEED: 10.0,
-        };
-    }
 }
