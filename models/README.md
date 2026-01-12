@@ -26,11 +26,17 @@ cd models
 python prediction_api.py
 ```
 
-By default, the API runs on `http://localhost:5000`. You can change the port by setting the `PREDICTION_API_PORT` environment variable:
+By default, the API runs on `http://localhost:5000`. You can configure it using environment variables:
 
 ```bash
+# Change port
 PREDICTION_API_PORT=8000 python prediction_api.py
+
+# Enable debug mode (for development only)
+FLASK_DEBUG=true python prediction_api.py
 ```
+
+**Note**: Debug mode is disabled by default for security. Only enable it in development environments.
 
 ## API Endpoints
 
