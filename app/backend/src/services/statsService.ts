@@ -112,6 +112,8 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
         return defaultPredictions();
     }
 
+    const historical = historicalDistribution();
+    
     try {
         const weatherData = await getWeatherForPrediction();
         const incidentTypes = ['Safety', 'Operational', 'Technical', 'External', 'Other'];
@@ -140,29 +142,35 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
 
         if (!apiAvailable) {
             console.log('Prediction API unavailable, using historical distribution');
-            return historicalDistribution();
+            return historical;
         }
 
         console.log('ML model predictions:', predictions);
 
         const totalDelay = predictions.reduce((sum, p) => sum + p.delay, 0);
-        const maxDelay = Math.max(...predictions.map(p => p.delay));
-        const minDelay = Math.min(...predictions.map(p => p.delay));
+        const delays = predictions.map(p => p.delay);
+        const maxDelay = Math.max(...delays);
+        const minDelay = Math.min(...delays);
         const variance = maxDelay - minDelay;
+        const avgDelay = totalDelay / predictions.length;
+        const relativeVariance = avgDelay > 0 ? variance / avgDelay : 0;
 
         if (totalDelay === 0) {
             console.log('All predictions zero, using historical distribution');
-            return historicalDistribution();
+            return historical;
         }
 
-        if (variance < 0.5) {
-            console.log('Predictions too similar (variance < 0.5), blending with historical data');
+        if (relativeVariance < 0.05) {
+            console.log(`Predictions nearly identical (rel. variance: ${relativeVariance.toFixed(3)}), using historical distribution`);
+            return historical;
+        }
+
+        if (relativeVariance < 0.2) {
+            console.log(`Low variance (rel. variance: ${relativeVariance.toFixed(3)}), blending with historical data`);
             const mlPredictions = predictions.map(p => ({
                 type: p.type,
                 probability: p.delay / totalDelay,
             }));
-            
-            const historical = historicalDistribution();
             
             return mlPredictions.map((ml, idx) => ({
                 type: ml.type,
@@ -175,11 +183,11 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
             probability: p.delay / totalDelay,
         }));
 
-        console.log('Final incident probabilities:', normalized);
+        console.log(`Using ML predictions (rel. variance: ${relativeVariance.toFixed(3)}):`, normalized);
         return normalized;
     } catch (error) {
         console.error('Error in incident predictions:', error);
-        return historicalDistribution();
+        return historical;
     }
 }
 
