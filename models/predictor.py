@@ -34,12 +34,19 @@ import os
 # Get the directory of the current file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 preprocessor = None
+model = None
 
 def get_preprocessor():
     global preprocessor
     if preprocessor is None:
         preprocessor = joblib.load(os.path.join(current_dir, 'preprocessor.pkl'))
     return preprocessor
+
+def get_model():
+    global model
+    if model is None:
+        model = joblib.load(os.path.join(current_dir, 'xgb_model.pkl'))
+    return model
 
 def preprocessing(data_row):
     df = pd.DataFrame([data_row])
@@ -137,10 +144,8 @@ def preprocessing(data_row):
 
 
 def predict(data_row):
-    model = joblib.load(os.path.join(current_dir, 'xgb_model.pkl'))
     processed_row = preprocessing(data_row)
-    print(processed_row)
-    pred = model.predict(processed_row)
+    pred = get_model().predict(processed_row)
     return np.expm1(pred[0])
 
 # Testing the predict function
