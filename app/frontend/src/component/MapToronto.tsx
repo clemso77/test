@@ -12,7 +12,7 @@ export default function MapToronto() {
     const mapRef = React.useRef<mapboxgl.Map | null>(null);
     const [isMapReady, setIsMapReady] = React.useState(false);
 
-    const { lineIds, selectedLineIds, linesById, stopsById, toggleLine } = useBusDataNormalized();
+    const { lineIds, selectedLineIds, linesById, stopsById, toggleLine } = useBusDataNormalized(3);
     const { setGeoData } = useBusMapLayers(mapRef, isMapReady);
 
     // init map

@@ -48,7 +48,6 @@ export default function BusLinesPanel({ lineIds, selected, onToggle }: Props) {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Rechercher une ligne…"
                 style={{
-                    width: "100%",
                     border: "1px solid rgba(0,0,0,0.12)",
                     borderRadius: 12,
                     padding: "10px 12px",

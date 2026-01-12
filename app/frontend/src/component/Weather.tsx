@@ -54,7 +54,7 @@ export function Weather({ map, temperature, condition }: WeatherProps) {
         // Contrôle température
         if (!tempControlRef.current) {
             tempControlRef.current = new WeatherTempControl(temperature);
-            map.addControl(tempControlRef.current, "top-right");
+            map.addControl(tempControlRef.current, "top-left");
             setInterval(() => {
                 temperature += (Math.random() * 2 - 1);
                 tempControlRef.current?.updateTemperature(temperature);
