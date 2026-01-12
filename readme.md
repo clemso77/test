@@ -1,5 +1,66 @@
 # PR - Predictive system for the delay in public transports
 
+## Running the Prediction System
+
+The prediction system consists of two components:
+
+1. **Python Prediction API**: Machine learning model served via Flask API
+2. **TypeScript Backend**: Express.js backend that integrates with the prediction API
+
+### Starting the Prediction API
+
+```bash
+# Navigate to models directory
+cd models
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Start the Flask API (runs on port 5000 by default)
+python prediction_api.py
+```
+
+### Starting the Backend
+
+```bash
+# Navigate to backend directory
+cd app/backend
+
+# Install dependencies (if not already installed)
+npm install
+
+# Start the backend (runs on port 3000 by default)
+npm start
+```
+
+### Using the Prediction Endpoint
+
+Once both services are running, you can make predictions:
+
+```bash
+curl -X POST http://localhost:3000/lines/91/prediction \
+  -H "Content-Type: application/json" \
+  -d '{
+    "LOCAL_TIME": "14:30:00",
+    "WEEK_DAY": "Monday",
+    "INCIDENT": "External",
+    "LOCAL_MONTH": 1,
+    "LOCAL_DAY": 15,
+    "TEMP": 5.0,
+    "DEW_POINT_TEMP": 2.0,
+    "HUMIDEX": 3.5,
+    "PRECIP_AMOUNT": 0.0,
+    "RELATIVE_HUMIDITY": 75.0,
+    "STATION_PRESSURE": 101.3,
+    "VISIBILITY": 15.0,
+    "WEATHER_ENG_DESC": "Clear",
+    "WIND_DIRECTION": 180.0,
+    "WIND_SPEED": 10.0
+  }'
+```
+
+For more details on the prediction API, see [models/README.md](models/README.md).
+
 ## Datasources
 
 | Name | Data | Type | Source | Date | Additionnal info |

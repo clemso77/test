@@ -2,6 +2,26 @@
 import {parse} from "csv-parse/sync";
 import {readFile} from "node:fs/promises";
 import {Arret, Ligne,} from "../Model/Model";
+import {getPrediction} from "./predictionService";
+
+// Define the prediction data interface for type safety
+interface PredictionData {
+    LOCAL_TIME: string;
+    WEEK_DAY: string;
+    INCIDENT: string;
+    LOCAL_MONTH: number;
+    LOCAL_DAY: number;
+    TEMP: number;
+    DEW_POINT_TEMP: number;
+    HUMIDEX: number;
+    PRECIP_AMOUNT: number;
+    RELATIVE_HUMIDITY: number;
+    STATION_PRESSURE: number;
+    VISIBILITY: number;
+    WEATHER_ENG_DESC: string;
+    WIND_DIRECTION: number;
+    WIND_SPEED: number;
+}
 
 
 export async function getAllLines() {
@@ -63,6 +83,41 @@ export async function getLineIncidents(id: string) {
     return {}
 }
 
-export async function getLinePrediction(id: string) {
-    return {}
+export async function getLinePrediction(id: string, predictionData?: PredictionData) {
+    if (!predictionData) {
+        return {
+            success: false,
+            error: "No prediction data provided. Please provide weather and temporal data."
+        };
+    }
+
+    try {
+        // Add the route ID to the prediction data
+        const inputData = {
+            ROUTE: parseInt(id),
+            ...predictionData
+        };
+
+        const prediction = await getPrediction(inputData);
+
+        if (prediction !== null) {
+            return {
+                success: true,
+                lineId: id,
+                predictedDelay: prediction,
+                unit: "minutes"
+            };
+        } else {
+            return {
+                success: false,
+                error: "Prediction API returned null"
+            };
+        }
+    } catch (error) {
+        console.error("Error in getLinePrediction:", error);
+        return {
+            success: false,
+            error: error instanceof Error ? error.message : "Unknown error"
+        };
+    }
 }
