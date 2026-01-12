@@ -51,7 +51,7 @@ const generateLinePrediction = (lineId: number): LinePrediction => {
     };
 };
 
-export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsById }: Props) {
+export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsById: _ }: Props) {
     const [isMobile, setIsMobile] = React.useState(false);
 
     React.useEffect(() => {
