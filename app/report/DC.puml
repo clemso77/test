@@ -1,0 +1,103 @@
+@startuml
+title Diagramme de Classes - Architecture API
+
+package "API Météo" {
+  class WeatherService {
+    +getCurrentWeather(location: Coordinates): WeatherDTO
+  }
+
+  class WeatherDTO {
+    temperature: float
+    condition: {Pluie, Neige, Autres}
+  }
+}
+
+package "API Transport" {
+  class TransportService {
+    +getLines(): List<LineDTO>
+    +getLineDetails(lineId: String): LineDetailsDTO
+    +getStops(lineId: String): List<StopDTO>
+    +getTraffic(lineId: String): TrafficDTO
+    +getIncidentsHistory(lineId: String): List<IncidentDTO>
+  }
+
+  class LineDTO {
+    id: String
+    name: String
+    color: String
+  }
+
+  class LineDetailsDTO {
+    id: String
+    name: String
+    stops: List<StopDTO>
+    geometry: GeoJSON
+  }
+
+  class StopDTO {
+    id: String
+    name: String
+    coordinates: Coordinates
+  }
+
+  class TrafficDTO {
+    status: String
+    delay: float
+    averageSpeed: float
+  }
+
+  class IncidentDTO {
+    date: Date
+    description: String
+    severity: int
+  }
+}
+
+package "Module de Prévision" {
+  class PredictionService {
+    +predictIncidents(lineId: String): PredictionDTO
+  }
+
+  class PredictionDTO {
+    riskLevel: int
+    confidence: float
+  }
+}
+
+package "Application" {
+  class MapController {
+    +displayMap()
+    +displayLines()
+    +displayStops(lineId: String)
+  }
+
+  class StatsController {
+    +displayGlobalStats(): GlobalStatsDTO
+  }
+
+  class GlobalStatsDTO {
+    mostImpactedLines: List<LineDTO>
+    averageNetworkDelay: float
+    incidentCountToday: int
+  }
+}
+
+' Relations
+WeatherService --> WeatherDTO
+
+TransportService --> LineDTO
+TransportService --> LineDetailsDTO
+TransportService --> StopDTO
+TransportService --> TrafficDTO
+TransportService --> IncidentDTO
+
+PredictionService --> PredictionDTO
+
+MapController --> WeatherService
+MapController --> TransportService
+MapController --> PredictionService
+
+StatsController --> TransportService
+StatsController --> PredictionService
+
+@enduml

@@ -1,0 +1,204 @@
+Route,RouteName,Color,TextColor
+7,BATHURST,#da251d,#ffffff
+8,BROADVIEW,#da251d,#ffffff
+9,BELLAMY,#da251d,#ffffff
+10,VAN HORNE,#ffffff,#da251d
+11,BAYVIEW,#da251d,#ffffff
+12,KINGSTON RD,#da251d,#ffffff
+13,AVENUE RD,#da251d,#ffffff
+14,GLENCAIRN,#da251d,#ffffff
+15,EVANS,#da251d,#ffffff
+16,MCCOWAN,#da251d,#ffffff
+17,BIRCHMOUNT,#da251d,#ffffff
+19,BAY,#da251d,#ffffff
+20,CLIFFSIDE,#da251d,#ffffff
+21,BRIMLEY,#da251d,#ffffff
+22,COXWELL,#da251d,#ffffff
+23,DAWES,#da251d,#ffffff
+24,VICTORIA PARK,#da251d,#ffffff
+25,DON MILLS,#da251d,#ffffff
+26,DUPONT,#da251d,#ffffff
+28,BAYVIEW SOUTH,#da251d,#ffffff
+29,DUFFERIN,#da251d,#ffffff
+30,HIGH PARK NORTH,#da251d,#ffffff
+31,GREENWOOD,#da251d,#ffffff
+32,EGLINTON WEST,#da251d,#ffffff
+33,FOREST HILL,#da251d,#ffffff
+34,EGLINTON EAST,#da251d,#ffffff
+35,JANE,#da251d,#ffffff
+36,FINCH WEST,#da251d,#ffffff
+37,ISLINGTON,#da251d,#ffffff
+38,HIGHLAND CREEK,#da251d,#ffffff
+39,FINCH EAST,#da251d,#ffffff
+40,JUNCTION-DUNDAS WEST,#da251d,#ffffff
+41,KEELE,#da251d,#ffffff
+42,CUMMER,#da251d,#ffffff
+43,KENNEDY,#da251d,#ffffff
+44,KIPLING SOUTH,#da251d,#ffffff
+45,KIPLING,#da251d,#ffffff
+46,MARTIN GROVE,#da251d,#ffffff
+47,LANSDOWNE,#da251d,#ffffff
+48,RATHBURN,#da251d,#ffffff
+49,BLOOR WEST,#da251d,#ffffff
+50,BURNHAMTHORPE,#da251d,#ffffff
+51,LESLIE,#da251d,#ffffff
+52,LAWRENCE WEST,#da251d,#ffffff
+53,STEELES EAST,#da251d,#ffffff
+54,LAWRENCE EAST,#da251d,#ffffff
+55,WARREN PARK,#da251d,#ffffff
+56,LEASIDE,#da251d,#ffffff
+57,MIDLAND,#da251d,#ffffff
+59,MAPLE LEAF,#da251d,#ffffff
+60,STEELES WEST,#da251d,#ffffff
+61,AVENUE RD NORTH,#da251d,#ffffff
+62,MORTIMER,#da251d,#ffffff
+63,OSSINGTON,#da251d,#ffffff
+64,MAIN,#da251d,#ffffff
+65,PARLIAMENT,#da251d,#ffffff
+66,PRINCE EDWARD,#da251d,#ffffff
+67,PHARMACY,#da251d,#ffffff
+68,WARDEN,#da251d,#ffffff
+69,WARDEN SOUTH,#da251d,#ffffff
+70,O'CONNOR,#da251d,#ffffff
+71,RUNNYMEDE,#da251d,#ffffff
+72,PAPE,#da251d,#ffffff
+73,ROYAL YORK,#da251d,#ffffff
+74,MOUNT PLEASANT,#da251d,#ffffff
+75,SHERBOURNE,#da251d,#ffffff
+76,ROYAL YORK SOUTH,#da251d,#ffffff
+77,SWANSEA,#da251d,#ffffff
+78,ST ANDREWS,#da251d,#ffffff
+79,SCARLETT RD,#da251d,#ffffff
+80,QUEENSWAY,#da251d,#ffffff
+82,ROSEDALE,#da251d,#ffffff
+83,JONES,#da251d,#ffffff
+84,SHEPPARD WEST,#da251d,#ffffff
+85,SHEPPARD EAST,#da251d,#ffffff
+86,SCARBOROUGH,#da251d,#ffffff
+87,COSBURN,#da251d,#ffffff
+88,SOUTH LEASIDE,#da251d,#ffffff
+89,WESTON,#da251d,#ffffff
+90,VAUGHAN,#da251d,#ffffff
+91,WOODBINE,#da251d,#ffffff
+92,WOODBINE SOUTH,#da251d,#ffffff
+93,PARKVIEW HILLS,#da251d,#ffffff
+94,WELLESLEY,#da251d,#ffffff
+95,YORK MILLS,#da251d,#ffffff
+96,WILSON,#da251d,#ffffff
+97,YONGE,#da251d,#ffffff
+98,WILLOWDALE-SENLAC,#da251d,#ffffff
+99,ARROW RD,#ffffff,#da251d
+100,FLEMINGDON PARK,#da251d,#ffffff
+101,DOWNSVIEW PARK,#ffffff,#da251d
+102,MARKHAM RD,#da251d,#ffffff
+103,MOUNT PLEASANT NORTH,#da251d,#ffffff
+104,FAYWOOD,#da251d,#ffffff
+105,DUFFERIN NORTH,#da251d,#ffffff
+106,SENTINEL,#da251d,#ffffff
+107,YORK UNIVERSITY HEIGHTS,#da251d,#ffffff
+108,DRIFTWOOD,#da251d,#ffffff
+109,RANEE,#da251d,#ffffff
+110,ISLINGTON SOUTH,#da251d,#ffffff
+111,EAST MALL,#da251d,#ffffff
+112,WEST MALL,#da251d,#ffffff
+113,Danforth,#da251d,#ffffff
+114,QUEENS QUAY EAST,#da251d,#ffffff
+115,SILVER HILLS,#ffffff,#da251d
+116,MORNINGSIDE,#da251d,#ffffff
+117,BIRCHMOUNT SOUTH,#da251d,#ffffff
+118,THISTLE DOWN,#da251d,#ffffff
+119,TORBARRIE,#ffffff,#da251d
+120,CALVINGTON,#da251d,#ffffff
+121,ESPLANADE-RIVER,#da251d,#ffffff
+122,GRAYDON HALL,#da251d,#ffffff
+123,SHERWAY,#da251d,#ffffff
+124,SUNNYBROOK,#da251d,#ffffff
+125,DREWRY,#da251d,#ffffff
+126,CHRISTIE,#da251d,#ffffff
+127,DAVENPORT,#da251d,#ffffff
+128,STANLEY GREENE,#ffffff,#da251d
+129,MCCOWAN NORTH,#da251d,#ffffff
+130,MIDDLEFIELD,#da251d,#ffffff
+131,NUGGET,#da251d,#ffffff
+132,MILNER,#da251d,#ffffff
+133,NEILSON,#da251d,#ffffff
+134,PROGRESS,#da251d,#ffffff
+135,GERRARD,#da251d,#ffffff
+149,ETOBICOKE-BLOOR,#da251d,#ffffff
+154,CURRAN HALL,#da251d,#ffffff
+160,BATHURST NORTH,#ffffff,#da251d
+161,ROGERS RD,#da251d,#ffffff
+162,LAWRENCE-DONWAY,#ffffff,#da251d
+164,CASTLEFIELD,#da251d,#ffffff
+165,WESTON RD NORTH,#da251d,#ffffff
+167,PHARMACY NORTH,#ffffff,#da251d
+168,SYMINGTON,#da251d,#ffffff
+169,HUNTINGWOOD,#ffffff,#da251d
+171,MOUNT DENNIS,#da251d,#ffffff
+184,Ancaster Park,#da251d,#ffffff
+185,SHEPPARD CENTRAL,#da251d,#ffffff
+189,STOCKYARDS,#da251d,#ffffff
+191,UNDERHILL,#eb6fbd,#ffffff
+200,TORONTO ZOO,#da251d,#ffffff
+201,BLUFFER'S PARK,#da251d,#ffffff
+202,CHERRY BEACH,#da251d,#ffffff
+300,BLOOR-DANFORTH,#fffffff,#024182
+302,KINGSTON RD-MCCOWAN,#fffffff,#024182
+307,BATHURST,#fffffff,#024182
+315,EVANS-BROWN'S LINE,#fffffff,#024182
+320,YONGE,#fffffff,#024182
+322,COXWELL,#fffffff,#024182
+324,VICTORIA PARK,#fffffff,#024182
+325,DON MILLS,#fffffff,#024182
+329,DUFFERIN,#fffffff,#024182
+332,EGLINTON WEST,#fffffff,#024182
+334,EGLINTON EAST,#fffffff,#024182
+335,JANE,#fffffff,#024182
+336,FINCH WEST,#fffffff,#024182
+337,ISLINGTON,#fffffff,#024182
+339,FINCH EAST,#fffffff,#024182
+340,Junction,#fffffff,#024182
+341,KEELE,#fffffff,#024182
+343,KENNEDY,#fffffff,#024182
+352,LAWRENCE WEST,#fffffff,#024182
+353,STEELES,#fffffff,#024182
+354,LAWRENCE EAST,#fffffff,#024182
+363,OSSINGTON,#fffffff,#024182
+365,PARLIAMENT,#fffffff,#024182
+384,SHEPPARD WEST,#fffffff,#024182
+385,SHEPPARD EAST,#fffffff,#024182
+395,YORK MILLS,#fffffff,#024182
+396,WILSON,#fffffff,#024182
+400,LAWRENCE MANOR,#ffffff,#8f8f8f
+402,PARKDALE,#ffffff,#8f8f8f
+403,SOUTH DON MILLS,#ffffff,#8f8f8f
+404,EAST YORK,#ffffff,#8f8f8f
+405,ETOBICOKE,#ffffff,#8f8f8f
+406,SCARBOROUGH-GUILDWOOD,#ffffff,#8f8f8f
+900,AIRPORT EXPRESS,#eb6fbd,#ffffff
+902,MARKHAM RD EXPRESS,#eb6fbd,#ffffff
+903,KENNEDY STN-SCARBOROUGH EXPRESS,#eb6fbd,#ffffff
+904,SHEPPARD-KENNEDY EXPRESS,#eb6fbd,#ffffff
+905,EGLINTON EAST EXPRESS,#eb6fbd,#ffffff
+924,VICTORIA PARK EXPRESS,#eb6fbd,#ffffff
+925,DON MILLS EXPRESS,#eb6fbd,#ffffff
+927,HIGHWAY 27 EXPRESS,#eb6fbd,#ffffff
+929,DUFFERIN EXPRESS,#eb6fbd,#ffffff
+935,JANE EXPRESS,#eb6fbd,#ffffff
+937,ISLINGTON EXPRESS,#eb6fbd,#ffffff
+938,HIGHLAND CREEK EXPRESS,#eb6fbd,#ffffff
+939,FINCH EXPRESS,#eb6fbd,#ffffff
+941,KEELE EXPRESS,#eb6fbd,#ffffff
+944,KIPLING SOUTH EXPRESS,#eb6fbd,#ffffff
+945,KIPLING EXPRESS,#eb6fbd,#ffffff
+952,LAWRENCE WEST EXPRESS,#eb6fbd,#ffffff
+953,STEELES EAST EXPRESS,#eb6fbd,#ffffff
+954,LAWRENCE EAST EXPRESS,#eb6fbd,#ffffff
+960,STEELES WEST EXPRESS,#eb6fbd,#ffffff
+968,WARDEN EXPRESS,#eb6fbd,#ffffff
+984,SHEPPARD WEST EXPRESS,#eb6fbd,#ffffff
+985,SHEPPARD EAST EXPRESS,#eb6fbd,#ffffff
+986,SCARBOROUGH EXPRESS,#eb6fbd,#ffffff
+989,WESTON EXPRESS,#eb6fbd,#ffffff
+995,YORK MILLS EXPRESS,#eb6fbd,#ffffff
+996,WILSON EXPRESS,#eb6fbd,#ffffff

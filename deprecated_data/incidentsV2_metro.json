@@ -1,0 +1,4050 @@
+{
+    "pagination": {
+        "total_result": 12,
+        "start_page": 0,
+        "items_per_page": 100,
+        "items_on_page": 12
+    },
+    "feed_publishers": [
+        {
+            "id": "osm",
+            "name": "openstreetmap",
+            "url": "https://www.openstreetmap.org/copyright",
+            "license": "ODbL"
+        },
+        {
+            "id": "IDFM:idfm_netex",
+            "name": "idfm_netex",
+            "url": "",
+            "license": "private"
+        },
+        {
+            "id": "IDFM:transilien_netex",
+            "name": "transilien_netex",
+            "url": "",
+            "license": "private"
+        }
+    ],
+    "disruptions": [
+        {
+            "id": "22dbd95e-2ff3-11f0-a874-0a58a9feac02",
+            "disruption_id": "22db9106-2ff3-11f0-a874-0a58a9feac02",
+            "impact_id": "22dbd95e-2ff3-11f0-a874-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250513T140926",
+                    "end": "20260513T140926"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250513T140935",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE BERCY Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai 2, direction Saint-Lazare",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE BERCY Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai 2, direction Saint-Lazare",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE BERCY Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai 2, dir. Saint-Lazare",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71607",
+                        "name": "Bercy (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71607",
+                            "name": "Bercy",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "421"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71607:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Bercy (Paris)",
+                            "coord": {
+                                "lon": "2.381282",
+                                "lat": "48.839016"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "22dbd95e-2ff3-11f0-a874-0a58a9feac02",
+            "disruption_uri": "22db9106-2ff3-11f0-a874-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "59095622-6cb7-11f0-aac7-0a58a9feac02",
+            "disruption_id": "ba0168bc-6c7f-11f0-81ad-0a58a9feac02",
+            "impact_id": "59095622-6cb7-11f0-aac7-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250729T152658",
+                    "end": "20260729T152658"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250729T220517",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "59095622-6cb7-11f0-aac7-0a58a9feac02",
+            "disruption_uri": "ba0168bc-6c7f-11f0-81ad-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "256b64e6-6eeb-11f0-8aee-0a58a9feac02",
+            "disruption_id": "fc3eaa26-6ea7-11f0-8aee-0a58a9feac02",
+            "impact_id": "256b64e6-6eeb-11f0-8aee-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250801T092012",
+                    "end": "20260801T092012"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250801T172107",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "256b64e6-6eeb-11f0-8aee-0a58a9feac02",
+            "disruption_uri": "fc3eaa26-6ea7-11f0-8aee-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "4d92fcb6-6f29-11f0-81bd-0a58a9feac02",
+            "disruption_id": "dd85c822-6f0f-11f0-81bd-0a58a9feac02",
+            "impact_id": "4d92fcb6-6f29-11f0-81bd-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250801T214350",
+                    "end": "20260801T214350"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250802T004603",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE LYON Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai N, direction Grandes Lignes",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE LYON Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai N, direction Grandes Lignes",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE LYON Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai N, dir. Grandes Lignes",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:73626",
+                        "name": "Gare de Lyon (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:73626",
+                            "name": "Gare de Lyon",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "196"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:73626:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare de Lyon (Paris)",
+                            "coord": {
+                                "lon": "2.375146",
+                                "lat": "48.844569"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "4d92fcb6-6f29-11f0-81bd-0a58a9feac02",
+            "disruption_uri": "dd85c822-6f0f-11f0-81bd-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "4dd94bae-7aef-11f0-8aee-0a58a9feac02",
+            "disruption_id": "5d76a6fe-7a92-11f0-94fa-0a58a9feac02",
+            "impact_id": "4dd94bae-7aef-11f0-8aee-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250816T131541",
+                    "end": "20260816T131541"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250817T002107",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "4dd94bae-7aef-11f0-8aee-0a58a9feac02",
+            "disruption_uri": "5d76a6fe-7a92-11f0-94fa-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "a457bb62-7b69-11f0-81bd-0a58a9feac02",
+            "disruption_id": "e77a90fe-7b1e-11f0-8aee-0a58a9feac02",
+            "impact_id": "a457bb62-7b69-11f0-81bd-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250817T060141",
+                    "end": "20260817T060141"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250817T145650",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "a457bb62-7b69-11f0-81bd-0a58a9feac02",
+            "disruption_uri": "e77a90fe-7b1e-11f0-8aee-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "c7f23e1c-7ca9-11f0-99fa-0a58a9feac02",
+            "disruption_id": "4a187a3a-7c61-11f0-99fa-0a58a9feac02",
+            "impact_id": "c7f23e1c-7ca9-11f0-99fa-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250818T202925",
+                    "end": "20260818T202925"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250819T050829",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "c7f23e1c-7ca9-11f0-99fa-0a58a9feac02",
+            "disruption_uri": "4a187a3a-7c61-11f0-99fa-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "ab7b0298-7e87-11f0-81bd-0a58a9feac02",
+            "disruption_id": "8ab90d18-7cf5-11f0-99fa-0a58a9feac02",
+            "impact_id": "ab7b0298-7e87-11f0-81bd-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250819T141040",
+                    "end": "20260819T141040"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250821T140921",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Jaur\u00e8s Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai, direction Sortie uniquement, jusqu'au 2025-12-01",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Jaur\u00e8s Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai, direction Sortie uniquement, jusqu'au 2025-12-01",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Jaur\u00e8s Panne ascenseur jusqu'au 2025-12-01 situ\u00e9 Salle d'acc\u00e8s <> Quai, dir. Sortie uniquement",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71940",
+                        "name": "Jaur\u00e8s (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71940",
+                            "name": "Jaur\u00e8s",
+                            "codes": [
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71940:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Jaur\u00e8s (Paris)",
+                            "coord": {
+                                "lon": "2.370791",
+                                "lat": "48.882458"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "ab7b0298-7e87-11f0-81bd-0a58a9feac02",
+            "disruption_uri": "8ab90d18-7cf5-11f0-99fa-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "0ca9f42e-7efc-11f0-80ae-0a58a9feac02",
+            "disruption_id": "b5b18d08-7e79-11f0-bcb1-0a58a9feac02",
+            "impact_id": "0ca9f42e-7efc-11f0-80ae-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250821T122915",
+                    "end": "20260821T122915"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250822T040225",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "0ca9f42e-7efc-11f0-80ae-0a58a9feac02",
+            "disruption_uri": "b5b18d08-7e79-11f0-bcb1-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "e6cf382c-7fc8-11f0-b7bb-0a58a9feac02",
+            "disruption_id": "c3942d22-7f3c-11f0-9137-0a58a9feac02",
+            "impact_id": "e6cf382c-7fc8-11f0-b7bb-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250822T114532",
+                    "end": "20260822T114532"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250823T042849",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "e6cf382c-7fc8-11f0-b7bb-0a58a9feac02",
+            "disruption_uri": "c3942d22-7f3c-11f0-9137-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "26c65d42-8146-11f0-b7bb-0a58a9feac02",
+            "disruption_id": "a6c93332-8003-11f0-9137-0a58a9feac02",
+            "impact_id": "26c65d42-8146-11f0-b7bb-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250823T112913",
+                    "end": "20260823T112913"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250825T015754",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "26c65d42-8146-11f0-b7bb-0a58a9feac02",
+            "disruption_uri": "a6c93332-8003-11f0-9137-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "7cb655bc-820f-11f0-b7bb-0a58a9feac02",
+            "disruption_id": "f7f22d2a-8195-11f0-8c56-0a58a9feac02",
+            "impact_id": "7cb655bc-820f-11f0-b7bb-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250825T112906",
+                    "end": "20260825T112906"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250826T015907",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "7cb655bc-820f-11f0-b7bb-0a58a9feac02",
+            "disruption_uri": "f7f22d2a-8195-11f0-8c56-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "6fdcc7f4-82f5-11f0-892b-0a58a9feac02",
+            "disruption_id": "80d04338-825f-11f0-9137-0a58a9feac02",
+            "impact_id": "6fdcc7f4-82f5-11f0-892b-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250826T113144",
+                    "end": "20260826T113144"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250827T052510",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "6fdcc7f4-82f5-11f0-892b-0a58a9feac02",
+            "disruption_uri": "80d04338-825f-11f0-9137-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "e44e3268-85fb-11f0-88ed-0a58a9feac02",
+            "disruption_id": "1ef82458-85d6-11f0-8937-0a58a9feac02",
+            "impact_id": "e44e3268-85fb-11f0-88ed-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250830T211824",
+                    "end": "20260830T211824"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250831T014856",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai B, direction Massy / Rungis / Dourdan / \u00c9tampes",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai B, direction Massy / Rungis / Dourdan / \u00c9tampes",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai B, dir. Massy / Rungis / Dourdan / \u00c9tampes",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "e44e3268-85fb-11f0-88ed-0a58a9feac02",
+            "disruption_uri": "1ef82458-85d6-11f0-8937-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "e135668c-8939-11f0-afea-0a58a9feac02",
+            "disruption_id": "1376bdf6-88ec-11f0-922c-0a58a9feac02",
+            "impact_id": "e135668c-8939-11f0-afea-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250903T193307",
+                    "end": "20260903T193307"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250904T045013",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, direction Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Gare d'Austerlitz Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai A, dir. Saint-Quentin / Pontoise / Argenteuil",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71135",
+                            "name": "Gare d'Austerlitz",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "140"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71135:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare d'Austerlitz (Paris)",
+                            "coord": {
+                                "lon": "2.366833",
+                                "lat": "48.842354"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "e135668c-8939-11f0-afea-0a58a9feac02",
+            "disruption_uri": "1376bdf6-88ec-11f0-922c-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "e5f14284-92f5-11f0-a3cb-0a58a9feac02",
+            "disruption_id": "e5f0e686-92f5-11f0-a3cb-0a58a9feac02",
+            "impact_id": "e5f14284-92f5-11f0-a3cb-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250916T140837",
+                    "end": "20260916T140837"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250916T140847",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE BERCY Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai 1, direction Olympiades, jusqu'au 2025-11-10",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE BERCY Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai 1, direction Olympiades, jusqu'au 2025-11-10",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE BERCY Panne ascenseur jusqu'au 2025-11-10 situ\u00e9 Salle d'acc\u00e8s <> Quai 1, dir. Olympiades",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71607",
+                        "name": "Bercy (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71607",
+                            "name": "Bercy",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "421"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71607:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Bercy (Paris)",
+                            "coord": {
+                                "lon": "2.381282",
+                                "lat": "48.839016"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "e5f14284-92f5-11f0-a3cb-0a58a9feac02",
+            "disruption_uri": "e5f0e686-92f5-11f0-a3cb-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "737b763c-935b-11f0-9236-0a58a9feac02",
+            "disruption_id": "c358bcc4-930f-11f0-928c-0a58a9feac02",
+            "impact_id": "737b763c-935b-11f0-9236-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250916T171347",
+                    "end": "20260916T171347"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250917T021543",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE LYON Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s - Quai N, direction Grandes Lignes",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE LYON Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s - Quai N, direction Grandes Lignes",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE LYON Panne ascenseur situ\u00e9 Salle d'acc\u00e8s - Quai N, dir. Grandes Lignes",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:73626",
+                        "name": "Gare de Lyon (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:73626",
+                            "name": "Gare de Lyon",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "196"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:73626:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare de Lyon (Paris)",
+                            "coord": {
+                                "lon": "2.375146",
+                                "lat": "48.844569"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "737b763c-935b-11f0-9236-0a58a9feac02",
+            "disruption_uri": "c358bcc4-930f-11f0-928c-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "95f8876c-9488-11f0-a3cb-0a58a9feac02",
+            "disruption_id": "95f81fca-9488-11f0-a3cb-0a58a9feac02",
+            "impact_id": "95f8876c-9488-11f0-a3cb-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250918T141112",
+                    "end": "20260918T141112"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250918T141120",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "MADELEINE Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Niveau interm\u00e9diaire",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "MADELEINE Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Niveau interm\u00e9diaire",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "MADELEINE Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Niveau interm\u00e9diaire",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71324",
+                        "name": "Madeleine (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71324",
+                            "name": "Madeleine",
+                            "codes": [
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71324:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Madeleine (Paris)",
+                            "coord": {
+                                "lon": "2.324719",
+                                "lat": "48.870028"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "95f8876c-9488-11f0-a3cb-0a58a9feac02",
+            "disruption_uri": "95f81fca-9488-11f0-a3cb-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "1350b52e-94af-11f0-928c-0a58a9feac02",
+            "disruption_id": "49fb5828-86ee-11f0-a9ad-0a58a9feac02",
+            "impact_id": "1350b52e-94af-11f0-928c-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250901T064356",
+                    "end": "20260901T064356"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250918T184651",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Biblioth\u00e8que Fran\u00e7ois Mitterrand Panne de l'ascenseur situ\u00e9 Hall <> Quais A/B, direction Pontoise / Argenteuil / Invalides / St Quentin / Versailles RG",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Biblioth\u00e8que Fran\u00e7ois Mitterrand Panne de l'ascenseur situ\u00e9 Hall <> Quais A/B, direction Pontoise / Argenteuil / Invalides / St Quentin / Versailles RG",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Biblioth\u00e8que Fran\u00e7ois Mitterrand Panne ascenseur situ\u00e9 Hall <> Quais A/B, dir. Pontoise / Argenteuil / Invalides / St Quentin / Versailles RG",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71572",
+                        "name": "Biblioth\u00e8que Fran\u00e7ois Mitterrand (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71572",
+                            "name": "Biblioth\u00e8que Fran\u00e7ois Mitterrand",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "316"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71572:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Biblioth\u00e8que Fran\u00e7ois Mitterrand (Paris)",
+                            "coord": {
+                                "lon": "2.376726",
+                                "lat": "48.829783"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "1350b52e-94af-11f0-928c-0a58a9feac02",
+            "disruption_uri": "49fb5828-86ee-11f0-a9ad-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "23876a92-94b3-11f0-9236-0a58a9feac02",
+            "disruption_id": "7e8820f4-93cc-11f0-b09f-0a58a9feac02",
+            "impact_id": "23876a92-94b3-11f0-9236-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250917T154447",
+                    "end": "20260917T154447"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250918T191556",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE LYON Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s - Quai N, direction Grandes Lignes",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE LYON Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s - Quai N, direction Grandes Lignes",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE DE LYON Panne ascenseur situ\u00e9 Salle d'acc\u00e8s - Quai N, dir. Grandes Lignes",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:73626",
+                        "name": "Gare de Lyon (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:73626",
+                            "name": "Gare de Lyon",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "196"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:73626:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare de Lyon (Paris)",
+                            "coord": {
+                                "lon": "2.375146",
+                                "lat": "48.844569"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "23876a92-94b3-11f0-9236-0a58a9feac02",
+            "disruption_uri": "7e8820f4-93cc-11f0-b09f-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "3c27914c-94ba-11f0-9236-0a58a9feac02",
+            "disruption_id": "3c272978-94ba-11f0-9236-0a58a9feac02",
+            "impact_id": "3c27914c-94ba-11f0-9236-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250918T200635",
+                    "end": "20260918T200635"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250918T200644",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Jaur\u00e8s Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai, direction Barb\u00e8s - Rochechouart, jusqu'au 2025-09-21",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Jaur\u00e8s Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Quai, direction Barb\u00e8s - Rochechouart, jusqu'au 2025-09-21",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Jaur\u00e8s Panne ascenseur jusqu'au 2025-09-21 situ\u00e9 Salle d'acc\u00e8s <> Quai, dir. Barb\u00e8s - Rochechouart",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71940",
+                        "name": "Jaur\u00e8s (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71940",
+                            "name": "Jaur\u00e8s",
+                            "codes": [
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71940:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Jaur\u00e8s (Paris)",
+                            "coord": {
+                                "lon": "2.370791",
+                                "lat": "48.882458"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "3c27914c-94ba-11f0-9236-0a58a9feac02",
+            "disruption_uri": "3c272978-94ba-11f0-9236-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "3596f72c-94bb-11f0-9236-0a58a9feac02",
+            "disruption_id": "f2a24992-86ed-11f0-a9ad-0a58a9feac02",
+            "impact_id": "3596f72c-94bb-11f0-9236-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250901T064129",
+                    "end": "20260901T064129"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250918T201342",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Biblioth\u00e8que Fran\u00e7ois Mitterrand Panne de l'ascenseur situ\u00e9 Hall <> Quais C/D, direction Dourdan / \u00c9tampes / Rungis / Massy / Versailles Chantiers",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Biblioth\u00e8que Fran\u00e7ois Mitterrand Panne de l'ascenseur situ\u00e9 Hall <> Quais C/D, direction Dourdan / \u00c9tampes / Rungis / Massy / Versailles Chantiers",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Biblioth\u00e8que Fran\u00e7ois Mitterrand Panne ascenseur situ\u00e9 Hall <> Quais C/D, dir. Dourdan / \u00c9tampes / Rungis / Massy / Versailles Chantiers",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71572",
+                        "name": "Biblioth\u00e8que Fran\u00e7ois Mitterrand (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71572",
+                            "name": "Biblioth\u00e8que Fran\u00e7ois Mitterrand",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "316"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71572:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Biblioth\u00e8que Fran\u00e7ois Mitterrand (Paris)",
+                            "coord": {
+                                "lon": "2.376726",
+                                "lat": "48.829783"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "3596f72c-94bb-11f0-9236-0a58a9feac02",
+            "disruption_uri": "f2a24992-86ed-11f0-a9ad-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "c2cee096-94bb-11f0-928c-0a58a9feac02",
+            "disruption_id": "501aafc4-86ee-11f0-88ed-0a58a9feac02",
+            "impact_id": "c2cee096-94bb-11f0-928c-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250901T064406",
+                    "end": "20260901T064406"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20250918T201739",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Biblioth\u00e8que Fran\u00e7ois Mitterrand Panne de l'ascenseur situ\u00e9 Hall <> Quais E/F, direction Dourdan / \u00c9tampes / Rungis / Massy / Versailles Chantiers",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Biblioth\u00e8que Fran\u00e7ois Mitterrand Panne de l'ascenseur situ\u00e9 Hall <> Quais E/F, direction Dourdan / \u00c9tampes / Rungis / Massy / Versailles Chantiers",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Biblioth\u00e8que Fran\u00e7ois Mitterrand Panne ascenseur situ\u00e9 Hall <> Quais E/F, dir. Dourdan / \u00c9tampes / Rungis / Massy / Versailles Chantiers",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71572",
+                        "name": "Biblioth\u00e8que Fran\u00e7ois Mitterrand (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71572",
+                            "name": "Biblioth\u00e8que Fran\u00e7ois Mitterrand",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "316"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71572:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Biblioth\u00e8que Fran\u00e7ois Mitterrand (Paris)",
+                            "coord": {
+                                "lon": "2.376726",
+                                "lat": "48.829783"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "c2cee096-94bb-11f0-928c-0a58a9feac02",
+            "disruption_uri": "501aafc4-86ee-11f0-88ed-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "9325df50-a11a-11f0-a3cb-0a58a9feac02",
+            "disruption_id": "93257c54-a11a-11f0-a3cb-0a58a9feac02",
+            "impact_id": "9325df50-a11a-11f0-a3cb-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20251004T140627",
+                    "end": "20261004T140627"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20251004T140635",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE ST LAZARE Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Sortie Cour de Rome",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE ST LAZARE Panne de l'ascenseur situ\u00e9 Salle d'acc\u00e8s <> Sortie Cour de Rome",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "GARE ST LAZARE Panne ascenseur situ\u00e9 Salle d'acc\u00e8s <> Sortie Cour de Rome",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:71370",
+                        "name": "Gare Saint-Lazare (Paris)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:71370",
+                            "name": "Gare Saint-Lazare",
+                            "codes": [
+                                {
+                                    "type": "TN_PA",
+                                    "value": "204"
+                                },
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:71370:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Gare Saint-Lazare (Paris)",
+                            "coord": {
+                                "lon": "2.32527",
+                                "lat": "48.875942"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "9325df50-a11a-11f0-a3cb-0a58a9feac02",
+            "disruption_uri": "93257c54-a11a-11f0-a3cb-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        },
+        {
+            "id": "2e1050e6-a1ba-11f0-a3cb-0a58a9feac02",
+            "disruption_id": "a5898d66-626f-11f0-ac7b-0a58a9feac02",
+            "impact_id": "2e1050e6-a1ba-11f0-a3cb-0a58a9feac02",
+            "application_periods": [
+                {
+                    "begin": "20250716T200638",
+                    "end": "20260716T200638"
+                }
+            ],
+            "status": "active",
+            "updated_at": "20251005T090905",
+            "tags": [
+                "Ascenseur"
+            ],
+            "cause": "perturbation",
+            "category": "Incidents",
+            "severity": {
+                "name": "perturb\u00e9e",
+                "effect": "SIGNIFICANT_DELAYS",
+                "color": "#EF662F",
+                "priority": 30
+            },
+            "messages": [
+                {
+                    "text": "Serge Gainsbourg Panne de l'ascenseur situ\u00e9 Couloir, direction Rosny-sous-Bois, jusqu'au 2025-10-07",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "0c0c032e-7a07-11e8-ab20-005056a47b86",
+                        "name": "email ascenseur",
+                        "types": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "text": "Serge Gainsbourg Panne de l'ascenseur situ\u00e9 Couloir, direction Rosny-sous-Bois, jusqu'au 2025-10-07",
+                    "channel": {
+                        "content_type": "text/html",
+                        "id": "3ae8df3e-7488-11e8-ac3b-005056a47b86",
+                        "name": "moteur",
+                        "types": [
+                            "web"
+                        ]
+                    }
+                },
+                {
+                    "text": "Panne d'un ascenseur",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "d9dbc5a6-7a06-11e8-8b8c-005056a44da2",
+                        "name": "titre",
+                        "types": [
+                            "title"
+                        ]
+                    }
+                },
+                {
+                    "text": "Serge Gainsbourg Panne ascenseur jusqu'au 2025-10-07 situ\u00e9 Couloir, dir. Rosny-sous-Bois",
+                    "channel": {
+                        "content_type": "text/plain",
+                        "id": "ea77b9e2-7a06-11e8-ab20-005056a47b86",
+                        "name": "sms ascenseurs",
+                        "types": [
+                            "sms"
+                        ]
+                    }
+                }
+            ],
+            "impacted_objects": [
+                {
+                    "pt_object": {
+                        "id": "stop_area:IDFM:490779",
+                        "name": "Serge Gainsbourg (Les Lilas)",
+                        "quality": 0,
+                        "stop_area": {
+                            "id": "stop_area:IDFM:490779",
+                            "name": "Serge Gainsbourg",
+                            "codes": [
+                                {
+                                    "type": "source",
+                                    "value": "FR::multimodalStopPlace:490779:FR1"
+                                }
+                            ],
+                            "timezone": "Europe/Paris",
+                            "label": "Serge Gainsbourg (Les Lilas)",
+                            "coord": {
+                                "lon": "2.427591",
+                                "lat": "48.881359"
+                            },
+                            "links": []
+                        },
+                        "embedded_type": "stop_area"
+                    }
+                }
+            ],
+            "uri": "2e1050e6-a1ba-11f0-a3cb-0a58a9feac02",
+            "disruption_uri": "a5898d66-626f-11f0-ac7b-0a58a9feac02",
+            "contributor": "shortterm.tr_idfm"
+        }
+    ],
+    "origins": [],
+    "terminus": [],
+    "context": {
+        "current_datetime": "20251005T132853",
+        "timezone": "Europe/Paris"
+    },
+    "line_reports": [
+        {
+            "line": {
+                "id": "line:IDFM:C01371",
+                "name": "1",
+                "code": "1",
+                "color": "FFBE00",
+                "text_color": "000000",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110001"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01371:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053000",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:73626",
+                    "name": "Gare de Lyon (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:73626",
+                        "name": "Gare de Lyon",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "196"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:73626:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Gare de Lyon (Paris)",
+                        "coord": {
+                            "lon": "2.375146",
+                            "lat": "48.844569"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "23876a92-94b3-11f0-9236-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "737b763c-935b-11f0-9236-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "4d92fcb6-6f29-11f0-81bd-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01372",
+                "name": "2",
+                "code": "2",
+                "color": "0055C8",
+                "text_color": "FFFFFF",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110002"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01372:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "052900",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71940",
+                    "name": "Jaur\u00e8s (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71940",
+                        "name": "Jaur\u00e8s",
+                        "codes": [
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71940:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Jaur\u00e8s (Paris)",
+                        "coord": {
+                            "lon": "2.370791",
+                            "lat": "48.882458"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "3c27914c-94ba-11f0-9236-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "ab7b0298-7e87-11f0-81bd-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01373",
+                "name": "3",
+                "code": "3",
+                "color": "6E6E00",
+                "text_color": "FFFFFF",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110003"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01373:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053000",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71370",
+                    "name": "Gare Saint-Lazare (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71370",
+                        "name": "Gare Saint-Lazare",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "204"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71370:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Gare Saint-Lazare (Paris)",
+                        "coord": {
+                            "lon": "2.32527",
+                            "lat": "48.875942"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "9325df50-a11a-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01375",
+                "name": "5",
+                "code": "5",
+                "color": "FF7E2E",
+                "text_color": "000000",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110005"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01375:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053000",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71940",
+                    "name": "Jaur\u00e8s (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71940",
+                        "name": "Jaur\u00e8s",
+                        "codes": [
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71940:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Jaur\u00e8s (Paris)",
+                        "coord": {
+                            "lon": "2.370791",
+                            "lat": "48.882458"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "3c27914c-94ba-11f0-9236-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "ab7b0298-7e87-11f0-81bd-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                },
+                {
+                    "id": "stop_area:IDFM:71135",
+                    "name": "Gare d'Austerlitz (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "140"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71135:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Gare d'Austerlitz (Paris)",
+                        "coord": {
+                            "lon": "2.366833",
+                            "lat": "48.842354"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "e135668c-8939-11f0-afea-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "e44e3268-85fb-11f0-88ed-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "c7f23e1c-7ca9-11f0-99fa-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "4dd94bae-7aef-11f0-8aee-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "6fdcc7f4-82f5-11f0-892b-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "26c65d42-8146-11f0-b7bb-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "0ca9f42e-7efc-11f0-80ae-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "59095622-6cb7-11f0-aac7-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "e6cf382c-7fc8-11f0-b7bb-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "a457bb62-7b69-11f0-81bd-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "7cb655bc-820f-11f0-b7bb-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "256b64e6-6eeb-11f0-8aee-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01376",
+                "name": "6",
+                "code": "6",
+                "color": "6ECA97",
+                "text_color": "000000",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110006"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01376:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053000",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71607",
+                    "name": "Bercy (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71607",
+                        "name": "Bercy",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "421"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71607:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Bercy (Paris)",
+                        "coord": {
+                            "lon": "2.381282",
+                            "lat": "48.839016"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "22dbd95e-2ff3-11f0-a874-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "e5f14284-92f5-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01387",
+                "name": "7B",
+                "code": "7B",
+                "color": "6ECA97",
+                "text_color": "000000",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110107"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01387:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053100",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71940",
+                    "name": "Jaur\u00e8s (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71940",
+                        "name": "Jaur\u00e8s",
+                        "codes": [
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71940:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Jaur\u00e8s (Paris)",
+                        "coord": {
+                            "lon": "2.370791",
+                            "lat": "48.882458"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "3c27914c-94ba-11f0-9236-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "ab7b0298-7e87-11f0-81bd-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01378",
+                "name": "8",
+                "code": "8",
+                "color": "D282BE",
+                "text_color": "000000",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110008"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01378:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "052100",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71324",
+                    "name": "Madeleine (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71324",
+                        "name": "Madeleine",
+                        "codes": [
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71324:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Madeleine (Paris)",
+                        "coord": {
+                            "lon": "2.324719",
+                            "lat": "48.870028"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "95f8876c-9488-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01380",
+                "name": "10",
+                "code": "10",
+                "color": "C9910D",
+                "text_color": "000000",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110010"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01380:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053000",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71135",
+                    "name": "Gare d'Austerlitz (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71135",
+                        "name": "Gare d'Austerlitz",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "140"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71135:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Gare d'Austerlitz (Paris)",
+                        "coord": {
+                            "lon": "2.366833",
+                            "lat": "48.842354"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "e135668c-8939-11f0-afea-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "e44e3268-85fb-11f0-88ed-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "c7f23e1c-7ca9-11f0-99fa-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "4dd94bae-7aef-11f0-8aee-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "6fdcc7f4-82f5-11f0-892b-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "26c65d42-8146-11f0-b7bb-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "0ca9f42e-7efc-11f0-80ae-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "59095622-6cb7-11f0-aac7-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "e6cf382c-7fc8-11f0-b7bb-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "a457bb62-7b69-11f0-81bd-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "7cb655bc-820f-11f0-b7bb-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "256b64e6-6eeb-11f0-8aee-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01381",
+                "name": "11",
+                "code": "11",
+                "color": "704B1C",
+                "text_color": "FFFFFF",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110011"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01381:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053000",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:490779",
+                    "name": "Serge Gainsbourg (Les Lilas)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:490779",
+                        "name": "Serge Gainsbourg",
+                        "codes": [
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:490779:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Serge Gainsbourg (Les Lilas)",
+                        "coord": {
+                            "lon": "2.427591",
+                            "lat": "48.881359"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "2e1050e6-a1ba-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01382",
+                "name": "12",
+                "code": "12",
+                "color": "007852",
+                "text_color": "FFFFFF",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110012"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01382:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053000",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71370",
+                    "name": "Gare Saint-Lazare (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71370",
+                        "name": "Gare Saint-Lazare",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "204"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71370:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Gare Saint-Lazare (Paris)",
+                        "coord": {
+                            "lon": "2.32527",
+                            "lat": "48.875942"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "9325df50-a11a-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                },
+                {
+                    "id": "stop_area:IDFM:71324",
+                    "name": "Madeleine (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71324",
+                        "name": "Madeleine",
+                        "codes": [
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71324:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Madeleine (Paris)",
+                        "coord": {
+                            "lon": "2.324719",
+                            "lat": "48.870028"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "95f8876c-9488-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01383",
+                "name": "13",
+                "code": "13",
+                "color": "6EC4E8",
+                "text_color": "000000",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110013"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01383:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053000",
+                "closing_time": "021500",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71370",
+                    "name": "Gare Saint-Lazare (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71370",
+                        "name": "Gare Saint-Lazare",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "204"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71370:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Gare Saint-Lazare (Paris)",
+                        "coord": {
+                            "lon": "2.32527",
+                            "lat": "48.875942"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "9325df50-a11a-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        },
+        {
+            "line": {
+                "id": "line:IDFM:C01384",
+                "name": "14",
+                "code": "14",
+                "color": "62259D",
+                "text_color": "FFFFFF",
+                "codes": [
+                    {
+                        "type": "Netex_PrivateCode",
+                        "value": "100110014"
+                    },
+                    {
+                        "type": "source",
+                        "value": "FR1:Line:C01384:"
+                    }
+                ],
+                "physical_modes": [
+                    {
+                        "id": "physical_mode:Metro",
+                        "name": "M\u00e9tro"
+                    }
+                ],
+                "commercial_mode": {
+                    "id": "commercial_mode:Metro",
+                    "name": "M\u00e9tro"
+                },
+                "network": {
+                    "id": "network:IDFM:Operator_100",
+                    "name": "RATP",
+                    "links": [],
+                    "codes": [
+                        {
+                            "type": "source",
+                            "value": "FR1:Operator:100:LOC"
+                        }
+                    ]
+                },
+                "opening_time": "053000",
+                "closing_time": "021600",
+                "links": []
+            },
+            "pt_objects": [
+                {
+                    "id": "stop_area:IDFM:71607",
+                    "name": "Bercy (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71607",
+                        "name": "Bercy",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "421"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71607:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Bercy (Paris)",
+                        "coord": {
+                            "lon": "2.381282",
+                            "lat": "48.839016"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "22dbd95e-2ff3-11f0-a874-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "e5f14284-92f5-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                },
+                {
+                    "id": "stop_area:IDFM:71370",
+                    "name": "Gare Saint-Lazare (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71370",
+                        "name": "Gare Saint-Lazare",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "204"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71370:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Gare Saint-Lazare (Paris)",
+                        "coord": {
+                            "lon": "2.32527",
+                            "lat": "48.875942"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "9325df50-a11a-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                },
+                {
+                    "id": "stop_area:IDFM:71324",
+                    "name": "Madeleine (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71324",
+                        "name": "Madeleine",
+                        "codes": [
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71324:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Madeleine (Paris)",
+                        "coord": {
+                            "lon": "2.324719",
+                            "lat": "48.870028"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "95f8876c-9488-11f0-a3cb-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                },
+                {
+                    "id": "stop_area:IDFM:71572",
+                    "name": "Biblioth\u00e8que Fran\u00e7ois Mitterrand (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:71572",
+                        "name": "Biblioth\u00e8que Fran\u00e7ois Mitterrand",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "316"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:71572:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Biblioth\u00e8que Fran\u00e7ois Mitterrand (Paris)",
+                        "coord": {
+                            "lon": "2.376726",
+                            "lat": "48.829783"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "1350b52e-94af-11f0-928c-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "c2cee096-94bb-11f0-928c-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "3596f72c-94bb-11f0-9236-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                },
+                {
+                    "id": "stop_area:IDFM:73626",
+                    "name": "Gare de Lyon (Paris)",
+                    "quality": 0,
+                    "stop_area": {
+                        "id": "stop_area:IDFM:73626",
+                        "name": "Gare de Lyon",
+                        "codes": [
+                            {
+                                "type": "TN_PA",
+                                "value": "196"
+                            },
+                            {
+                                "type": "source",
+                                "value": "FR::multimodalStopPlace:73626:FR1"
+                            }
+                        ],
+                        "timezone": "Europe/Paris",
+                        "label": "Gare de Lyon (Paris)",
+                        "coord": {
+                            "lon": "2.375146",
+                            "lat": "48.844569"
+                        },
+                        "links": [
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "23876a92-94b3-11f0-9236-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "737b763c-935b-11f0-9236-0a58a9feac02"
+                            },
+                            {
+                                "templated": false,
+                                "rel": "disruptions",
+                                "internal": true,
+                                "type": "disruption",
+                                "id": "4d92fcb6-6f29-11f0-81bd-0a58a9feac02"
+                            }
+                        ]
+                    },
+                    "embedded_type": "stop_area"
+                }
+            ]
+        }
+    ],
+    "warnings": [
+        {
+            "id": "beta_endpoint",
+            "message": "This service is under construction. You can help through github.com/hove-io/navitia"
+        }
+    ],
+    "links": [
+        {
+            "href": "https://api-idfm.navitia.io/v1/coverage/idfm/physical_modes/{physical_modes.id}",
+            "templated": true,
+            "rel": "physical_modes",
+            "type": "physical_modes"
+        },
+        {
+            "href": "https://api-idfm.navitia.io/v1/coverage/idfm/stop_areas/{stop_area.id}",
+            "templated": true,
+            "rel": "stop_areas",
+            "type": "stop_area"
+        },
+        {
+            "href": "https://api-idfm.navitia.io/v1/coverage/idfm/disruptions/{disruptions.id}",
+            "templated": true,
+            "rel": "disruptions",
+            "type": "disruptions"
+        },
+        {
+            "href": "https://api-idfm.navitia.io/v1/coverage/idfm/networks/{network.id}",
+            "templated": true,
+            "rel": "networks",
+            "type": "network"
+        },
+        {
+            "href": "https://api-idfm.navitia.io/v1/coverage/idfm/disruptions/{disruption.id}",
+            "templated": true,
+            "rel": "disruptions",
+            "type": "disruption"
+        },
+        {
+            "href": "https://api-idfm.navitia.io/v1/coverage/idfm/lines/{line.id}",
+            "templated": true,
+            "rel": "lines",
+            "type": "line"
+        },
+        {
+            "href": "https://api-idfm.navitia.io/v1/coverage/idfm/commercial_modes/{commercial_mode.id}",
+            "templated": true,
+            "rel": "commercial_modes",
+            "type": "commercial_mode"
+        },
+        {
+            "href": "https://api-idfm.navitia.io/v1/coverage/idfm/physical_modes/physical_mode:Metro/line_reports?count=100&dept=3&disable_geojson=True&language=fr-FR&since=2024-10-05&start_page=0&until=2025-10-05",
+            "type": "first",
+            "templated": false
+        }
+    ]
+}

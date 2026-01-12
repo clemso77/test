@@ -1,0 +1,224 @@
+openapi: 3.0.3
+info:
+  title: API Transport
+  version: 1.0.0
+
+paths:
+
+  /weather/current:
+    get:
+      summary: Récupérer la météo actuelle
+      description: >
+        Retourne les conditions météo en temps réel pour la zone suivie (ex: la ville affichée).
+        Cette donnée est mise à jour fréquemment et utilisée pour adapter l'affichage visuel de la carte.
+      responses:
+        200:
+          description: Météo récupérée avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeatherDTO'
+
+  /lines:
+    get:
+      summary: Récupérer toutes les lignes du réseau
+      description: >
+        Fournit la liste des lignes disponibles. Cette requête sert à alimenter l'interface de sélection
+        et à afficher les lignes sur la carte.
+      responses:
+        200:
+          description: Liste des lignes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LineDTO'
+
+  /lines/{lineId}:
+    get:
+      summary: Détails d'une ligne
+      description: >
+        Retourne les informations structurées d’une ligne : nom, arrêts, géométrie de parcours.
+      parameters:
+        - in: path
+          name: lineId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Détails de la ligne
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineDetailsDTO'
+
+  /lines/{lineId}/traffic:
+    get:
+      summary: Récupérer l'état du trafic pour une ligne
+      description: >
+        Permet d'afficher l'état du réseau pour cette ligne en temps réel (retard moyen, perturbations...).
+      parameters:
+        - in: path
+          name: lineId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Trafic actuel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrafficDTO'
+
+  /lines/{lineId}/incidents:
+    get:
+      summary: Historique des incidents d'une ligne
+      description: >
+        Utile pour afficher les perturbations passées et comprendre les tendances du réseau.
+      parameters:
+        - in: path
+          name: lineId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Liste des incidents passés
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IncidentDTO'
+
+  /lines/{lineId}/prediction:
+    get:
+      summary: Prévision des incidents
+      description: >
+        Basé sur un modèle de prévision (simple calcul statistique ou machine learning),
+        estime le risque de perturbations futures pour la ligne.
+      parameters:
+        - in: path
+          name: lineId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Prévisions de perturbation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictionDTO'
+
+  /stats/global:
+    get:
+      summary: Statistiques globales du réseau
+      description: >
+        Tableau de bord synthétique permettant de visualiser l’état général du réseau
+        et identifier les lignes problématiques.
+      responses:
+        200:
+          description: Statistiques réseau
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalStatsDTO'
+
+components:
+  schemas:
+
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+        longitude:
+          type: number
+
+    WeatherDTO:
+      type: object
+      properties:
+        temperature:
+          type: number
+        condition:
+          type: string
+
+    LineDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        color:
+          type: string
+
+    LineDetailsDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        stops:
+          type: array
+          items:
+            $ref: '#/components/schemas/StopDTO'
+        geometry:
+          type: object
+          description: GeoJSON standard
+
+    StopDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+
+    TrafficDTO:
+      type: object
+      properties:
+        status:
+          type: string
+        delay:
+          type: number
+        averageSpeed:
+          type: number
+
+    IncidentDTO:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        description:
+          type: string
+        severity:
+          type: integer
+
+    PredictionDTO:
+      type: object
+      properties:
+        riskLevel:
+          type: integer
+        confidence:
+          type: number
+
+    GlobalStatsDTO:
+      type: object
+      properties:
+        mostImpactedLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineDTO'
+        averageNetworkDelay:
+          type: number
+        incidentCountToday:
+          type: integer

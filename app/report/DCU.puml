@@ -1,0 +1,43 @@
+@startuml
+title Diagramme de Cas d'Utilisation - Système d'Information Transport + Météo
+
+actor "Utilisateur" as U
+actor "API Météo" as Meteo
+actor "API Transport" as Transport
+actor "Module de Prévision" as Predict
+
+rectangle "Application" {
+
+  usecase "Afficher la météo actuelle" as UC_Meteo
+  usecase "Afficher la carte" as UC_Carte
+  usecase "Afficher lignes et arrêts" as UC_Lignes
+  usecase "Consulter détails d'une ligne" as UC_Details
+  usecase "Consulter trafic actuel" as UC_Traffic
+  usecase "Consulter historique des incidents" as UC_Historique
+  usecase "Prévoir incidents" as UC_Prevision
+  usecase "Afficher statistiques globales" as UC_StatsGlobales
+  usecase "Afficher détails d'un arrêt" as UC_DetailsA
+}
+
+UC_Carte --> UC_Meteo
+U --> UC_Carte
+U --> UC_Lignes
+UC_Carte --> UC_Details
+U --> UC_StatsGlobales
+
+UC_Carte --> UC_Lignes
+UC_Details --> UC_Traffic
+UC_Details --> UC_Historique
+UC_Details --> UC_Prevision
+UC_Details --> UC_DetailsA
+UC_DetailsA --> UC_Prevision
+UC_DetailsA --> UC_Historique
+UC_DetailsA --> UC_Traffic
+
+UC_Meteo <-- Meteo
+UC_Traffic <-- Transport
+UC_Historique <-- Transport
+UC_Lignes <-- Transport
+UC_Prevision <-- Predict
+
+@enduml

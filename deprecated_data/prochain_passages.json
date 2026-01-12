@@ -1,0 +1,2756 @@
+{
+  "Siri": {
+    "ServiceDelivery": {
+      "ResponseTimestamp": "2025-09-28T10:10:48.124Z",
+      "ProducerRef": "IVTR_HET",
+      "ResponseMessageIdentifier": "IVTR_HET:ResponseMessage:026eb0a6-b890-43c1-b6ed-d6194721fef8:LOC:",
+      "StopMonitoringDelivery": [
+        {
+          "ResponseTimestamp": "2025-09-28T10:10:48.136Z",
+          "Version": "2.0",
+          "Status": "true",
+          "MonitoredStopVisit": [
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS03.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS03:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474017:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS03"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:11:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:11:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T10:11:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:11:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.UPAC99.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.UPAC99:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:472384:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Cergy le Haut"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "UPAC99"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "UPAC"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Cergy le Haut"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:16:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:16:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T10:16:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:16:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T09:58:19.758Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS05.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS05:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474015:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS05"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:22:18.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:22:38.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T10:21:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:21:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.TERI01.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.TERI01:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:471154:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Poissy"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "TERI01"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "TERI"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Poissy"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:26:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:26:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T10:26:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:26:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS07.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS07:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474017:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS07"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:31:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:31:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T10:31:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:31:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.UPUS03.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.UPUS03:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:472384:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Cergy le Haut"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "UPUS03"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "UPUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Cergy le Haut"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:36:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:36:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T10:36:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:36:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS09.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS09:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474015:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS09"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:41:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:41:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T10:41:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:41:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.TERI05.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.TERI05:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:471154:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Poissy"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "TERI05"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "TERI"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Poissy"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:46:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:46:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T10:46:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:46:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS11.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS11:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474017:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS11"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:51:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:51:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T10:51:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:51:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.UPUS07.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.UPUS07:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:472384:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Cergy le Haut"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "UPUS07"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "UPUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Cergy le Haut"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T10:56:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T10:56:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T10:56:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T10:56:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS13.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS13:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474015:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS13"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:01:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:01:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T11:01:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:01:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.TERI09.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.TERI09:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:471154:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Poissy"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "TERI09"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "TERI"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Poissy"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:06:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:06:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T11:06:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:06:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS15.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS15:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474017:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS15"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:11:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:11:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T11:11:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:11:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.UPUS11.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.UPUS11:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:472384:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Cergy le Haut"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "UPUS11"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "UPUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Cergy le Haut"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:16:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:16:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T11:16:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:16:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS17.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS17:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474015:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS17"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:21:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:21:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T11:21:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:21:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.TERI13.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.TERI13:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:471154:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Poissy"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "TERI13"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "TERI"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Poissy"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:26:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:26:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T11:26:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:26:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS19.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS19:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474017:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS19"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:31:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:31:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T11:31:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:31:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.UPUS15.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.UPUS15:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:472384:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Cergy le Haut"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "UPUS15"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "UPUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Cergy le Haut"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:36:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:36:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T11:36:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:36:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS21.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS21:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474015:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS21"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:41:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:41:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T11:41:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:41:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.TERI17.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.TERI17:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:471154:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Poissy"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "TERI17"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "TERI"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Poissy"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:46:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:46:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T11:46:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:46:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS23.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS23:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474017:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS23"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:51:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:51:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T11:51:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:51:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.UPUS19.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.UPUS19:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:472384:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Cergy le Haut"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "UPUS19"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "UPUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Cergy le Haut"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T11:56:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T11:56:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T11:56:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T11:56:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS25.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS25:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474015:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS25"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:01:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:01:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T12:01:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:01:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.TERI21.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.TERI21:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:471154:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Poissy"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "TERI21"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "TERI"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Poissy"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:06:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:06:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T12:06:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:06:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS27.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS27:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474017:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS27"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:11:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:11:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T12:11:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:11:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.UPUS23.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.UPUS23:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:472384:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Cergy le Haut"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "UPUS23"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "UPUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Cergy le Haut"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:16:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:16:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T12:16:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:16:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS29.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS29:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474015:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS29"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:21:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:21:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T12:21:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:21:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.TERI25.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.TERI25:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:471154:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Poissy"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "TERI25"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "TERI"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Poissy"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:26:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:26:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T12:26:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:26:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS31.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS31:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474017:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS31"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:31:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:31:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T12:31:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:31:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.UPUS27.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.UPUS27:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:472384:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Cergy le Haut"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "UPUS27"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "UPUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Cergy le Haut"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:36:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:36:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T12:36:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:36:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS33.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS33:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474015:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS33"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:41:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:41:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T12:41:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:41:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.TERI29.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.TERI29:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:471154:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Poissy"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "TERI29"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "TERI"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Poissy"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:46:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:46:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T12:46:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:46:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS35.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS35:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474017:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS35"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:51:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:51:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T12:51:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:51:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.UPUS31.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.UPUS31:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:472384:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Cergy le Haut"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "UPUS31"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "UPUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Cergy le Haut"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T12:56:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T12:56:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T12:56:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T12:56:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.ZEUS37.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.ZEUS37:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:474015:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Saint-Germain-en-Laye"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "ZEUS37"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "ZEUS"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Saint-Germain-en-Laye"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T13:01:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T13:01:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 13,
+                  "AimedArrivalTime": "2025-09-28T13:01:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T13:01:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            },
+            {
+              "RecordedAtTime": "2025-09-28T02:35:00.098Z",
+              "ItemIdentifier": "RATP-SIV:Item::20250928.RATP.TERI33.PA.IDFM.473921:LOC",
+              "MonitoringRef": {
+                "value": "STIF:StopPoint:Q:473921:"
+              },
+              "MonitoredVehicleJourney": {
+                "LineRef": {
+                  "value": "STIF:Line::C01742:"
+                },
+                "OperatorRef": {
+                  "value": "RATP-SIV:Operator::RATP.SIEL-RER.A.A:"
+                },
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": {
+                    "value": "any"
+                  },
+                  "DatedVehicleJourneyRef": "RATP-SIV:VehicleJourney::RATP.TERI33:LOC"
+                },
+                "DirectionName": [
+                  {
+                    "value": "Cergy le Haut • Poissy • Saint-Germain-en-Laye"
+                  }
+                ],
+                "DestinationRef": {
+                  "value": "STIF:StopPoint:Q:471154:"
+                },
+                "DestinationName": [
+                  {
+                    "value": "Poissy"
+                  }
+                ],
+                "VehicleJourneyName": [
+                  {
+                    "value": "TERI33"
+                  }
+                ],
+                "JourneyNote": [
+                  {
+                    "value": "TERI"
+                  }
+                ],
+                "MonitoredCall": {
+                  "StopPointName": [
+                    {
+                      "value": "Châtelet - Les Halles"
+                    }
+                  ],
+                  "VehicleAtStop": false,
+                  "DestinationDisplay": [
+                    {
+                      "value": "Poissy"
+                    }
+                  ],
+                  "ExpectedArrivalTime": "2025-09-28T13:06:09.000Z",
+                  "DeparturePlatformName": {
+                    "value": "2A"
+                  },
+                  "ExpectedDepartureTime": "2025-09-28T13:06:29.000Z",
+                  "DepartureStatus": "onTime",
+                  "Order": 15,
+                  "AimedArrivalTime": "2025-09-28T13:06:09.000Z",
+                  "AimedDepartureTime": "2025-09-28T13:06:29.000Z",
+                  "ArrivalStatus": ""
+                },
+                "TrainNumbers": {
+                  "TrainNumberRef": []
+                },
+                "VehicleFeatureRef": [
+                  "longTrain"
+                ],
+                "DirectionRef": {
+                  "value": "Retour"
+                }
+              }
+            }
+          ],
+          "StopLineNotice": [],
+          "ServiceException": []
+        }
+      ]
+    }
+  }
+}

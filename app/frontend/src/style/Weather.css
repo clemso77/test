@@ -1,0 +1,12 @@
+.weather-temp-control {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    padding: 6px 12px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 8px;
+    user-select: none;
+    pointer-events: none;
+    margin: 50px;
+}
