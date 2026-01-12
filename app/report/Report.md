@@ -133,3 +133,149 @@ La nouvelle architecture permet d’obtenir plusieurs améliorations notables :
 
 ---
 
+
+## Intégration du service de prédiction des retards
+
+L'un des objectifs majeurs du projet était de permettre aux usagers d'anticiper les perturbations sur le réseau de transport. Pour répondre à cette problématique, un système de prédiction des retards a été développé et intégré à l'application.
+
+### Architecture du système de prédiction
+
+Le système repose sur une architecture en trois couches distinctes :
+
+1. **Modèle de Machine Learning** : Un modèle XGBoost entraîné sur des données historiques combinant informations météorologiques, temporelles et incidents passés.
+
+2. **API de prédiction Python (Flask)** : Un service REST qui expose le modèle via des endpoints HTTP, permettant d'obtenir des prédictions en temps réel.
+
+3. **Intégration Front-end et Back-end** : Une couche TypeScript qui orchestre les appels au service de prédiction et présente les résultats de manière claire aux utilisateurs.
+
+### Modèle de prédiction simplifié
+
+Le modèle a été optimisé pour garantir à la fois performance et simplicité. Il utilise :
+
+- **Encodage cyclique** pour les variables temporelles (heure, jour de la semaine, mois, direction du vent), préservant leur nature périodique.
+- **Transformation des variables météorologiques** : regroupement des conditions météo similaires, binarisation des précipitations, catégorisation de la visibilité.
+- **Prétraitement standardisé** via un pipeline scikit-learn sauvegardé (preprocessor.pkl).
+
+Le fichier `predictor.py` a été simplifié en :
+- Supprimant les imports inutilisés
+- Ajoutant une documentation claire
+- Optimisant le chargement paresseux (lazy loading) des modèles
+- Retirant le code de test pour ne garder que les fonctions essentielles
+
+### API de prédiction
+
+L'API Flask (`prediction_api.py`) expose deux endpoints principaux :
+
+**Health Check**
+```
+GET /health
+```
+Retourne le statut de santé de l'API.
+
+**Prédiction de retard**
+```
+POST /predict
+```
+Accepte des données météorologiques et temporelles, retourne une estimation du retard en minutes.
+
+L'API utilise CORS pour permettre les appels depuis le front-end et inclut une validation complète des données d'entrée pour garantir la fiabilité des prédictions.
+
+### Intégration Backend (TypeScript/Node.js)
+
+Le backend TypeScript fait office d'intermédiaire entre le front-end et le service Python :
+
+- **Service de prédiction** (`predictionService.ts`) : Gère la communication avec l'API Flask, incluant la gestion d'erreurs et la vérification de santé.
+
+- **Routes REST** (`busRoutes.ts`) : Expose un endpoint `POST /lines/:id/prediction` permettant d'obtenir des prédictions pour une ligne spécifique.
+
+- **Service de lignes** (`busService.ts`) : Intègre les appels de prédiction dans la logique métier existante.
+
+L'URL de l'API de prédiction est configurable via la variable d'environnement `PREDICTION_API_URL`.
+
+### Intégration Frontend (React)
+
+Côté interface utilisateur, les prédictions sont intégrées dans le panneau de statistiques :
+
+- **Service de prédiction** (`PredictionService.tsx`) : Encapsule les appels API vers le backend et fournit des méthodes utilitaires pour générer des données de test.
+
+- **Panneau de statistiques** (`StatsPanel.tsx`) : 
+  - Charge automatiquement les prédictions lorsqu'une ligne est sélectionnée
+  - Affiche le retard prédit en minutes pour chaque ligne
+  - Indique visuellement l'état de chargement des prédictions
+  - Combine prédictions réelles et indicateurs de risque pour une vue complète
+
+- **Styles** (`StatsPanel.module.css`) : Une section dédiée présente les retards prédits avec un design cohérent (badge coloré, bordures arrondies).
+
+### Flux de données
+
+1. L'utilisateur sélectionne une ou plusieurs lignes de bus sur la carte
+2. Le frontend récupère les données météorologiques actuelles
+3. Pour chaque ligne sélectionnée, un appel API est effectué vers le backend
+4. Le backend transmet la requête au service Python de prédiction
+5. Le modèle XGBoost génère une prédiction de retard
+6. Le résultat remonte jusqu'au frontend
+7. Les prédictions sont affichées dans le panneau de statistiques avec un design adapté
+
+### Avantages de cette architecture
+
+- **Séparation des préoccupations** : Le modèle ML reste en Python (écosystème optimal), tandis que la logique applicative est en TypeScript.
+- **Scalabilité** : Le service de prédiction peut être déployé indépendamment et répliqué selon les besoins.
+- **Maintenabilité** : Chaque couche peut être modifiée sans impacter les autres.
+- **Extensibilité** : D'autres modèles ou sources de données peuvent être ajoutés facilement.
+
+---
+
+## Guide d'utilisation
+
+### Démarrage de l'application complète
+
+Pour bénéficier des prédictions de retard, l'application nécessite le démarrage de trois services :
+
+**1. Service de prédiction Python**
+```bash
+cd models
+pip install -r requirements.txt
+python prediction_api.py
+```
+Le service démarre par défaut sur `http://localhost:5000`.
+
+**2. Backend Node.js**
+```bash
+cd app/backend
+npm install
+npm start
+```
+Le backend démarre sur le port 3000 et communique avec le service de prédiction.
+
+**3. Frontend React**
+```bash
+cd app/frontend
+npm install
+npm run dev
+```
+L'interface utilisateur est accessible sur `http://localhost:5173`.
+
+### Utilisation de la fonctionnalité de prédiction
+
+1. Ouvrez l'application dans votre navigateur
+2. Sur la carte interactive, sélectionnez une ou plusieurs lignes de bus en utilisant le panneau latéral gauche
+3. Le panneau de statistiques à droite affiche automatiquement :
+   - Les statistiques globales du réseau
+   - Les prédictions par type d'incident
+   - **Les retards prédits en minutes pour chaque ligne sélectionnée**
+
+Les prédictions sont calculées en temps réel en tenant compte des conditions météorologiques actuelles et de l'heure de la journée.
+
+---
+
+## Conclusion
+
+Ce projet démontre l'intégration réussie d'un système de prédiction de retards dans une application de visualisation de transport urbain. L'architecture modulaire adoptée permet une évolution future facilitée, que ce soit pour améliorer le modèle de prédiction, ajouter de nouvelles sources de données, ou enrichir l'interface utilisateur.
+
+Les principales réalisations incluent :
+- Une carte interactive haute performance avec affichage optimisé des lignes et arrêts
+- Un système de prédiction basé sur l'apprentissage automatique accessible via API
+- Une intégration complète frontend-backend-ML permettant des prédictions en temps réel
+- Une documentation technique complète et structurée
+
+L'application offre ainsi aux usagers une vision claire et anticipative de l'état du réseau de transport, leur permettant de mieux planifier leurs déplacements.
