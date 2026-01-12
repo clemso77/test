@@ -53,7 +53,6 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
     // State for real data from services
     const [incidentPredictions, setIncidentPredictions] = React.useState<IncidentPrediction[]>([]);
     const [topLinesData, setTopLinesData] = React.useState<Array<{ lineId: number; activityScore: number }>>([]);
-    const [loadingStats, setLoadingStats] = React.useState(true);
 
     React.useEffect(() => {
         const checkMobile = () => {
@@ -67,7 +66,6 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
     // Load global stats (incident predictions and top lines)
     React.useEffect(() => {
         const loadGlobalStats = async () => {
-            setLoadingStats(true);
             try {
                 const stats = await StatsService.getGlobalStats();
                 
@@ -86,8 +84,6 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                 }
             } catch (error) {
                 console.error("Error loading global stats:", error);
-            } finally {
-                setLoadingStats(false);
             }
         };
 
