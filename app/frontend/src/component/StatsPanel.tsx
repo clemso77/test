@@ -296,7 +296,7 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                                 
                                 const colorClass = getRiskColorClass(pred.riskScore);
                                 
-                                 return (
+                                return (
                                     <div
                                         key={pred.lineId}
                                         className={styles.linePredictionCard}

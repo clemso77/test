@@ -1,9 +1,10 @@
+import os
+
 import numpy as np
 import pandas as pd
+import joblib
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import MultiLabelBinarizer
-import joblib
-import os
 
 def cyclical_encoding(df, column, max_value):
     """Apply cyclical encoding to a single value."""
