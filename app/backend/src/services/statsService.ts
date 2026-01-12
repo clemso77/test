@@ -109,7 +109,7 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
     await loadIncidentData();
     
     if (!cachedStats) {
-        return historicalDistribution();
+        return defaultPredictions();
     }
 
     try {
@@ -121,6 +121,7 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
         const currentDay = days[new Date().getDay()];
         const baselineLine = parseInt(process.env.BASELINE_LINE_FOR_PREDICTIONS || '91');
 
+        let apiAvailable = true;
         for (const incidentType of incidentTypes) {
             const input = {
                 ROUTE: baselineLine,
@@ -130,13 +131,43 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
             };
 
             const delay = await getPrediction(input);
-            predictions.push({ type: incidentType, delay: delay || 0 });
+            if (delay === null) {
+                apiAvailable = false;
+                break;
+            }
+            predictions.push({ type: incidentType, delay });
         }
 
-        const totalDelay = predictions.reduce((sum, p) => sum + p.delay, 0);
-
-        if (totalDelay === 0 || predictions.every(p => p.delay === 0)) {
+        if (!apiAvailable) {
+            console.log('Prediction API unavailable, using historical distribution');
             return historicalDistribution();
+        }
+
+        console.log('ML model predictions:', predictions);
+
+        const totalDelay = predictions.reduce((sum, p) => sum + p.delay, 0);
+        const maxDelay = Math.max(...predictions.map(p => p.delay));
+        const minDelay = Math.min(...predictions.map(p => p.delay));
+        const variance = maxDelay - minDelay;
+
+        if (totalDelay === 0) {
+            console.log('All predictions zero, using historical distribution');
+            return historicalDistribution();
+        }
+
+        if (variance < 0.5) {
+            console.log('Predictions too similar (variance < 0.5), blending with historical data');
+            const mlPredictions = predictions.map(p => ({
+                type: p.type,
+                probability: p.delay / totalDelay,
+            }));
+            
+            const historical = historicalDistribution();
+            
+            return mlPredictions.map((ml, idx) => ({
+                type: ml.type,
+                probability: 0.3 * ml.probability + 0.7 * historical[idx].probability,
+            }));
         }
 
         const normalized = predictions.map(p => ({
@@ -144,32 +175,33 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
             probability: p.delay / totalDelay,
         }));
 
-        const sum = normalized.reduce((s, r) => s + r.probability, 0);
-        return normalized.map(r => ({
-            type: r.type,
-            probability: r.probability / sum,
-        }));
+        console.log('Final incident probabilities:', normalized);
+        return normalized;
     } catch (error) {
         console.error('Error in incident predictions:', error);
         return historicalDistribution();
     }
 }
 
+function defaultPredictions(): IncidentTypePrediction[] {
+    return [
+        { type: 'Safety', probability: 0.15 },
+        { type: 'Operational', probability: 0.35 },
+        { type: 'Technical', probability: 0.25 },
+        { type: 'External', probability: 0.18 },
+        { type: 'Other', probability: 0.07 },
+    ];
+}
+
 function historicalDistribution(): IncidentTypePrediction[] {
     if (!cachedStats || cachedStats.incidentTypes.size === 0) {
-        return [
-            { type: 'Safety', probability: 0.15 },
-            { type: 'Operational', probability: 0.35 },
-            { type: 'Technical', probability: 0.25 },
-            { type: 'External', probability: 0.18 },
-            { type: 'Other', probability: 0.07 },
-        ];
+        return defaultPredictions();
     }
 
     const total = Array.from(cachedStats.incidentTypes.values()).reduce((sum, count) => sum + count, 0);
     
     if (total === 0) {
-        return historicalDistribution();
+        return defaultPredictions();
     }
 
     const incidentTypes = ['Safety', 'Operational', 'Technical', 'External', 'Other'];
@@ -179,9 +211,13 @@ function historicalDistribution(): IncidentTypePrediction[] {
     }));
 
     const sum = result.reduce((s, r) => s + r.probability, 0);
+    if (sum === 0) {
+        return defaultPredictions();
+    }
+
     return result.map(r => ({
         type: r.type,
-        probability: sum > 0 ? r.probability / sum : 0.2,
+        probability: r.probability / sum,
     }));
 }
 
