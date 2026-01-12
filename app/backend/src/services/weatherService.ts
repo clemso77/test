@@ -68,7 +68,8 @@ export async function getWeather(): Promise<CurrentWeather> {
 
     try {
         // Read the most recent climate data file (2023 is the latest in our dataset)
-        const climatePath = path.join(__dirname, '../../../../data/climate/climate-hourly-2023.csv');
+        const dataDir = process.env.DATA_DIR || '../../../../data';
+        const climatePath = path.join(__dirname, dataDir, 'climate/climate-hourly-2023.csv');
         const fileContent = fs.readFileSync(climatePath, 'utf-8');
         
         const records = parse(fileContent, {
@@ -122,12 +123,22 @@ export async function getWeatherForPrediction(): Promise<Omit<WeatherData, 'LOCA
     
     // Use current time and day instead of dataset time
     const now = new Date();
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    
+    // Calculate humidex if not available (simplified formula)
+    // In production, use a proper meteorological library
+    let humidex = weather.humidex;
+    if (humidex === null && weather.temperature > 0) {
+        // Simplified humidex approximation when not available
+        // Real humidex formula is more complex and depends on dewpoint
+        humidex = weather.temperature;
+    } else if (humidex === null) {
+        humidex = weather.temperature;
+    }
     
     return {
         TEMP: weather.temperature,
         DEW_POINT_TEMP: weather.dewPoint,
-        HUMIDEX: weather.humidex || (weather.temperature + weather.dewPoint) / 2,
+        HUMIDEX: humidex,
         PRECIP_AMOUNT: weather.precipitation,
         RELATIVE_HUMIDITY: weather.humidity,
         STATION_PRESSURE: weather.pressure,

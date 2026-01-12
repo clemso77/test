@@ -42,7 +42,8 @@ async function loadIncidentData(): Promise<void> {
 
     try {
         // Read the preprocessed dataset
-        const dataPath = path.join(__dirname, '../../../../data/1_raw_dataset.csv');
+        const dataDir = process.env.DATA_DIR || '../../../../data';
+        const dataPath = path.join(__dirname, dataDir, '1_raw_dataset.csv');
         const fileContent = fs.readFileSync(dataPath, 'utf-8');
         
         const records: IncidentData[] = parse(fileContent, {
@@ -154,10 +155,13 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const currentDay = days[new Date().getDay()];
 
-        // Get predictions for each incident type using a representative line (line 91)
+        // Use baseline line for predictions (configurable)
+        const baselineLine = parseInt(process.env.BASELINE_LINE_FOR_PREDICTIONS || '91');
+
+        // Get predictions for each incident type using a representative line
         for (const incidentType of incidentTypes) {
             const predictionInput = {
-                ROUTE: 91, // Use a representative line
+                ROUTE: baselineLine,
                 ...weatherData,
                 WEEK_DAY: currentDay,
                 INCIDENT: incidentType,
