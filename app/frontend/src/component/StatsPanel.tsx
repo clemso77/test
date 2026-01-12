@@ -207,7 +207,7 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                             const colorClass = colorMap[pred.type];
                             
                             return (
-                                <div key={pred.type} className={styles.incidentItem}>
+                                <div key={pred.type}>
                                     <div className={styles.incidentHeader}>
                                         <span className={styles.incidentType}>{pred.type}</span>
                                         <span className={`${styles.incidentPercentage} ${styles[colorClass]}`}>{percentage}%</span>

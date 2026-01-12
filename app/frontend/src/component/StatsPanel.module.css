@@ -141,10 +141,6 @@
     gap: 10px;
 }
 
-.incidentItem {
-    /* Container for each incident type */
-}
-
 .incidentHeader {
     display: flex;
     justify-content: space-between;
