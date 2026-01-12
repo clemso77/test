@@ -28,7 +28,6 @@ interface LinePrediction {
     isLoading?: boolean;
 }
 
-// Fallback data generator for line predictions when no data is available
 const generateLinePrediction = (lineId: number): LinePrediction => {
     const seed = lineId * 137;
     const riskScore = ((seed % 70) + 10) / 100;
@@ -49,34 +48,27 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
     const [isMobile, setIsMobile] = React.useState(false);
     const [realPredictions, setRealPredictions] = React.useState<Record<number, number>>({});
     const [loadingPredictions, setLoadingPredictions] = React.useState(false);
-    
-    // State for real data from services
     const [incidentPredictions, setIncidentPredictions] = React.useState<IncidentPrediction[]>([]);
     const [topLinesData, setTopLinesData] = React.useState<Array<{ lineId: number; activityScore: number }>>([]);
 
     React.useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
         checkMobile();
         window.addEventListener("resize", checkMobile);
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    // Load global stats (incident predictions and top lines)
     React.useEffect(() => {
         const loadGlobalStats = async () => {
             try {
                 const stats = await StatsService.getGlobalStats();
                 
                 if (stats) {
-                    // Update incident predictions
                     setIncidentPredictions(stats.incidentPredictions.map(p => ({
                         type: p.type as IncidentType,
                         probability: p.probability,
                     })));
                     
-                    // Update top lines data
                     setTopLinesData(stats.topLines.map(line => ({
                         lineId: line.lineId,
                         activityScore: line.activityScore,
@@ -90,7 +82,6 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
         loadGlobalStats();
     }, []);
 
-    // Load predictions for selected lines
     React.useEffect(() => {
         const loadPredictions = async () => {
             if (selectedLineIds.size === 0) {
@@ -101,7 +92,6 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
             setLoadingPredictions(true);
             const newPredictions: Record<number, number> = {};
             
-            // Get weather data for predictions
             const weatherData = await WeatherService.getWeatherForPrediction();
             
             if (!weatherData) {
@@ -110,7 +100,6 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                 return;
             }
 
-            // Convert weather data to prediction format
             const predictionData = {
                 LOCAL_TIME: weatherData.LOCAL_TIME,
                 WEEK_DAY: new Date().toLocaleDateString('en-US', { weekday: 'long' }),
@@ -143,10 +132,8 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
         loadPredictions();
     }, [selectedLineIds]);
 
-    // Calculate stats
     const selectedLinesCount = selectedLineIds.size;
     
-    // Calculate displayed stops count
     const displayedStopsCount = React.useMemo(() => {
         const stopIds = new Set<number>();
         Array.from(selectedLineIds).forEach((lineId) => {
@@ -171,17 +158,14 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
             .sort((a, b) => b.riskScore - a.riskScore);
     }, [selectedLineIds, realPredictions, loadingPredictions]);
 
-    // Chart data for top 5 lines - use real data from stats service
     const chartData = React.useMemo(() => {
         if (topLinesData.length > 0) {
-            // Use real data from the stats service
             const maxScore = Math.max(...topLinesData.map(line => line.activityScore), 1);
             return topLinesData.slice(0, 5).map(line => ({
                 id: line.lineId,
-                value: (line.activityScore / maxScore) * 70, // Normalize to 0-70 range for display
+                value: (line.activityScore / maxScore) * 70,
             }));
         } else {
-            // Fallback to using first 5 line IDs from the dataset
             const topLines = lineIds.slice(0, 5);
             return topLines.map((id) => ({
                 id,
@@ -194,54 +178,35 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
 
     return (
         <aside className={containerClass} aria-label="Panneau de statistiques">
-            {/* Header */}
             <div className={styles.header}>
-                <h2 className={styles.headerTitle}>
-                    📊 Statistiques
-                </h2>
+                <h2 className={styles.headerTitle}>📊 Statistiques</h2>
             </div>
 
-            {/* Scrollable content */}
             <div className={styles.scrollableContent}>
-                {/* Global Visualization Section */}
                 <section aria-labelledby="global-viz-title">
-                    <h3
-                        id="global-viz-title"
-                        className={styles.sectionTitle}
-                    >
+                    <h3 id="global-viz-title" className={styles.sectionTitle}>
                         Visualisation globale
                     </h3>
                     
-                    {/* KPI Cards */}
                     <div className={styles.kpiGrid}>
                         <div className={`${styles.kpiCard} ${styles.blue}`}>
                             <div className={styles.kpiLabel}>Bus visibles</div>
-                            <div className={`${styles.kpiValue} ${styles.blue}`}>
-                                {/* Placeholder - could be calculated from real-time data */}
-                                -
-                            </div>
+                            <div className={`${styles.kpiValue} ${styles.blue}`}>-</div>
                         </div>
                         
                         <div className={`${styles.kpiCard} ${styles.green}`}>
                             <div className={styles.kpiLabel}>Lignes sélectionnées</div>
-                            <div className={`${styles.kpiValue} ${styles.green}`}>
-                                {selectedLinesCount}
-                            </div>
+                            <div className={`${styles.kpiValue} ${styles.green}`}>{selectedLinesCount}</div>
                         </div>
                         
                         <div className={`${styles.kpiCard} ${styles.orange} ${styles.fullWidth}`}>
                             <div className={styles.kpiLabel}>Arrêts affichés</div>
-                            <div className={`${styles.kpiValue} ${styles.orange}`}>
-                                {displayedStopsCount}
-                            </div>
+                            <div className={`${styles.kpiValue} ${styles.orange}`}>{displayedStopsCount}</div>
                         </div>
                     </div>
 
-                    {/* Simple Bar Chart */}
                     <div className={styles.chartContainer}>
-                        <div className={styles.chartTitle}>
-                            Activité par ligne (Top 5)
-                        </div>
+                        <div className={styles.chartTitle}>Activité par ligne (Top 5)</div>
                         <svg width="100%" height="120" viewBox="0 0 320 120" aria-label="Bar chart of line activity">
                             {chartData.map((item, index) => {
                                 const barWidth = 50;
@@ -279,12 +244,8 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                     </div>
                 </section>
 
-                {/* Incident Type Predictions Section */}
                 <section aria-labelledby="incident-pred-title">
-                    <h3
-                        id="incident-pred-title"
-                        className={styles.sectionTitle}
-                    >
+                    <h3 id="incident-pred-title" className={styles.sectionTitle}>
                         Prédiction par type d'incidents
                     </h3>
                     
@@ -325,12 +286,8 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                     </div>
                 </section>
 
-                {/* Line Predictions Section */}
                 <section aria-labelledby="line-pred-title">
-                    <h3
-                        id="line-pred-title"
-                        className={styles.sectionTitle}
-                    >
+                    <h3 id="line-pred-title" className={styles.sectionTitle}>
                         Prédictions par ligne
                     </h3>
                     
@@ -353,10 +310,7 @@ export default function StatsPanel({ selectedLineIds, lineIds, linesById, stopsB
                                 const colorClass = getRiskColorClass(pred.riskScore);
                                 
                                 return (
-                                    <div
-                                        key={pred.lineId}
-                                        className={styles.linePredictionCard}
-                                    >
+                                    <div key={pred.lineId} className={styles.linePredictionCard}>
                                         <div className={styles.linePredictionHeader}>
                                             <span className={styles.lineName}>Ligne {pred.lineId}</span>
                                             <span className={`${styles.riskScore} ${styles[colorClass]}`}>

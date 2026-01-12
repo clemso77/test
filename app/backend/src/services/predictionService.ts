@@ -1,5 +1,3 @@
-// src/services/predictionService.ts
-
 interface PredictionInput {
     ROUTE?: number;
     LOCAL_TIME: string;
@@ -25,60 +23,39 @@ interface PredictionResponse {
     error?: string;
 }
 
-/**
- * Call the Python prediction API to get delay prediction
- * @param data - Input data with weather and temporal features
- * @returns Predicted delay in minutes
- */
+const API_URL = process.env.PREDICTION_API_URL || 'http://localhost:5000';
+
 export async function getPrediction(data: PredictionInput): Promise<number | null> {
     try {
-        const predictionApiUrl = process.env.PREDICTION_API_URL || 'http://localhost:5000';
-        
-        const response = await fetch(`${predictionApiUrl}/predict`, {
+        const response = await fetch(`${API_URL}/predict`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            console.error('Prediction API error:', errorData);
+            console.error('Prediction API error:', await response.json());
             return null;
         }
 
         const result: PredictionResponse = await response.json();
-        
-        if (result.success && result.prediction !== undefined) {
-            return result.prediction;
-        } else {
-            console.error('Prediction failed:', result.error);
-            return null;
-        }
+        return result.success && result.prediction !== undefined ? result.prediction : null;
     } catch (error) {
-        console.error('Error calling prediction API:', error);
+        console.error('Prediction API call failed:', error);
         return null;
     }
 }
 
-/**
- * Check if the prediction API is healthy
- * @returns true if API is healthy, false otherwise
- */
 export async function checkPredictionApiHealth(): Promise<boolean> {
     try {
-        const predictionApiUrl = process.env.PREDICTION_API_URL || 'http://localhost:5000';
-        
-        const response = await fetch(`${predictionApiUrl}/health`);
-        
+        const response = await fetch(`${API_URL}/health`);
         if (response.ok) {
             const data = await response.json();
             return data.status === 'healthy';
         }
         return false;
     } catch (error) {
-        console.error('Prediction API health check failed:', error);
+        console.error('Health check failed:', error);
         return false;
     }
 }
