@@ -4,6 +4,25 @@ import {readFile} from "node:fs/promises";
 import {Arret, Ligne,} from "../Model/Model";
 import {getPrediction} from "./predictionService";
 
+// Define the prediction data interface for type safety
+interface PredictionData {
+    LOCAL_TIME: string;
+    WEEK_DAY: string;
+    INCIDENT: string;
+    LOCAL_MONTH: number;
+    LOCAL_DAY: number;
+    TEMP: number;
+    DEW_POINT_TEMP: number;
+    HUMIDEX: number;
+    PRECIP_AMOUNT: number;
+    RELATIVE_HUMIDITY: number;
+    STATION_PRESSURE: number;
+    VISIBILITY: number;
+    WEATHER_ENG_DESC: string;
+    WIND_DIRECTION: number;
+    WIND_SPEED: number;
+}
+
 
 export async function getAllLines() {
     var filePath = "../res/extract/lignes_bus.json"
@@ -64,7 +83,7 @@ export async function getLineIncidents(id: string) {
     return {}
 }
 
-export async function getLinePrediction(id: string, predictionData?: any) {
+export async function getLinePrediction(id: string, predictionData?: PredictionData) {
     if (!predictionData) {
         return {
             success: false,

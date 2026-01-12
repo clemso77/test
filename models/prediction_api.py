@@ -19,6 +19,14 @@ from predictor import (
 app = Flask(__name__)
 CORS(app)
 
+# Required input fields for prediction
+REQUIRED_FIELDS = [
+    'LOCAL_TIME', 'WEEK_DAY', 'INCIDENT', 'LOCAL_MONTH', 'LOCAL_DAY',
+    'TEMP', 'DEW_POINT_TEMP', 'HUMIDEX', 'PRECIP_AMOUNT',
+    'RELATIVE_HUMIDITY', 'STATION_PRESSURE', 'VISIBILITY',
+    'WEATHER_ENG_DESC', 'WIND_DIRECTION', 'WIND_SPEED'
+]
+
 @app.route('/health', methods=['GET'])
 def health():
     """Health check endpoint"""
@@ -59,14 +67,7 @@ def predict_delay():
         data = request.json
         
         # Validate required fields
-        required_fields = [
-            'LOCAL_TIME', 'WEEK_DAY', 'INCIDENT', 'LOCAL_MONTH', 'LOCAL_DAY',
-            'TEMP', 'DEW_POINT_TEMP', 'HUMIDEX', 'PRECIP_AMOUNT',
-            'RELATIVE_HUMIDITY', 'STATION_PRESSURE', 'VISIBILITY',
-            'WEATHER_ENG_DESC', 'WIND_DIRECTION', 'WIND_SPEED'
-        ]
-        
-        missing_fields = [field for field in required_fields if field not in data]
+        missing_fields = [field for field in REQUIRED_FIELDS if field not in data]
         if missing_fields:
             return jsonify({
                 "success": False,
@@ -89,5 +90,6 @@ def predict_delay():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PREDICTION_API_PORT', 5000))
+    host = os.environ.get('PREDICTION_API_HOST', '127.0.0.1')
     debug = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
-    app.run(host='0.0.0.0', port=port, debug=debug)
+    app.run(host=host, port=port, debug=debug)
