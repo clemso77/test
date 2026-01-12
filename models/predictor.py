@@ -52,8 +52,13 @@ def preprocessing(data_row):
     df = df.drop(columns=['LOCAL_TIME', 'LOCAL_TIME_HOUR', 'LOCAL_TIME_MINUTE'])
 
     day_mapping = {
-        'Monday': 0, 'Tuesday': 1, 'Wednesday': 2, 'Thursday': 3,
-        'Friday': 4, 'Saturday': 5, 'Sunday': 6
+        'Monday': 0,
+        'Tuesday': 1,
+        'Wednesday': 2,
+        'Thursday': 3,
+        'Friday': 4,
+        'Saturday': 5,
+        'Sunday': 6
     }
     df['WEEK_DAY'] = df['WEEK_DAY'].map(day_mapping)
     df['WEEK_DAY_COS'], df['WEEK_DAY_SIN'] = cyclical_encoding(df, 'WEEK_DAY', 7)

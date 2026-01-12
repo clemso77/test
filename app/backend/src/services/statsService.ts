@@ -21,13 +21,18 @@ interface IncidentTypePrediction {
     probability: number;
 }
 
+const CACHE_DURATION = 30 * 60 * 1000;
+const VARIANCE_THRESHOLD_IDENTICAL = 0.05;
+const VARIANCE_THRESHOLD_LOW = 0.2;
+const ML_WEIGHT = 0.3;
+const HISTORICAL_WEIGHT = 0.7;
+
 let cachedStats: {
     lineActivities: LineActivity[];
     incidentTypes: Map<string, number>;
 } | null = null;
 
 let cacheTimestamp = 0;
-const CACHE_DURATION = 30 * 60 * 1000;
 
 async function loadIncidentData(): Promise<void> {
     const now = Date.now();
@@ -160,12 +165,12 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
             return historical;
         }
 
-        if (relativeVariance < 0.05) {
+        if (relativeVariance < VARIANCE_THRESHOLD_IDENTICAL) {
             console.log(`Predictions nearly identical (rel. variance: ${relativeVariance.toFixed(3)}), using historical distribution`);
             return historical;
         }
 
-        if (relativeVariance < 0.2) {
+        if (relativeVariance < VARIANCE_THRESHOLD_LOW) {
             console.log(`Low variance (rel. variance: ${relativeVariance.toFixed(3)}), blending with historical data`);
             const mlPredictions = predictions.map(p => ({
                 type: p.type,
@@ -174,7 +179,7 @@ export async function getIncidentTypePredictions(): Promise<IncidentTypePredicti
             
             return mlPredictions.map((ml, idx) => ({
                 type: ml.type,
-                probability: 0.3 * ml.probability + 0.7 * historical[idx].probability,
+                probability: ML_WEIGHT * ml.probability + HISTORICAL_WEIGHT * historical[idx].probability,
             }));
         }
 
