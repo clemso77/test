@@ -224,3 +224,58 @@ Côté interface utilisateur, les prédictions sont intégrées dans le panneau 
 - **Extensibilité** : D'autres modèles ou sources de données peuvent être ajoutés facilement.
 
 ---
+
+## Guide d'utilisation
+
+### Démarrage de l'application complète
+
+Pour bénéficier des prédictions de retard, l'application nécessite le démarrage de trois services :
+
+**1. Service de prédiction Python**
+```bash
+cd models
+pip install -r requirements.txt
+python prediction_api.py
+```
+Le service démarre par défaut sur `http://localhost:5000`.
+
+**2. Backend Node.js**
+```bash
+cd app/backend
+npm install
+npm start
+```
+Le backend démarre sur le port 3000 et communique avec le service de prédiction.
+
+**3. Frontend React**
+```bash
+cd app/frontend
+npm install
+npm run dev
+```
+L'interface utilisateur est accessible sur `http://localhost:5173`.
+
+### Utilisation de la fonctionnalité de prédiction
+
+1. Ouvrez l'application dans votre navigateur
+2. Sur la carte interactive, sélectionnez une ou plusieurs lignes de bus en utilisant le panneau latéral gauche
+3. Le panneau de statistiques à droite affiche automatiquement :
+   - Les statistiques globales du réseau
+   - Les prédictions par type d'incident
+   - **Les retards prédits en minutes pour chaque ligne sélectionnée**
+
+Les prédictions sont calculées en temps réel en tenant compte des conditions météorologiques actuelles et de l'heure de la journée.
+
+---
+
+## Conclusion
+
+Ce projet démontre l'intégration réussie d'un système de prédiction de retards dans une application de visualisation de transport urbain. L'architecture modulaire adoptée permet une évolution future facilitée, que ce soit pour améliorer le modèle de prédiction, ajouter de nouvelles sources de données, ou enrichir l'interface utilisateur.
+
+Les principales réalisations incluent :
+- Une carte interactive haute performance avec affichage optimisé des lignes et arrêts
+- Un système de prédiction basé sur l'apprentissage automatique accessible via API
+- Une intégration complète frontend-backend-ML permettant des prédictions en temps réel
+- Une documentation technique complète et structurée
+
+L'application offre ainsi aux usagers une vision claire et anticipative de l'état du réseau de transport, leur permettant de mieux planifier leurs déplacements.
