@@ -7,13 +7,14 @@ import { useBusDataNormalized } from "../hooks/useBusDataNormalized.ts";
 import { useBusMapLayers } from "../hooks/useBusMapLayers.ts";
 import { buildGeoJSONNormalized } from "../map/buildGeoJSONNormalized.ts";
 import styles from "./MapToronto.module.css";
-import {type CurrentWeather, WeatherService} from "../services/WeatherService.tsx";
+import {WeatherService} from "../services/WeatherService.tsx";
+import type {WeatherData} from "../../../backend/src/Model/Model.ts";
 
 export default function MapToronto() {
     const mapContainerRef = React.useRef<HTMLDivElement>(null);
     const mapRef = React.useRef<mapboxgl.Map | null>(null);
     const [isMapReady, setIsMapReady] = React.useState(false);
-    const [weather, setWeather] = React.useState<CurrentWeather | null>(null);
+    const [weather, setWeather] = React.useState<WeatherData | null>(null);
 
     const { lineIds, selectedLineIds, linesById, stopsById, toggleLine } = useBusDataNormalized(3);
     const { setGeoData } = useBusMapLayers(mapRef, isMapReady);
@@ -99,7 +100,7 @@ export default function MapToronto() {
                     />
                     {weather && (
                         <>
-                            <Weather map={mapRef.current!} temperature={weather.temperature} condition={weather.description.toLowerCase()} />
+                            <Weather map={mapRef.current!} temperature={weather.TEMP} condition={weather.WEATHER_ENG_DESC.toLowerCase()} />
                         </>
                     )}
                 </>

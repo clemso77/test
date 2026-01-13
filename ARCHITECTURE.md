@@ -190,21 +190,6 @@ The system includes comprehensive error handling:
 3. **Model Loading**: Lazy loading of preprocessor and model to handle pickling issues
 4. **Network Errors**: Graceful handling of connection failures between services
 
-## Testing
-
-Run the integration test suite:
-
-```bash
-cd models
-python3 test_integration.py
-```
-
-Tests verify:
-- Flask API health
-- Direct Flask predictions
-- End-to-end backend integration
-- Input validation
-
 ## Performance Considerations
 
 - **Model Loading**: Models are loaded once and cached in memory
