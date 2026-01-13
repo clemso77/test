@@ -325,13 +325,15 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
                                         <div
                                             className={styles.riskProgressBar}
                                             role="progressbar"
-                                            aria-valuenow={delayMinutes}
+                                            aria-valuenow={Math.min(delayMinutes, 50)}
                                             aria-valuemin={0}
-                                            aria-valuemax={100}
+                                            aria-valuemax={50}
                                             aria-label={`Predicted delay for line ${pred.lineId}: ${delayMinutes} minutes`}
                                         >
                                             <div
                                                 className={`${styles.riskProgressBarFill} ${styles[colorClass]}`}
+                                                // Progress bar width: delayMinutes * 2 maps 0-50min delays to 0-100% bar width
+                                                // Capped at 100% for delays exceeding 50 minutes
                                                 style={{ width: `${Math.min(delayMinutes * 2, 100)}%` }}
                                             />
                                         </div>
