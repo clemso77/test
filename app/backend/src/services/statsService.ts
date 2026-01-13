@@ -21,27 +21,27 @@ interface IncidentTypePrediction {
     probability: number;
 }
 
+const CACHE_DURATION = 30 * 60 * 1000;
+const VARIANCE_THRESHOLD_IDENTICAL = 0.05;
+const VARIANCE_THRESHOLD_LOW = 0.2;
+const ML_WEIGHT = 0.3;
+const HISTORICAL_WEIGHT = 0.7;
+
 let cachedStats: {
     lineActivities: LineActivity[];
     incidentTypes: Map<string, number>;
 } | null = null;
 
-let cacheTimestamp: number = 0;
-const CACHE_DURATION = 1000 * 60 * 30; // 30 minutes cache
+let cacheTimestamp = 0;
 
-/**
- * Load and analyze incident data from the dataset
- */
 async function loadIncidentData(): Promise<void> {
     const now = Date.now();
     
-    // Return cached data if still valid
     if (cachedStats && (now - cacheTimestamp) < CACHE_DURATION) {
         return;
     }
 
     try {
-        // Read the preprocessed dataset
         const dataDir = process.env.DATA_DIR || '../../../../data';
         const dataPath = path.join(__dirname, dataDir, '1_raw_dataset.csv');
         const fileContent = fs.readFileSync(dataPath, 'utf-8');
@@ -51,7 +51,6 @@ async function loadIncidentData(): Promise<void> {
             skip_empty_lines: true,
         });
 
-        // Analyze line activities
         const lineStats = new Map<number, { count: number; totalDelay: number }>();
         const incidentTypeCount = new Map<string, number>();
 
@@ -61,27 +60,23 @@ async function loadIncidentData(): Promise<void> {
             const incident = record.Incident || 'Other';
 
             if (!isNaN(lineId)) {
-                // Track line activity
                 const current = lineStats.get(lineId) || { count: 0, totalDelay: 0 };
                 lineStats.set(lineId, {
                     count: current.count + 1,
                     totalDelay: current.totalDelay + delay,
                 });
 
-                // Track incident types
                 const incidentType = normalizeIncidentType(incident);
                 incidentTypeCount.set(incidentType, (incidentTypeCount.get(incidentType) || 0) + 1);
             }
         }
 
-        // Calculate activity scores
         const lineActivities: LineActivity[] = Array.from(lineStats.entries()).map(([lineId, stats]) => ({
             lineId,
-            activityScore: stats.count * 0.6 + stats.totalDelay * 0.4, // Weighted score
+            activityScore: stats.count * 0.6 + stats.totalDelay * 0.4,
             incidentCount: stats.count,
         }));
 
-        // Sort by activity score
         lineActivities.sort((a, b) => b.activityScore - a.activityScore);
 
         cachedStats = {
@@ -91,7 +86,6 @@ async function loadIncidentData(): Promise<void> {
         cacheTimestamp = now;
     } catch (error) {
         console.error('Error loading incident data:', error);
-        // Provide default data if loading fails
         cachedStats = {
             lineActivities: [],
             incidentTypes: new Map(),
@@ -99,125 +93,128 @@ async function loadIncidentData(): Promise<void> {
     }
 }
 
-/**
- * Normalize incident type to match prediction system categories
- */
 function normalizeIncidentType(incident: string): string {
-    const incidentLower = incident.toLowerCase();
+    const lower = incident.toLowerCase();
     
-    if (incidentLower.includes('security') || incidentLower.includes('safety')) {
-        return 'Safety';
-    } else if (incidentLower.includes('mechanical') || incidentLower.includes('technical')) {
-        return 'Technical';
-    } else if (incidentLower.includes('operator') || incidentLower.includes('operations')) {
-        return 'Operational';
-    } else if (incidentLower.includes('diversion') || incidentLower.includes('collision') || 
-               incidentLower.includes('emergency') || incidentLower.includes('weather')) {
-        return 'External';
-    } else {
-        return 'Other';
-    }
+    if (lower.includes('security') || lower.includes('safety')) return 'Safety';
+    if (lower.includes('mechanical') || lower.includes('technical')) return 'Technical';
+    if (lower.includes('operator') || lower.includes('operations')) return 'Operational';
+    if (lower.includes('diversion') || lower.includes('collision') || 
+        lower.includes('emergency') || lower.includes('weather')) return 'External';
+    
+    return 'Other';
 }
 
-/**
- * Get top N most active bus lines
- */
-export async function getTopLines(count: number = 5): Promise<LineActivity[]> {
+export async function getTopLines(count = 5): Promise<LineActivity[]> {
     await loadIncidentData();
-    
-    if (!cachedStats) {
-        return [];
-    }
-
-    return cachedStats.lineActivities.slice(0, count);
+    return cachedStats ? cachedStats.lineActivities.slice(0, count) : [];
 }
 
-/**
- * Get incident type predictions using the prediction system
- * This calculates predictions for each incident type using real weather data
- */
 export async function getIncidentTypePredictions(): Promise<IncidentTypePrediction[]> {
     await loadIncidentData();
     
     if (!cachedStats) {
-        return getDefaultIncidentPredictions();
+        return defaultPredictions();
     }
 
+    const historical = historicalDistribution();
+    
     try {
-        // Get current weather data for prediction
         const weatherData = await getWeatherForPrediction();
-        
-        // Define incident types to predict
         const incidentTypes = ['Safety', 'Operational', 'Technical', 'External', 'Other'];
         const predictions: { type: string; delay: number }[] = [];
 
-        // Get current day of week
-        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const currentDay = days[new Date().getDay()];
-
-        // Use baseline line for predictions (configurable)
         const baselineLine = parseInt(process.env.BASELINE_LINE_FOR_PREDICTIONS || '91');
 
-        // Get predictions for each incident type using a representative line
+        let apiAvailable = true;
         for (const incidentType of incidentTypes) {
-            const predictionInput = {
+            const input = {
                 ROUTE: baselineLine,
                 ...weatherData,
                 WEEK_DAY: currentDay,
                 INCIDENT: incidentType,
             };
 
-            const predictedDelay = await getPrediction(predictionInput);
-            predictions.push({
-                type: incidentType,
-                delay: predictedDelay || 0,
-            });
+            const delay = await getPrediction(input);
+            if (delay === null) {
+                apiAvailable = false;
+                break;
+            }
+            predictions.push({ type: incidentType, delay });
         }
 
-        // Calculate total delay
+        if (!apiAvailable) {
+            console.log('Prediction API unavailable, using historical distribution');
+            return historical;
+        }
+
+        console.log('ML model predictions:', predictions);
+
         const totalDelay = predictions.reduce((sum, p) => sum + p.delay, 0);
+        const delays = predictions.map(p => p.delay);
+        const maxDelay = Math.max(...delays);
+        const minDelay = Math.min(...delays);
+        const variance = maxDelay - minDelay;
+        const avgDelay = totalDelay / predictions.length;
+        const relativeVariance = avgDelay > 0 ? variance / avgDelay : 0;
 
-        // Convert delays to probabilities (higher delay = higher probability)
         if (totalDelay === 0) {
-            return getDefaultIncidentPredictions();
+            console.log('All predictions zero, using historical distribution');
+            return historical;
         }
 
-        const result = predictions.map(p => ({
+        if (relativeVariance < VARIANCE_THRESHOLD_IDENTICAL) {
+            console.log(`Predictions nearly identical (rel. variance: ${relativeVariance.toFixed(3)}), using historical distribution`);
+            return historical;
+        }
+
+        if (relativeVariance < VARIANCE_THRESHOLD_LOW) {
+            console.log(`Low variance (rel. variance: ${relativeVariance.toFixed(3)}), blending with historical data`);
+            const mlPredictions = predictions.map(p => ({
+                type: p.type,
+                probability: p.delay / totalDelay,
+            }));
+            
+            return mlPredictions.map((ml, idx) => ({
+                type: ml.type,
+                probability: ML_WEIGHT * ml.probability + HISTORICAL_WEIGHT * historical[idx].probability,
+            }));
+        }
+
+        const normalized = predictions.map(p => ({
             type: p.type,
             probability: p.delay / totalDelay,
         }));
 
-        // Ensure probabilities sum to 1.0
-        const sum = result.reduce((s, r) => s + r.probability, 0);
-        return result.map(r => ({
-            type: r.type,
-            probability: r.probability / sum,
-        }));
+        console.log(`Using ML predictions (rel. variance: ${relativeVariance.toFixed(3)}):`, normalized);
+        return normalized;
     } catch (error) {
-        console.error('Error getting incident predictions:', error);
-        return getDefaultIncidentPredictions();
+        console.error('Error in incident predictions:', error);
+        return historical;
     }
 }
 
-/**
- * Get default incident predictions based on historical data
- */
-function getDefaultIncidentPredictions(): IncidentTypePrediction[] {
-    if (!cachedStats) {
-        return [
-            { type: 'Safety', probability: 0.15 },
-            { type: 'Operational', probability: 0.35 },
-            { type: 'Technical', probability: 0.25 },
-            { type: 'External', probability: 0.18 },
-            { type: 'Other', probability: 0.07 },
-        ];
+function defaultPredictions(): IncidentTypePrediction[] {
+    return [
+        { type: 'Safety', probability: 0.15 },
+        { type: 'Operational', probability: 0.35 },
+        { type: 'Technical', probability: 0.25 },
+        { type: 'External', probability: 0.18 },
+        { type: 'Other', probability: 0.07 },
+    ];
+}
+
+function historicalDistribution(): IncidentTypePrediction[] {
+    if (!cachedStats || cachedStats.incidentTypes.size === 0) {
+        return defaultPredictions();
     }
 
-    // Calculate probabilities from actual incident counts
     const total = Array.from(cachedStats.incidentTypes.values()).reduce((sum, count) => sum + count, 0);
     
     if (total === 0) {
-        return getDefaultIncidentPredictions();
+        return defaultPredictions();
     }
 
     const incidentTypes = ['Safety', 'Operational', 'Technical', 'External', 'Other'];
@@ -226,17 +223,17 @@ function getDefaultIncidentPredictions(): IncidentTypePrediction[] {
         probability: (cachedStats!.incidentTypes.get(type) || 0) / total,
     }));
 
-    // Ensure probabilities sum to 1.0
     const sum = result.reduce((s, r) => s + r.probability, 0);
+    if (sum === 0) {
+        return defaultPredictions();
+    }
+
     return result.map(r => ({
         type: r.type,
-        probability: sum > 0 ? r.probability / sum : 0.2, // Equal distribution if no data
+        probability: r.probability / sum,
     }));
 }
 
-/**
- * Get global statistics
- */
 export async function getGlobalStats() {
     await loadIncidentData();
     

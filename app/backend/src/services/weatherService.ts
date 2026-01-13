@@ -51,23 +51,17 @@ interface ClimateRecord {
     LOCAL_DAY: string;
 }
 
-let cachedWeatherData: WeatherData | null = null;
-let cacheTimestamp: number = 0;
-const CACHE_DURATION = 1000 * 60 * 60; // 1 hour cache
+let cache: WeatherData | null = null;
+let cacheTime = 0;
+const CACHE_DURATION = 60 * 60 * 1000;
 
-/**
- * Get the latest weather data from the most recent climate dataset
- * In a production environment, this would call a real-time weather API
- */
 export async function getWeather(): Promise<CurrentWeather> {
-    // Check cache
     const now = Date.now();
-    if (cachedWeatherData && (now - cacheTimestamp) < CACHE_DURATION) {
-        return formatWeatherForFrontend(cachedWeatherData);
+    if (cache && (now - cacheTime) < CACHE_DURATION) {
+        return formatWeatherForFrontend(cache);
     }
 
     try {
-        // Read the most recent climate data file (2023 is the latest in our dataset)
         const dataDir = process.env.DATA_DIR || '../../../../data';
         const climatePath = path.join(__dirname, dataDir, 'climate/climate-hourly-2023.csv');
         const fileContent = fs.readFileSync(climatePath, 'utf-8');
@@ -77,61 +71,46 @@ export async function getWeather(): Promise<CurrentWeather> {
             skip_empty_lines: true,
         }) as ClimateRecord[];
 
-        // Get the last record (most recent weather data)
-        const latestRecord = records[records.length - 1];
+        const latest = records[records.length - 1];
         
-        if (!latestRecord) {
+        if (!latest) {
             throw new Error('No weather data available');
         }
 
-        // Parse the data
         const weatherData: WeatherData = {
-            TEMP: parseFloat(latestRecord.TEMP) || 0,
-            DEW_POINT_TEMP: parseFloat(latestRecord.DEW_POINT_TEMP) || 0,
-            HUMIDEX: latestRecord.HUMIDEX ? parseFloat(latestRecord.HUMIDEX) : null,
-            PRECIP_AMOUNT: parseFloat(latestRecord.PRECIP_AMOUNT) || 0,
-            RELATIVE_HUMIDITY: parseFloat(latestRecord.RELATIVE_HUMIDITY) || 0,
-            STATION_PRESSURE: parseFloat(latestRecord.STATION_PRESSURE) || 0,
-            VISIBILITY: parseFloat(latestRecord.VISIBILITY) || 0,
-            WEATHER_ENG_DESC: latestRecord.WEATHER_ENG_DESC || 'Unknown',
-            WIND_DIRECTION: latestRecord.WIND_DIRECTION ? parseFloat(latestRecord.WIND_DIRECTION) : null,
-            WIND_SPEED: latestRecord.WIND_SPEED ? parseFloat(latestRecord.WIND_SPEED) : null,
-            LOCAL_DATE: latestRecord.LOCAL_DATE,
-            LOCAL_TIME: `${latestRecord.LOCAL_HOUR}:00:00`,
-            WEEK_DAY: getDayOfWeek(latestRecord.LOCAL_DATE),
-            LOCAL_MONTH: parseInt(latestRecord.LOCAL_MONTH),
-            LOCAL_DAY: parseInt(latestRecord.LOCAL_DAY),
+            TEMP: parseFloat(latest.TEMP) || 0,
+            DEW_POINT_TEMP: parseFloat(latest.DEW_POINT_TEMP) || 0,
+            HUMIDEX: latest.HUMIDEX ? parseFloat(latest.HUMIDEX) : null,
+            PRECIP_AMOUNT: parseFloat(latest.PRECIP_AMOUNT) || 0,
+            RELATIVE_HUMIDITY: parseFloat(latest.RELATIVE_HUMIDITY) || 0,
+            STATION_PRESSURE: parseFloat(latest.STATION_PRESSURE) || 0,
+            VISIBILITY: parseFloat(latest.VISIBILITY) || 0,
+            WEATHER_ENG_DESC: latest.WEATHER_ENG_DESC || 'Unknown',
+            WIND_DIRECTION: latest.WIND_DIRECTION ? parseFloat(latest.WIND_DIRECTION) : null,
+            WIND_SPEED: latest.WIND_SPEED ? parseFloat(latest.WIND_SPEED) : null,
+            LOCAL_DATE: latest.LOCAL_DATE,
+            LOCAL_TIME: `${latest.LOCAL_HOUR}:00:00`,
+            WEEK_DAY: getDayOfWeek(latest.LOCAL_DATE),
+            LOCAL_MONTH: parseInt(latest.LOCAL_MONTH),
+            LOCAL_DAY: parseInt(latest.LOCAL_DAY),
         };
 
-        // Update cache
-        cachedWeatherData = weatherData;
-        cacheTimestamp = now;
+        cache = weatherData;
+        cacheTime = now;
 
         return formatWeatherForFrontend(weatherData);
     } catch (error) {
-        console.error('Error reading weather data:', error);
-        // Return default weather data if file cannot be read
+        console.error('Weather data error:', error);
         return getDefaultWeather();
     }
 }
 
-/**
- * Get weather data formatted for prediction API
- */
 export async function getWeatherForPrediction(): Promise<Omit<WeatherData, 'LOCAL_DATE' | 'WEEK_DAY'>> {
     const weather = await getWeather();
-    
-    // Use current time and day instead of dataset time
     const now = new Date();
     
-    // Calculate humidex if not available (simplified formula)
-    // In production, use a proper meteorological library
     let humidex = weather.humidex;
-    if (humidex === null && weather.temperature > 0) {
-        // Simplified humidex approximation when not available
-        // Real humidex formula is more complex and depends on dewpoint
-        humidex = weather.temperature;
-    } else if (humidex === null) {
+    if (humidex === null) {
         humidex = weather.temperature;
     }
     
@@ -152,9 +131,6 @@ export async function getWeatherForPrediction(): Promise<Omit<WeatherData, 'LOCA
     };
 }
 
-/**
- * Format weather data for frontend display
- */
 function formatWeatherForFrontend(data: WeatherData): CurrentWeather {
     return {
         temperature: data.TEMP,
@@ -171,18 +147,12 @@ function formatWeatherForFrontend(data: WeatherData): CurrentWeather {
     };
 }
 
-/**
- * Get day of week from date string
- */
 function getDayOfWeek(dateString: string): string {
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const date = new Date(dateString);
     return days[date.getDay()];
 }
 
-/**
- * Get default weather data as fallback
- */
 function getDefaultWeather(): CurrentWeather {
     return {
         temperature: 5.0,

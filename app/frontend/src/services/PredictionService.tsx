@@ -1,6 +1,4 @@
-// src/services/PredictionService.ts
-
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:3000';
 
 export interface PredictionData {
     LOCAL_TIME: string;
@@ -29,17 +27,11 @@ export interface PredictionResponse {
 }
 
 export class PredictionService {
-    /**
-     * Get delay prediction for a specific bus line
-     * @param lineId - The bus line ID
-     * @param data - Weather and temporal data for prediction
-     * @returns Prediction response with delay estimate
-     */
     static async getLinePrediction(lineId: string, data: PredictionData): Promise<PredictionResponse> {
         try {
             const response = await fetch(`${API_BASE}/lines/${lineId}/prediction`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             });
 
@@ -49,10 +41,10 @@ export class PredictionService {
 
             return await response.json();
         } catch (error) {
-            console.error("Error getting line prediction:", error);
+            console.error('Error getting line prediction:', error);
             return {
                 success: false,
-                error: error instanceof Error ? error.message : "Unknown error",
+                error: error instanceof Error ? error.message : 'Unknown error',
             };
         }
     }

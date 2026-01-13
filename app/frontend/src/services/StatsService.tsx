@@ -1,6 +1,4 @@
-// src/services/StatsService.tsx
-
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:3000';
 
 export interface LineActivity {
     lineId: number;
@@ -20,9 +18,6 @@ export interface GlobalStats {
 }
 
 export class StatsService {
-    /**
-     * Get global statistics including top lines and incident predictions
-     */
     static async getGlobalStats(): Promise<GlobalStats | null> {
         try {
             const response = await fetch(`${API_BASE}/stats/global`);
@@ -33,15 +28,12 @@ export class StatsService {
 
             return await response.json();
         } catch (error) {
-            console.error("Error fetching global stats:", error);
+            console.error('Error fetching global stats:', error);
             return null;
         }
     }
 
-    /**
-     * Get top N most active bus lines
-     */
-    static async getTopLines(count: number = 5): Promise<LineActivity[]> {
+    static async getTopLines(count = 5): Promise<LineActivity[]> {
         try {
             const response = await fetch(`${API_BASE}/stats/top-lines?count=${count}`);
             
@@ -51,14 +43,11 @@ export class StatsService {
 
             return await response.json();
         } catch (error) {
-            console.error("Error fetching top lines:", error);
+            console.error('Error fetching top lines:', error);
             return [];
         }
     }
 
-    /**
-     * Get incident type predictions
-     */
     static async getIncidentTypePredictions(): Promise<IncidentTypePrediction[]> {
         try {
             const response = await fetch(`${API_BASE}/stats/incident-predictions`);
@@ -69,7 +58,7 @@ export class StatsService {
 
             return await response.json();
         } catch (error) {
-            console.error("Error fetching incident predictions:", error);
+            console.error('Error fetching incident predictions:', error);
             return [];
         }
     }
