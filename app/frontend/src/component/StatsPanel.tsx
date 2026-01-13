@@ -4,6 +4,10 @@ import type {IncidentType, Ligne, PredictionOutput} from "../../../backend/src/M
 import type {LinePrediction} from "../../../backend/src/Model/Model.ts";
 import {PredictionService} from "../services/PredictionService.tsx";
 
+// Constants for progress bar visualization
+const MAX_DELAY_MINUTES = 50; // Maximum delay to display at 100% bar width
+const DELAY_TO_PERCENT_MULTIPLIER = 2; // Maps 0-50 minutes to 0-100% bar width
+
 type Props = {
     selectedLineIds: Set<number>;
     linesById: Record<number, Ligne>;
@@ -13,13 +17,11 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
     const [linePredictions, setLinePredictions] = React.useState<Record<number, LinePrediction>>()
     const [topLinesData, setTopLinesData] = React.useState<Array<{lineId: number, activityScore: number}>>()
     const [incidentPredictions, setIncidentPredictions] = React.useState<Array<{type: IncidentType, probability: number}>>()
-    const [loadingPrediction, setLoadingPrediction] = React.useState(false);
 
     // Lecture des predictions par ligne selectionner
     React.useEffect(() => {
         const chargement = async () => {
             if (selectedLineIds.size === 0) return;
-            setLoadingPrediction(true);
             const newPredictions: Record<number, LinePrediction> = {};
             for(const lineId of selectedLineIds) {
                 const linePrediction: PredictionOutput[] = [];
@@ -31,77 +33,93 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
                     }
                 }
                 if(linePrediction.length > 0) {
-                    const delayTotal=0;
-                    const lp = {
-                        lineId: lineId,
-                        isLoading: loadingPrediction,
-                        predictedDelay: delayTotal,
-                        byIncident: {} as Record<IncidentType, number>,
-                    } as LinePrediction;
+                    let delayTotal = 0;
+                    const byIncident: Record<IncidentType, number> = {
+                        Safety: 0,
+                        Operational: 0,
+                        Technical: 0,
+                        External: 0,
+                        Other: 0
+                    };
+                    
                     for(const prediction of linePrediction) {
-                        lp.byIncident[prediction.incident] = prediction.prediction;
-                        lp.predictedDelay += prediction.prediction;
+                        byIncident[prediction.incident] += prediction.prediction;
+                        delayTotal += prediction.prediction;
                     }
+
+                    // Find the incident type with the highest delay
+                    let topIncident: IncidentType = "Other";
+                    let maxDelay = 0;
+                    Object.entries(byIncident).forEach(([incident, delay]) => {
+                        if (delay > maxDelay) {
+                            maxDelay = delay;
+                            topIncident = incident as IncidentType;
+                        }
+                    });
+
+                    const lp: LinePrediction = {
+                        lineId: lineId,
+                        isLoading: false,
+                        predictedDelay: delayTotal,
+                        byIncident: byIncident,
+                        topIncident: topIncident
+                    };
                     newPredictions[lineId] = lp;
                 }
             }
-            setLoadingPrediction(false);
             setLinePredictions(newPredictions);
         };
         chargement();
     }, [selectedLineIds])
 
+    // Calculate aggregated statistics from line predictions
     React.useEffect(() => {
+        if (!linePredictions || Object.keys(linePredictions).length === 0) {
+            setTopLinesData([]);
+            setIncidentPredictions([]);
+            return;
+        }
 
-        // fake data for test
-        setIncidentPredictions([
-            {type: "Safety", probability: 0.2},
-            {type: "Operational", probability: 0.3},
-            {type: "Technical", probability: 0.2},
-            {type: "External", probability: 0.1},
-            {type: "Other", probability: 0.1},
-        ]);
-        setLinePredictions({
-            1: {
-                lineId: 1,
-                isLoading: false,
-                error: undefined,
-                topIncident: "Operational",
-                predictedDelay: 10,
-                riskScore: 0.5,
-                byIncident: {
-                    Safety: 0.1,
-                    Operational: 0.8,
-                    Technical: 0.05,
-                    External: 0,
-                    Other: 0
-                }
-            },
-            2: {
-                lineId: 2,
-                isLoading: false,
-                error: undefined,
-                topIncident: "External",
-                predictedDelay: 15,
-                riskScore: 0.7,
-                byIncident: {
-                    Safety: 0.05,
-                    Operational: 0.05,
-                    Technical: 0.8,
-                    External: 0.1,
-                    Other: 0
-                }
+        // Calculate top 5 lines by predicted delay
+        const lineDelays = Object.values(linePredictions)
+            .filter(lp => !lp.isLoading && !lp.error)
+            .map(lp => ({
+                lineId: lp.lineId,
+                activityScore: lp.predictedDelay
+            }))
+            .sort((a, b) => b.activityScore - a.activityScore)
+            .slice(0, 5);
+        
+        setTopLinesData(lineDelays);
+
+        // Calculate percentage of delay time by incident type
+        const incidentTotals: Record<IncidentType, number> = {
+            Safety: 0,
+            Operational: 0,
+            Technical: 0,
+            External: 0,
+            Other: 0
+        };
+
+        let totalDelay = 0;
+        Object.values(linePredictions).forEach(lp => {
+            if (!lp.isLoading && !lp.error) {
+                // Accumulate incident totals
+                Object.entries(lp.byIncident).forEach(([incident, delay]) => {
+                    incidentTotals[incident as IncidentType] += delay;
+                });
+                // Add this line's total delay to the overall total
+                totalDelay += lp.predictedDelay;
             }
-        })
-        setTopLinesData([
-            {lineId: 1, activityScore: 50},
-            {lineId: 2, activityScore: 70},
-            {lineId: 3, activityScore: 30},
-            {lineId: 4, activityScore: 90},
-            {lineId: 5, activityScore: 60},
-        ]);
+        });
 
-    }, []);
+        const incidentPercentages = Object.entries(incidentTotals).map(([type, total]) => ({
+            type: type as IncidentType,
+            probability: totalDelay > 0 ? total / totalDelay : 0
+        }));
+
+        setIncidentPredictions(incidentPercentages);
+    }, [linePredictions]);
 
     const selectedLinesCount = selectedLineIds.size;
 
@@ -121,7 +139,7 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
         return Array.from(selectedLineIds)
             .map((lineId) => linePredictions[lineId])
             .filter((pred): pred is LinePrediction => pred !== undefined)
-            .sort((a, b) => b.riskScore - a.riskScore);
+            .sort((a, b) => b.predictedDelay - a.predictedDelay);
     }, [selectedLineIds, linePredictions]);
 
     const chartData = React.useMemo(() => {
@@ -168,7 +186,7 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
                     </div>
 
                     <div className={styles.chartContainer}>
-                        <div className={styles.chartTitle}>Activité par ligne (Top 5)</div>
+                        <div className={styles.chartTitle}>Top 5 lignes - Temps d'attente (min)</div>
                         {chartData.length > 0 ? (
                             <svg width="100%" height="120" viewBox="0 0 320 120" aria-label="Bar chart of line activity">
                                 {chartData.map((item, index) => {
@@ -214,7 +232,7 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
 
                 <section aria-labelledby="incident-pred-title">
                     <h3 id="incident-pred-title" className={styles.sectionTitle}>
-                        Prédiction par type d'incidents
+                        % de temps par type d'incident
                     </h3>
 
                     {incidentPredictions && incidentPredictions.length > 0 ? (
@@ -272,22 +290,22 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
                     ) : (
                         <div className={styles.linePredictionList}>
                             {displayedLinePredictions.map((pred) => {
-                                const riskPercentage = Math.round(pred.riskScore * 100);
+                                const delayMinutes = Math.round(pred.predictedDelay);
 
-                                const getRiskColorClass = (score: number) => {
-                                    if (score >= 0.6) return "high";
-                                    if (score >= 0.4) return "medium";
+                                const getDelayColorClass = (delay: number) => {
+                                    if (delay >= 20) return "high";
+                                    if (delay >= 10) return "medium";
                                     return "low";
                                 };
 
-                                const colorClass = getRiskColorClass(pred.riskScore);
+                                const colorClass = getDelayColorClass(delayMinutes);
 
                                 return (
                                     <div key={pred.lineId} className={styles.linePredictionCard}>
                                         <div className={styles.linePredictionHeader}>
                                             <span className={styles.lineName}>Ligne {pred.lineId}</span>
                                             <span className={`${styles.riskScore} ${styles[colorClass]}`}>
-                                                {riskPercentage}%
+                                                {delayMinutes} min
                                             </span>
                                         </div>
                                         {pred.isLoading ? (
@@ -301,24 +319,24 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
                                         ) : (
                                             <>
                                                 <div className={styles.topIncident}>
-                                                    Top incident: {pred.topIncident}
+                                                    Top incident: {pred.topIncident || "N/A"}
                                                 </div>
                                                 <div className={styles.predictionDelay}>
-                                                    Retard prédit: {Math.round(pred.predictedDelay)} min
+                                                    Retard prédit: {delayMinutes} min
                                                 </div>
                                             </>
                                         )}
                                         <div
                                             className={styles.riskProgressBar}
                                             role="progressbar"
-                                            aria-valuenow={riskPercentage}
+                                            aria-valuenow={Math.min(delayMinutes, MAX_DELAY_MINUTES)}
                                             aria-valuemin={0}
-                                            aria-valuemax={100}
-                                            aria-label={`Risk score for line ${pred.lineId}: ${riskPercentage}%`}
+                                            aria-valuemax={MAX_DELAY_MINUTES}
+                                            aria-label={`Predicted delay for line ${pred.lineId}: ${delayMinutes} minutes`}
                                         >
                                             <div
                                                 className={`${styles.riskProgressBarFill} ${styles[colorClass]}`}
-                                                style={{ width: `${riskPercentage}%` }}
+                                                style={{ width: `${Math.min(delayMinutes * DELAY_TO_PERCENT_MULTIPLIER, 100)}%` }}
                                             />
                                         </div>
                                     </div>

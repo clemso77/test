@@ -88,9 +88,7 @@ export default function MapToronto() {
                 <>
                     <StatsPanel
                         selectedLineIds={selectedLineIds}
-                        lineIds={lineIds}
                         linesById={linesById}
-                        stopsById={stopsById}
                     />
 
                     <BusLinesPanel
