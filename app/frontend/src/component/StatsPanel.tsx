@@ -13,13 +13,11 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
     const [linePredictions, setLinePredictions] = React.useState<Record<number, LinePrediction>>()
     const [topLinesData, setTopLinesData] = React.useState<Array<{lineId: number, activityScore: number}>>()
     const [incidentPredictions, setIncidentPredictions] = React.useState<Array<{type: IncidentType, probability: number}>>()
-    const [_loadingPrediction, setLoadingPrediction] = React.useState(false);
 
     // Lecture des predictions par ligne selectionner
     React.useEffect(() => {
         const chargement = async () => {
             if (selectedLineIds.size === 0) return;
-            setLoadingPrediction(true);
             const newPredictions: Record<number, LinePrediction> = {};
             for(const lineId of selectedLineIds) {
                 const linePrediction: PredictionOutput[] = [];
@@ -65,7 +63,6 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
                     newPredictions[lineId] = lp;
                 }
             }
-            setLoadingPrediction(false);
             setLinePredictions(newPredictions);
         };
         chargement();
