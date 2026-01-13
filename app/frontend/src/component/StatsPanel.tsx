@@ -4,6 +4,10 @@ import type {IncidentType, Ligne, PredictionOutput} from "../../../backend/src/M
 import type {LinePrediction} from "../../../backend/src/Model/Model.ts";
 import {PredictionService} from "../services/PredictionService.tsx";
 
+// Constants for progress bar visualization
+const MAX_DELAY_MINUTES = 50; // Maximum delay to display at 100% bar width
+const DELAY_TO_PERCENT_MULTIPLIER = 2; // Maps 0-50 minutes to 0-100% bar width
+
 type Props = {
     selectedLineIds: Set<number>;
     linesById: Record<number, Ligne>;
@@ -325,16 +329,14 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
                                         <div
                                             className={styles.riskProgressBar}
                                             role="progressbar"
-                                            aria-valuenow={Math.min(delayMinutes, 50)}
+                                            aria-valuenow={Math.min(delayMinutes, MAX_DELAY_MINUTES)}
                                             aria-valuemin={0}
-                                            aria-valuemax={50}
+                                            aria-valuemax={MAX_DELAY_MINUTES}
                                             aria-label={`Predicted delay for line ${pred.lineId}: ${delayMinutes} minutes`}
                                         >
                                             <div
                                                 className={`${styles.riskProgressBarFill} ${styles[colorClass]}`}
-                                                // Progress bar width: delayMinutes * 2 maps 0-50min delays to 0-100% bar width
-                                                // Capped at 100% for delays exceeding 50 minutes
-                                                style={{ width: `${Math.min(delayMinutes * 2, 100)}%` }}
+                                                style={{ width: `${Math.min(delayMinutes * DELAY_TO_PERCENT_MULTIPLIER, 100)}%` }}
                                             />
                                         </div>
                                     </div>
