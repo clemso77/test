@@ -58,6 +58,7 @@ export type LinePrediction = {
     lineId: number;
     predictedDelay: number;
     byIncident: Record<IncidentType, number>;
+    topIncident?: IncidentType;
     isLoading: boolean;
     error?: string;
 }
