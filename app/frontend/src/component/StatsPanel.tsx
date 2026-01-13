@@ -39,7 +39,7 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
                     };
                     
                     for(const prediction of linePrediction) {
-                        byIncident[prediction.incident] = prediction.prediction;
+                        byIncident[prediction.incident] += prediction.prediction;
                         delayTotal += prediction.prediction;
                     }
 
@@ -100,10 +100,12 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
         let totalDelay = 0;
         Object.values(linePredictions).forEach(lp => {
             if (!lp.isLoading && !lp.error) {
+                // Accumulate incident totals
                 Object.entries(lp.byIncident).forEach(([incident, delay]) => {
                     incidentTotals[incident as IncidentType] += delay;
-                    totalDelay += delay;
                 });
+                // Add this line's total delay to the overall total
+                totalDelay += lp.predictedDelay;
             }
         });
 
