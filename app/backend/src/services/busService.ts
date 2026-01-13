@@ -1,8 +1,9 @@
 // src/services/bus.service.ts
 import {parse} from "csv-parse/sync";
 import {readFile} from "node:fs/promises";
-import {Arret, Ligne,} from "../Model/Model";
+import {Arret, IncidentType, Ligne, LinePrediction, PredictionInput, PredictionOutput,} from "../Model/Model";
 import {getPrediction} from "./predictionService";
+import {getWeather} from "./weatherService";
 
 // Define the prediction data interface for type safety
 interface PredictionData {
@@ -83,8 +84,8 @@ export async function getLineIncidents(id: string) {
     return {}
 }
 
-export async function getLinePrediction(id: string, predictionData?: PredictionData) {
-    if (!predictionData) {
+export async function getLinePrediction(id: string, incidents: IncidentType) {
+    if (!incidents) {
         return {
             success: false,
             error: "No prediction data provided. Please provide weather and temporal data."
@@ -92,32 +93,56 @@ export async function getLinePrediction(id: string, predictionData?: PredictionD
     }
 
     try {
-        // Add the route ID to the prediction data
-        const inputData = {
-            ROUTE: parseInt(id),
-            ...predictionData
-        };
+        getWeather().then((data) => {
+            if(!data) throw new Error("Weather API returned null");
+            const inputData = {
+                ROUTE: Number(id),
+                LOCAL_TIME: data.LOCAL_TIME,
+                WEEK_DAY: data.WEEK_DAY,
 
-        const prediction = await getPrediction(inputData);
+                INCIDENT: incidents,
+                LOCAL_MONTH: data.LOCAL_MONTH,
+                LOCAL_DAY: data.LOCAL_DAY,
 
-        if (prediction !== null) {
-            return {
-                success: true,
-                lineId: id,
-                predictedDelay: prediction,
-                unit: "minutes"
-            };
-        } else {
-            return {
-                success: false,
-                error: "Prediction API returned null"
-            };
-        }
+                TEMP: data.TEMP,
+                DEW_POINT_TEMP: data.DEW_POINT_TEMP,
+                HUMIDEX: data.HUMIDEX,
+                PRECIP_AMOUNT: data.PRECIP_AMOUNT,
+                RELATIVE_HUMIDITY: data.RELATIVE_HUMIDITY,
+                STATION_PRESSURE: data.STATION_PRESSURE,
+                VISIBILITY: data.VISIBILITY,
+                WEATHER_ENG_DESC: data.WEATHER_ENG_DESC,
+                WIND_DIRECTION: data.WIND_DIRECTION,
+                WIND_SPEED: data.WIND_SPEED,
+
+            }as PredictionInput;
+
+            getPrediction(inputData).then((prediction) => {
+                if (prediction.status == 200) {
+                    console.log("Prediction reussi:", prediction);
+                    return {
+                        status: prediction.status,
+                        prediction: prediction.prediction,
+                        incident: incidents,
+                        route: Number(id)
+                    } as PredictionOutput;
+                } else {
+                    return {
+                        status: prediction.status,
+                        prediction: null,
+                        incident: incidents,
+                        route: Number(id)
+                    }as PredictionOutput;
+                }
+            });
+        })
     } catch (error) {
         console.error("Error in getLinePrediction:", error);
         return {
-            success: false,
-            error: error instanceof Error ? error.message : "Unknown error"
-        };
+            status: 500,
+            prediction: null,
+            incident: incidents,
+            route: Number(id)
+        } as PredictionOutput;
     }
 }

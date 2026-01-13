@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./StatsPanel.module.css";
-import type {IncidentType, Ligne} from "../../../backend/src/Model/Model.ts";
+import type {IncidentType, Ligne, PredictionOutput} from "../../../backend/src/Model/Model.ts";
 import type {LinePrediction} from "../../../backend/src/Model/Model.ts";
+import {PredictionService} from "../services/PredictionService.tsx";
 
 type Props = {
     selectedLineIds: Set<number>;
@@ -12,6 +13,43 @@ export default function StatsPanel({ selectedLineIds, linesById }: Props) {
     const [linePredictions, setLinePredictions] = React.useState<Record<number, LinePrediction>>()
     const [topLinesData, setTopLinesData] = React.useState<Array<{lineId: number, activityScore: number}>>()
     const [incidentPredictions, setIncidentPredictions] = React.useState<Array<{type: IncidentType, probability: number}>>()
+    const [loadingPrediction, setLoadingPrediction] = React.useState(false);
+
+    // Lecture des predictions par ligne selectionner
+    React.useEffect(() => {
+        const chargement = async () => {
+            if (selectedLineIds.size === 0) return;
+            setLoadingPrediction(true);
+            const newPredictions: Record<number, LinePrediction> = {};
+            for(const lineId of selectedLineIds) {
+                const linePrediction: PredictionOutput[] = [];
+                for(const ic of ["Safety", "Operational", "Technical", "External", "Other"]) {
+                    const result = await PredictionService.getLinePrediction(lineId.toString(), ic as IncidentType);
+                    console.log("Prediction:", result);
+                    if(result && result.status == 200) {
+                        linePrediction.push(result);
+                    }
+                }
+                if(linePrediction.length > 0) {
+                    const delayTotal=0;
+                    const lp = {
+                        lineId: lineId,
+                        isLoading: loadingPrediction,
+                        predictedDelay: delayTotal,
+                        byIncident: {} as Record<IncidentType, number>,
+                    } as LinePrediction;
+                    for(const prediction of linePrediction) {
+                        lp.byIncident[prediction.incident] = prediction.prediction;
+                        lp.predictedDelay += prediction.prediction;
+                    }
+                    newPredictions[lineId] = lp;
+                }
+            }
+            setLoadingPrediction(false);
+            setLinePredictions(newPredictions);
+        };
+        chargement();
+    }, [selectedLineIds])
 
     React.useEffect(() => {
 

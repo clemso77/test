@@ -69,7 +69,6 @@ export async function getWeather(): Promise<WeatherData> {
                     LOCAL_MONTH: localDateTime.getMonth() + 1,
                     LOCAL_DAY: localDateTime.getDate(),
                 };
-                console.log(weather);
                 cache = weather ?? cache;
             })
         });

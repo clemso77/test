@@ -7,6 +7,7 @@ import {
     getLinePrediction,
     getStopsBulk
 } from "../services/busService";
+import {IncidentType} from "../Model/Model";
 
 const router = Router();
 
@@ -28,9 +29,9 @@ router.get("/:id/incidents", async (req, res) => {
   console.log(`GET /lines/${req.params.id}/incidents`);
   res.json(await getLineIncidents(req.params.id));
 });
-router.post("/:id/prediction", async (req, res) => {
-  console.log(`POST /lines/${req.params.id}/prediction`);
-  res.json(await getLinePrediction(req.params.id, req.body));
+router.get("/:id/prediction/:incident", async (req, res) => {
+  console.log(`POST /lines/${req.params.id}/prediction/${req.params.incident}`);
+  res.json(await getLinePrediction(req.params.id, req.params.incident as IncidentType));
 });
 router.post("/bulk", async (req, res) => {
     console.log("POST /lines/bulk");

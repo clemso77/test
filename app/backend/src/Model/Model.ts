@@ -36,7 +36,7 @@ export type WeatherData = {
 }
 
 export type PredictionInput = {
-    ROUTE?: number;
+    ROUTE: number;
     LOCAL_TIME: string;
     WEEK_DAY: string;
     INCIDENT: string;
@@ -56,12 +56,17 @@ export type PredictionInput = {
 
 export type LinePrediction = {
     lineId: number;
-    riskScore: number;
-    topIncident: IncidentType;
     predictedDelay: number;
     byIncident: Record<IncidentType, number>;
     isLoading: boolean;
     error?: string;
+}
+
+export type PredictionOutput = {
+    status: number;
+    prediction: number;
+    incident: IncidentType;
+    route: number;
 }
 
 export type IncidentType = 'Safety' | 'Operational' |'Technical' | 'External' |'Other';
