@@ -213,6 +213,14 @@ Le résultat final de ce processus est un fichier JSON structuré et optimisé p
 
 Cette architecture garantit une compatibilité directe avec Mapbox GL et facilite la gestion dynamique des données côté React.
 
+### Visualisation du réseau complet
+
+L'image ci-dessous illustre le résultat final de l'extraction et de la normalisation des données GTFS : l'ensemble des lignes de bus du réseau TTC affichées sur la carte interactive avec leurs tracés géographiques complets.
+
+![Toutes les lignes de bus](./images/tous_les_bus.png)
+
+Cette représentation démontre la capacité du système à gérer simultanément un grand nombre de lignes avec leurs géométries complexes, tout en maintenant des performances de rendu fluides grâce aux optimisations détaillées dans les sections suivantes.
+
 ## Pipeline de Traitement des Données
 
 La préparation des données constitue une étape essentielle pour garantir la qualité et la pertinence des prédictions. Un ensemble de scripts Python a été développé pour automatiser le processus complet, de la fusion des sources de données brutes jusqu'à la création des jeux de données prêts pour l'entraînement des modèles.
