@@ -50,7 +50,325 @@ Parallèlement, une première couche de back-end a été mise en place à l’ai
 
 ![POC](./images/POC.png)
 
+## Sources de Données
+
+La qualité et la pertinence des prédictions reposent sur l'utilisation de données fiables et diversifiées. Le projet s'appuie sur plusieurs sources de données complémentaires, permettant de croiser des informations liées aux retards des bus, aux conditions météorologiques et à la structure du réseau de transport.
+
+### Jeux de données principaux
+
+| Nom | Contenu | Type | Source | Date | Informations additionnelles |
+|-----|---------|------|--------|------|---------------------------|
+| TTC Delays and Routes 2023 | Retards des bus de Toronto en 2023 | Dataset | [Kaggle 2023](https://www.kaggle.com/datasets/karmansinghbains/ttc-delays-and-routes-2023) | 2025-10-15 | |
+| Toronto Bus Delay 2022 | Retards des bus de Toronto en 2022 | Dataset | [Kaggle 2022](https://www.kaggle.com/datasets/reihanenamdari/toronto-bus-delay-2022) | 2025-10-15 | Noms différents mais même structure de données qu'en 2023 |
+| Hourly climate data | Relevés météorologiques canadiens | Dataset | [Government of Canada](https://climate-change.canada.ca/climate-data/#/hourly-climate-data) | 2025-10-15 | Station utilisée : ID 6158359, enregistrements 110,001 (juillet 2022) à 130,000 (octobre 2024) |
+| TTC Routes & Schedules | Noms et identifiants des lignes de bus | Dataset | [TTC](https://www.ttc.ca/routes-and-schedules/listroutes/bus) | 2025-10-15 | Le site ne fournit pas d'informations directes, mais l'analyse du trafic réseau a permis de découvrir l'API : [TTC API](https://www.ttc.ca/ttcapi/routedetail/listroutes) |
+
+### Sources de données explorées
+
+Au cours du développement, d'autres sources de données ont été explorées mais n'ont pas été retenues pour des raisons de compatibilité ou de complétude :
+
+| Nom | Contenu | Type | Source | Date |
+|-----|---------|------|--------|------|
+| PRIM - Traffic Info Messages (v2) | Informations de perturbation actuelles, à venir et passées | API | [PRIM API](https://prim.iledefrance-mobilites.fr/en/apis/idfm-navitia-line_reports-v2) | 2025-10-05 |
+| INFOCLIMAT - Weather data | Données météorologiques actuelles et passées | API | [INFOCLIMAT API](https://www.infoclimat.fr/opendata/) | 2025-10-05 |
+
+> **Note** : L'API PRIM semble encore en développement. Seuls les incidents liés aux ascenseurs des métros et RER sont actuellement disponibles.
+
 ## Création des routes avec les données GTFS
+
+L'une des étapes fondamentales du projet a consisté à extraire, structurer et normaliser les données du réseau de transport à partir du format **GTFS** (General Transit Feed Specification). Ce format standardisé, largement utilisé dans le domaine des transports publics, permet de décrire l'ensemble des lignes, arrêts, horaires et tracés géographiques d'un réseau.
+
+### Format GTFS et architecture des données
+
+Le format GTFS repose sur un ensemble de fichiers texte (CSV) interdépendants :
+
+- **routes.txt** : contient les informations sur les lignes de bus (identifiant, nom court, nom long, couleur)
+- **trips.txt** : décrit les trajets individuels effectués par chaque ligne
+- **stop_times.txt** : liste les arrêts desservis lors de chaque trajet, avec leur séquence
+- **stops.txt** : référence les arrêts avec leur position géographique (latitude, longitude)
+- **shapes.txt** : (optionnel) contient les tracés géographiques précis des lignes sous forme de séquences de points GPS
+
+Cette structure impose une gestion rigoureuse des relations entre fichiers pour reconstruire une vision cohérente du réseau.
+
+### Script d'extraction et de normalisation : BusStops.py
+
+Le script **`BusStops.py`** centralise la logique d'extraction et de structuration des données GTFS. Il assure plusieurs fonctions critiques :
+
+#### 1. Filtrage des lignes autorisées
+
+Le script charge une liste de lignes autorisées depuis un fichier JSON externe (`lignes_bus.json`). Cette étape garantit que seules les lignes pertinentes pour le projet sont extraites, évitant ainsi une surcharge de données inutiles.
+
+```python
+def load_allowed_route_ids(path: str | Path) -> set[str]:
+    p = Path(path)
+    data = json.loads(p.read_text(encoding="utf-8"))
+    ids = {str(x).strip() for x in data["lignes"] if str(x).strip().isdigit()}
+    return ids
+```
+
+#### 2. Canonicalisation des arrêts
+
+Un problème récurrent dans les données GTFS est la duplication des arrêts partageant les mêmes coordonnées GPS. Le script détecte ces doublons et les canonicalise, c'est-à-dire qu'il ne conserve qu'un seul identifiant par position géographique unique. Cela permet d'éviter des incohérences lors de l'affichage sur la carte.
+
+```python
+coord_to_canon: dict[tuple[float, float], str] = {
+    coord: sorted(ids, key=_stop_sort_key)[0] 
+    for coord, ids in coord_to_ids.items()
+}
+```
+
+L'algorithme trie les identifiants et privilégie les identifiants numériques les plus bas, garantissant une cohérence reproductible.
+
+#### 3. Sélection du trajet le plus représentatif
+
+Chaque ligne peut avoir plusieurs trajets (`trips`) correspondant à différentes heures de la journée, directions ou variantes. Le script identifie le trajet le plus complet (celui desservant le plus d'arrêts uniques) pour représenter la ligne dans son ensemble.
+
+```python
+for tid in trips:
+    pairs_sorted = sorted(trip_to_seq.get(tid, []), key=lambda x: x[0])
+    ordered = [stop_canon for _, stop_canon in pairs_sorted if stop_canon != last]
+    if len(ordered) > best_len:
+        best_len = len(ordered)
+        best_trip_id = tid
+        best_ordered = ordered
+```
+
+Cette approche garantit que la représentation cartographique reflète fidèlement l'itinéraire complet de chaque ligne.
+
+#### 4. Intégration des tracés géographiques (shapes)
+
+Lorsque le fichier `shapes.txt` est disponible, le script extrait les tracés précis des lignes sous forme de séquences de coordonnées GPS. Ces tracés sont ensuite stockés au format **GeoJSON** pour un affichage fluide sur la carte Mapbox.
+
+```python
+if has_shapes and best_trip_id is not None:
+    shape_id = trip_to_shape.get(best_trip_id, "")
+    pts = shape_points.get(shape_id, [])
+    if pts and len(pts) >= 2:
+        geometrie = [[lon, lat] for (_seq, lon, lat) in pts]
+```
+
+Les tracés permettent d'afficher des lignes continues et réalistes, suivant les routes empruntées par les bus, plutôt que de simples segments reliant les arrêts.
+
+### Script de normalisation : busLine.py
+
+Une fois les données extraites, le script **`busLine.py`** effectue une normalisation supplémentaire en séparant les données de lignes et d'arrêts dans deux fichiers JSON distincts :
+
+- **lines_normalized.json** : contient les lignes avec leurs propriétés (nom, couleur, identifiant) et une liste ordonnée de références aux arrêts
+- **stops_normalized.json** : regroupe tous les arrêts uniques du réseau avec leur position GPS
+
+Cette séparation améliore les performances de chargement côté frontend et évite la duplication d'informations d'arrêts communes à plusieurs lignes.
+
+```python
+def normalize_lines_and_stops(
+    input_lignes_json: str | Path,
+    output_lines_json: str | Path,
+    output_stops_json: str | Path,
+) -> None:
+    # Lecture des lignes
+    lignes_in = data.get("lignes", [])
+    stops_by_id: dict[int, dict] = {}
+    
+    for line in lignes_in:
+        arrets = line.get("arrets", []) or []
+        stop_ids = []
+        
+        for a in arrets:
+            sid = int(a["id"])
+            stop_ids.append(sid)
+            
+            # Conservation d'un seul arrêt par ID
+            if sid not in stops_by_id:
+                stops_by_id[sid] = {
+                    "id": sid,
+                    "nom": a.get("nom", ""),
+                    "position": {
+                        "lat": float(pos.get("lat")),
+                        "long": float(pos.get("long")),
+                    },
+                }
+```
+
+### Format de sortie JSON
+
+Le résultat final de ce processus est un fichier JSON structuré et optimisé pour l'affichage cartographique :
+
+```json
+{
+  "lignes": [
+    {
+      "id": 7,
+      "nom": "7",
+      "couleur": "EE3124",
+      "long_nom": "Bathurst",
+      "stopIds": [110, 3016, 3017, ...],
+      "geometries": [
+        [-79.41139, 43.64203],
+        [-79.41141, 43.64215],
+        ...
+      ]
+    }
+  ]
+}
+```
+
+Cette architecture garantit une compatibilité directe avec Mapbox GL et facilite la gestion dynamique des données côté React.
+
+### Visualisation du réseau complet
+
+L'image ci-dessous illustre le résultat final de l'extraction et de la normalisation des données GTFS : l'ensemble des lignes de bus du réseau TTC affichées sur la carte interactive avec leurs tracés géographiques complets.
+
+![Toutes les lignes de bus](./images/tous_les_bus.png)
+
+Cette représentation démontre la capacité du système à gérer simultanément un grand nombre de lignes avec leurs géométries complexes, tout en maintenant des performances de rendu fluides grâce aux optimisations détaillées dans les sections suivantes.
+
+## Pipeline de Traitement des Données
+
+La préparation des données constitue une étape essentielle pour garantir la qualité et la pertinence des prédictions. Un ensemble de scripts Python a été développé pour automatiser le processus complet, de la fusion des sources de données brutes jusqu'à la création des jeux de données prêts pour l'entraînement des modèles.
+
+### Fusion des retards de bus avec les données météorologiques
+
+Le script **`combine_bus_delays_with_climate.py`** réalise la jonction entre les données de retards de bus (issues du TTC) et les relevés météorologiques horaires. Cette étape est cruciale car elle permet d'associer à chaque incident de retard les conditions météorologiques précises au moment de sa survenue.
+
+#### Algorithme de correspondance temporelle
+
+Les données de bus utilisent un format de date et d'heure spécifique (`dd-MMM-yy HH:mm`), tandis que les données météorologiques sont horodatées de manière standardisée. Le script effectue un arrondi temporel à l'heure la plus proche pour faciliter la correspondance :
+
+```python
+def convert_bus_datetime_to_climate_date(date, time):
+    datetime_str = f"{date} {time}"
+    datetime_obj = pd.to_datetime(datetime_str, format="%d-%b-%y %H:%M")
+    # Arrondi à l'heure la plus proche
+    rounded_datetime = datetime_obj.round('h')
+    return rounded_datetime.strftime("%Y-%m-%d %H:%M:00")
+```
+
+Cette approche permet de relier efficacement les deux sources de données tout en conservant une précision temporelle suffisante pour l'analyse.
+
+#### Résultat de la fusion
+
+Le fichier résultant (`raw_dataset.csv`) contient l'ensemble des retards avec leurs caractéristiques temporelles, géographiques et météorologiques associées. Ce jeu de données constitue la base pour toutes les étapes de preprocessing ultérieures.
+
+### Preprocessing et Feature Engineering
+
+Le script **`data_preprocessing.py`** transforme les données brutes en features exploitables par les modèles de machine learning. Cette étape inclut plusieurs transformations avancées.
+
+#### 1. Transformation de la variable cible
+
+La variable de retard (`DELAY`) présente une distribution asymétrique avec de nombreuses valeurs extrêmes. Pour améliorer la convergence des modèles, une transformation logarithmique est appliquée :
+
+```python
+df['DELAY_LOG1P'] = np.log1p(df['DELAY'])
+df = df.drop(columns=['DELAY'])
+```
+
+La fonction `log1p` (logarithme de 1 + x) permet de gérer les retards nuls sans introduire de valeurs indéfinies.
+
+#### 2. Encodage cyclique des variables temporelles
+
+Les variables temporelles (heure, jour de la semaine, mois) présentent une nature cyclique : 23h est proche de 0h, dimanche précède lundi, décembre précède janvier. Un encodage numérique simple (0, 1, 2...) ne reflète pas cette continuité.
+
+L'**encodage cyclique** utilise des transformations trigonométriques pour préserver la périodicité :
+
+```python
+def cyclical_encoding(df, column, max_value):
+    num_col = pd.to_numeric(df[column])
+    cos = np.cos(2 * np.pi * num_col / max_value)
+    sin = np.sin(2 * np.pi * num_col / max_value)
+    return cos, sin
+```
+
+Cette approche crée deux features (cosinus et sinus) pour chaque variable cyclique. Par exemple, pour les heures de la journée :
+
+- 0h → cos(0) = 1, sin(0) = 0
+- 6h → cos(π/2) = 0, sin(π/2) = 1
+- 12h → cos(π) = -1, sin(π) = 0
+- 18h → cos(3π/2) = 0, sin(3π/2) = -1
+
+Les variables encodées cycliquement incluent :
+- Heure et minute du retard
+- Jour de la semaine
+- Mois et jour du mois
+- Direction du vent (0-360°)
+
+#### 3. Transformation des variables météorologiques
+
+Les conditions météorologiques nécessitent un traitement spécifique :
+
+**Regroupement des conditions météo similaires** :
+
+Les descriptions météorologiques brutes sont souvent très détaillées et redondantes. Elles sont regroupées en grandes catégories (`Clear`, `Rain`, `Snow`, `Fog`, `Thunderstorms`) via un **MultiLabelBinarizer**, permettant de capturer les conditions composées (ex : "Rain,Fog").
+
+**Binarisation des précipitations** :
+
+Plutôt que d'utiliser directement la quantité de précipitations (qui contient beaucoup de zéros), une variable binaire indique simplement la présence ou l'absence de précipitations :
+
+```python
+df['PRECIP_AMOUNT_BINARY'] = (df['PRECIP_AMOUNT'] > 0).astype(int)
+```
+
+**Catégorisation de la visibilité** :
+
+La visibilité est transformée en variable ordinale avec des seuils prédéfinis reflétant la dégradation des conditions de conduite.
+
+#### 4. Pipeline de prétraitement standardisé
+
+L'ensemble des transformations est encapsulé dans un **pipeline scikit-learn** permettant d'appliquer de manière cohérente et reproductible toutes les étapes :
+
+```python
+preprocessor = ColumnTransformer([
+    ('numerical', StandardScaler(), numerical_columns),
+    ('nominal', OneHotEncoder(), nominal_columns),
+    ('ordinal', OrdinalEncoder(categories=ordinal_categories), ordinal_columns),
+    ('multi_label', MultiLabelBinarizerWrapper(), multi_label_columns),
+    ('passthrough', 'passthrough', passthrough_columns)
+])
+```
+
+Ce pipeline est sauvegardé (`preprocessor.pkl`) et réutilisé lors de l'inférence pour garantir que les données en production subissent exactement les mêmes transformations que les données d'entraînement.
+
+### Entraînement des modèles
+
+Les scripts **`train_models.py`**, **`train_models_winter.py`** et **`train_models_summer.py`** orchestrent l'entraînement de plusieurs modèles de machine learning avec optimisation automatique des hyperparamètres via **Optuna**.
+
+#### Stratégie d'optimisation
+
+Optuna effectue une recherche bayésienne dans l'espace des hyperparamètres pour minimiser le **RMSE** (Root Mean Squared Error) sur un ensemble de validation. Pour chaque modèle, entre 4 et 100 essais sont effectués selon la complexité et le temps d'entraînement :
+
+- **Decision Tree** : 100 essais
+- **Linear Regression** : 4 essais (espace de recherche limité)
+- **ElasticNet** : 100 essais
+- **Random Forest** : 10 essais (coût computationnel élevé)
+- **Gradient Boosting** : 100 essais
+- **XGBoost** : 100 essais
+- **SVR** : 5 essais (temps d'entraînement prohibitif)
+
+#### Modèles entraînés
+
+Plusieurs familles de modèles ont été testées :
+
+- **Modèles linéaires** : Régression linéaire classique et avec régularisation ElasticNet
+- **Arbres de décision** : Modèles simples et interprétables
+- **Ensembles d'arbres** : Random Forest, Gradient Boosting, XGBoost
+- **SVR** : Support Vector Regression avec noyaux RBF, polynomial et sigmoïde
+- **GAMs** : Generalized Additive Models (LinearGAM, GammaGAM, PoissonGAM)
+
+Les modèles GAMs méritent une attention particulière car ils permettent de modéliser des relations non-linéaires tout en conservant une certaine interprétabilité. Ils utilisent des splines pour ajuster des courbes flexibles sur chaque feature.
+
+#### Stratégie par saison
+
+Des modèles spécifiques ont été entraînés séparément pour l'hiver et l'été, permettant de capturer les dynamiques saisonnières distinctes des retards de bus. Les mois de mai à septembre sont considérés comme l'été, et octobre à avril comme l'hiver.
+
+### Génération automatique de rapports
+
+Le script **`automatic_eda.py`** utilise la bibliothèque **ydata-profiling** pour générer automatiquement un rapport d'exploration des données exhaustif. Ce rapport inclut :
+
+- Distribution de chaque variable
+- Corrélations entre variables
+- Détection de valeurs manquantes
+- Identification de doublons
+- Statistiques descriptives complètes
+
+Ce rapport facilite la compréhension initiale des données et guide les choix de preprocessing.
 
 ## Amélioration du rendu et des performances
 L’amélioration des performances de l’application cartographique a constitué un axe de travail majeur du projet. L’objectif n’était pas uniquement de rendre l’interface plus fluide, mais surtout de mettre en place une architecture plus cohérente et plus adaptée aux contraintes du rendu cartographique WebGL, tout en conservant les avantages offerts par React pour la gestion de l’interface et de l’état applicatif.
@@ -286,6 +604,130 @@ export type WeatherData = {
     LOCAL_DAY: number;
 }
 ```
+
+## Résultats d'Entraînement des Modèles
+
+L'évaluation des différents modèles de machine learning a permis d'identifier les approches les plus performantes pour la prédiction des retards. Plusieurs scénarios ont été testés, incluant l'ensemble des données, ainsi que des modèles spécialisés par saison.
+
+### Scénario 1 : Modèle global toutes saisons
+
+Le premier scénario utilise l'ensemble des données avec une séparation Train (60%) / Validation (20%) / Test (20%). Une variable `SEASON` (Summer/Winter) a été créée pour capturer les différences saisonnières.
+
+#### Performances des modèles
+
+Les performances sont mesurées via trois métriques principales sur l'ensemble de test :
+- **R²** (coefficient de détermination) : mesure la proportion de variance expliquée
+- **MAE** (Mean Absolute Error) : erreur moyenne absolue en minutes (après transformation inverse)
+- **RMSE** (Root Mean Squared Error) : erreur quadratique moyenne, pénalisant davantage les grosses erreurs
+
+| Modèle | R² | MAE | RMSE | Observations |
+|--------|-----|-----|------|--------------|
+| **XGBoost** | **0.3296** | 0.4746 | **0.6212** | Meilleur compromis performance/généralisation |
+| Gradient Boosting | 0.3002 | **0.4465** | 0.6485 | Excellente MAE |
+| Linear Regression (Elasticnet) | 0.2948 | 0.4902 | 0.6535 | Simple et rapide |
+| Linear Regression | 0.2921 | 0.4898 | 0.6560 | Baseline solide |
+| SVR | 0.2601 | 0.4451 | 0.6857 | Coût computationnel élevé |
+| Decision Tree | 0.2289 | 0.5594 | 0.7146 | Surapprentissage visible |
+| Random Forest | 0.0140 | 0.6220 | 0.9137 | Hyperparamètres sous-optimaux |
+
+**XGBoost** émerge comme le modèle le plus performant avec un R² de 0.3296 et un RMSE de 0.6212. Ce résultat justifie son utilisation dans le système de prédiction en production.
+
+![XGBoost Scenario 1](../../reports/1/XGBoost-scatterplot.png)
+
+Le graphique de dispersion montre une corrélation raisonnable entre les prédictions et les valeurs réelles, avec une concentration autour de la diagonale idéale.
+
+### Scénario 2 : Modèle spécialisé hiver
+
+Ce scénario se concentre exclusivement sur les données hivernales (octobre à avril), période où les conditions météorologiques ont un impact plus marqué sur les retards.
+
+#### Résultats clés
+
+| Modèle | R² | MAE | RMSE |
+|--------|-----|-----|------|
+| **XGBoost** | **0.3182** | 0.4916 | **0.6342** |
+| Linear Regression (Elasticnet) | 0.2877 | 0.5043 | 0.6626 |
+| Linear Regression | 0.2853 | 0.5017 | 0.6648 |
+| Gradient Boosting | 0.2625 | 0.4650 | 0.6860 |
+| SVR | 0.2570 | 0.4472 | 0.6911 |
+| Decision Tree | 0.1957 | 0.5746 | 0.7482 |
+
+Les performances hivernales sont légèrement inférieures au modèle global, suggérant que la variabilité accrue des conditions météorologiques rend la prédiction plus difficile.
+
+![XGBoost Winter](../../reports/2/XGBoost-scatterplot.png)
+
+### Scénario 3 : Modèle spécialisé été
+
+Le modèle estival (mai à septembre) bénéficie de conditions météorologiques plus stables et prévisibles.
+
+#### Résultats clés
+
+| Modèle | R² | MAE | RMSE |
+|--------|-----|-----|------|
+| **XGBoost** | **0.3245** | **0.4712** | **0.6106** |
+| Gradient Boosting | 0.2969 | 0.4882 | 0.6354 |
+| Linear Regression (Elasticnet) | 0.2865 | 0.4874 | 0.6449 |
+| Linear Regression | 0.2826 | 0.4824 | 0.6484 |
+| SVR | 0.2053 | 0.4885 | 0.7183 |
+| Decision Tree | 0.1615 | 0.5799 | 0.7578 |
+
+Le modèle estival affiche de meilleures performances globales, avec un RMSE de 0.6106, confirmant l'hypothèse de conditions plus favorables à la prédiction.
+
+![XGBoost Summer](../../reports/3/XGBoost-scatterplot.png)
+
+### Scénarios 4, 5, 6 : Generalized Additive Models (GAMs)
+
+Les GAMs ont été testés comme alternative aux modèles tree-based, offrant une meilleure interprétabilité grâce à leurs courbes de réponse partielles visualisables.
+
+#### Scénario 4 : GAM global
+
+| Modèle | R² | MAE | RMSE |
+|--------|-----|-----|------|
+| **LinearGAM** | **0.2958** | **0.4896** | **0.6526** |
+| GammaGAM | 0.2838 | 0.4975 | 0.6637 |
+| PoissonGAM | 0.2179 | 0.5648 | 0.7248 |
+
+Le LinearGAM affiche des performances comparables à la régression linéaire classique tout en capturant des relations non-linéaires grâce aux splines.
+
+![LinearGAM Global](../../reports/4/LinearGAM-scatterplot.png)
+
+#### Scénario 5 : GAM hiver
+
+| Modèle | R² | MAE | RMSE |
+|--------|-----|-----|------|
+| **LinearGAM** | **0.3142** | **0.4947** | **0.6515** |
+| GammaGAM | 0.2781 | 0.4929 | 0.6372 |
+| PoissonGAM | 0.1899 | 0.5833 | 0.7444 |
+
+![LinearGAM Winter](../../reports/5/LinearGAM-scatterplot.png)
+
+#### Scénario 6 : GAM été
+
+| Modèle | R² | MAE | RMSE |
+|--------|-----|-----|------|
+| **LinearGAM** | **0.2742** | **0.4608** | **0.6160** |
+| PoissonGAM | 0.1784 | 0.5582 | 0.7279 |
+
+![LinearGAM Summer](../../reports/6/LinearGAM-scatterplot.png)
+
+### Analyse comparative
+
+L'analyse des résultats permet de tirer plusieurs conclusions :
+
+1. **Supériorité des modèles d'ensemble** : XGBoost et Gradient Boosting dominent systématiquement les classements, confirmant leur capacité à capturer des interactions complexes entre features.
+
+2. **Spécialisation saisonnière limitée** : Les modèles spécialisés par saison n'apportent qu'un gain marginal de performance, suggérant que le modèle global avec variable `SEASON` capture déjà efficacement les différences saisonnières.
+
+3. **GAMs comme alternative interprétable** : Les LinearGAMs offrent un compromis intéressant entre performance et interprétabilité, utile pour l'analyse exploratoire.
+
+4. **Limites de prédictibilité** : Un R² plafonné autour de 0.33 indique que les retards de bus sont influencés par de nombreux facteurs non capturés dans les données (trafic routier, événements ponctuels, défaillances techniques imprévisibles).
+
+### Modèle retenu pour la production
+
+Le **modèle XGBoost global (Scénario 1)** a été sélectionné pour le déploiement en production, combinant :
+- Les meilleures performances globales (R² = 0.3296)
+- Une bonne généralisation sur toutes les saisons
+- Un temps d'inférence rapide (< 100ms par prédiction)
+- Une capacité à gérer des features hétérogènes (numériques, catégorielles, cycliques)
 
 ## Déploiement sur Raspberry Pi
 
